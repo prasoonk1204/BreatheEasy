@@ -4,6 +4,34 @@
 
 ---
 
+**Appreciate the project by giving this repository a Star ⭐**
+
+## 📋 Rules for Pull Requests
+
+Before contributing, please follow these guidelines:
+
+### ⭐ Getting Started
+1. **Fork this repository** to your GitHub account
+2. **Clone your forked repository** to your local machine
+3. **Create a new branch** for your feature/fix
+
+### 📝 Pull Request Guidelines
+1. **Describe the issue properly** - Provide a clear and detailed description of what the PR addresses
+2. **Reference the issue number** - Link your PR to the relevant issue using `Fixes #issue_number`
+3. **Follow the existing code style** - Maintain consistency with the current codebase
+4. **Test your changes** - Ensure your code works as expected before submitting
+5. **Add meaningful commit messages** - Use descriptive commit messages that explain what changes were made
+6. **Update documentation** - If you add new features, update the README accordingly
+7. **One feature per PR** - Keep your pull requests focused on a single feature or bug fix
+8. **Be respectful** - Follow our Code of Conduct and be respectful to other contributors
+
+### 🚫 What NOT to do
+- Don't submit PRs without linking them to an issue
+- Don't make changes unrelated to the issue you're solving
+- Don't submit duplicate PRs
+- Don't spam or create low-quality PRs just for the sake of contributing
+
+
 ## 🚀 Features
 
 - **Live AQI Dashboard:** See the current Air Quality Index for your location.
@@ -12,6 +40,37 @@
 - **Improvement Measures:** Learn how you and your community can help improve air quality.
 - **7-Day Forecast:** Visualize upcoming air quality trends with interactive charts.
 - **Responsive UI:** Built with React, Tailwind CSS, and Chart.js for a modern, mobile-friendly experience.
+
+  ## 🚧 Help Wanted: Full Stack Contributors!
+
+We are looking for contributors to help set up the backend and work on both the frontend and backend to implement new features for BreatheEasy.
+
+**Frontend goals:**
+
+- Landing Page for the app
+- Integrate new backend endpoints for enhanced features
+- Improve data visualization and user experience
+- Add new UI components as backend features are developed
+
+**Backend goals:**
+
+- Proxy AQI requests to the WAQI API (to keep API keys secure)
+- Serve mock AQI data for testing/demo
+- Optionally, store user feedback or favorite locations
+
+---
+
+## 🧑‍💻 Contributing
+
+We welcome all contributions! Here are some ways you can help:
+
+- **Suggest new features** by [opening an issue](https://github.com/prasoonk1204/BreatheEasy/issues).
+- **Report bugs** with details and steps to reproduce.
+- **Improve documentation** for beginners.
+- **Enhance UI/UX** for better accessibility and experience.
+- **Help build the backend** as described above!
+
+---
 
 ---
 
@@ -105,35 +164,6 @@ yarn start
 
 ---
 
-## 🚧 Help Wanted: Full Stack Contributors!
-
-We are looking for contributors to help set up the backend and work on both the frontend and backend to implement new features for BreatheEasy.
-
-**Backend goals:**
-
-- Proxy AQI requests to the WAQI API (to keep API keys secure)
-- Serve mock AQI data for testing/demo
-- Optionally, store user feedback or favorite locations
-
-**Frontend goals:**
-
-- Integrate new backend endpoints for enhanced features
-- Improve data visualization and user experience
-- Add new UI components as backend features are developed
-
----
-
-## 🧑‍💻 Contributing
-
-We welcome all contributions! Here are some ways you can help:
-
-- **Suggest new features** by [opening an issue](https://github.com/prasoonk1204/BreatheEasy/issues).
-- **Report bugs** with details and steps to reproduce.
-- **Improve documentation** for beginners.
-- **Enhance UI/UX** for better accessibility and experience.
-- **Help build the backend** as described above!
-
----
 
 ## 💡 Tech Stack
 
@@ -146,17 +176,21 @@ We welcome all contributions! Here are some ways you can help:
 
 ---
 
-## 🙌 Beginners Welcome!
+## 💬 Community & Support
 
-- We love helping new contributors.
-- If you’re stuck, open a discussion or ask for help in your PR.
+- **Questions?** Open an issue with the `question` label
+- **Bug Reports:** Use the `bug` label when creating issues
+- **Feature Requests:** Use the `enhancement` label
+- **Discussion:** Join our community discussions in the Issues section
+
+## 📜 License
+
+This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-## 📄 License
+### 🌟 Show your support
 
-[MIT](LICENSE)
+Give a ⭐ if you found this project helpful!
 
----
-
-**Let’s make clean air accessible and understandable for everyone!**
+**Happy Contributing! 🎉**
