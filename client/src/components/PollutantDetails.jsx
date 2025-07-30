@@ -30,8 +30,8 @@ const pollutantLabels = {
 };
 
 const PollutantDetails = ({ components }) => (
-  <div className="bg-white/70 backdrop-blur-xl p-6 rounded-2xl shadow-md">
-    <h3 className="text-xl font-semibold mb-5 text-gray-800">
+  <div className="bg-white/70 dark:bg-gray-700/70 backdrop-blur-xl p-6 rounded-2xl shadow-md">
+    <h3 className="text-xl font-semibold mb-5 text-gray-800 dark:text-white">
       Pollutant Details
     </h3>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -44,15 +44,21 @@ const PollutantDetails = ({ components }) => (
         return (
           <div
             key={key}
-            className="flex items-center justify-between bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-200 hover:shadow-md transition"
+            className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-700 transition hover:shadow-lg"
           >
-            <div className="flex items-center gap-3">
-              {icon}
-              <span className="text-sm font-medium text-gray-700">{label}</span>
+            <div className="flex items-center gap-4 mb-3">
+              <div className="p-2 rounded-full bg-muted dark:bg-gray-700">
+                {icon}
+              </div>
+              <h4 className="text-base font-semibold text-gray-800 dark:text-gray-100">
+                {label}
+              </h4>
             </div>
-            <span className="text-sm px-3 py-1 bg-gray-100 rounded-full font-semibold text-gray-800">
-              {value} μg/m³
-            </span>
+            <div className="mt-1 text-center">
+              <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-purple-700/50 text-sm font-semibold text-emerald-800 dark:text-white">
+                {value} μg/m³
+              </div>
+            </div>
           </div>
         );
       })}

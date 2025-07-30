@@ -50,13 +50,13 @@ const aqiLevels = [
 ];
 
 const AQIScaleTable = () => (
-  <div className="bg-white/60 backdrop-blur-lg p-6 rounded-xl shadow-md w-full">
-    <h3 className="text-2xl font-bold mb-6 text-gray-800">
+  <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-lg p-6 rounded-xl shadow-md w-full">
+    <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
       AQI Scale & Health Impact Guide
     </h3>
     <div className="overflow-x-auto">
       <table className="w-full text-left text-base border-collapse overflow-hidden">
-        <thead className="bg-gray-100 text-gray-700">
+        <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
           <tr>
             <th className="py-3 px-4">Level</th>
             <th className="py-3 px-4">Range</th>
@@ -68,7 +68,7 @@ const AQIScaleTable = () => (
           {aqiLevels.map((item, index) => (
             <tr
               key={index}
-              className="border-b border-gray-300 hover:bg-gray-100 hover:scale-[1.01] transition-all duration-200 ease-in-out"
+              className="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-[1.01] transition-all duration-200 ease-in-out"
             >
               <td className="py-4 px-4">
                 <span
@@ -77,11 +77,13 @@ const AQIScaleTable = () => (
                   {item.level}
                 </span>
               </td>
-              <td className="py-4 px-4 font-medium text-gray-800">
+              <td className="py-4 px-4 font-medium text-gray-800 dark:text-gray-100">
                 {item.range}
               </td>
-              <td className="py-4 px-4 text-gray-700">{item.health}</td>
-              <td className="py-4 px-4 text-gray-600 italic">
+              <td className="py-4 px-4 text-gray-700 dark:text-gray-300">
+                {item.health}
+              </td>
+              <td className="py-4 px-4 text-gray-600 dark:text-gray-400 italic">
                 {item.sensitive}
               </td>
             </tr>

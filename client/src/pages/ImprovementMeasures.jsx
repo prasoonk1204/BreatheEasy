@@ -47,20 +47,20 @@ const ImprovementMeasures = () => {
   const measures = aqi !== null ? getMeasures(aqi) : [];
 
   return (
-    <div className="bg-white rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold text-emerald-600 mb-6">
+    <div className="my-20 bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
+      <h2 className="text-3xl font-bold text-emerald-600 dark:text-purple-400 mb-6">
         Improvement Measures
       </h2>
 
       {aqi === null ? (
-        <p className="text-gray-500">Loading AQI data...</p>
+        <p className="text-gray-500 dark:text-gray-400">Loading AQI data...</p>
       ) : (
         <div className="space-y-6">
-          <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-lg">
-            <p className="text-lg font-medium text-emerald-800 mb-2">
+          <div className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 dark:border-emerald-400 p-4 rounded-lg">
+            <p className="text-lg font-medium text-emerald-800 dark:text-emerald-300 mb-2">
               Actions You Can Take:
             </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
+            <ul className="list-disc pl-6 text-gray-700 dark:text-gray-200 space-y-2">
               {measures.map((item, i) => (
                 <li key={i} className="leading-relaxed">
                   {item}
@@ -69,11 +69,11 @@ const ImprovementMeasures = () => {
             </ul>
           </div>
 
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
-            <h3 className="font-semibold text-blue-700 mb-2">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 dark:border-blue-400 p-4 rounded-lg">
+            <h3 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">
               🌍 Want to do more?
             </h3>
-            <ul className="list-disc pl-6 text-gray-700 space-y-1">
+            <ul className="list-disc pl-6 text-gray-700 dark:text-gray-200 space-y-1">
               <li>Join or organize local environmental drives.</li>
               <li>Educate others about pollution and climate impact.</li>
               <li>Support green startups or eco-conscious brands.</li>
