@@ -10,20 +10,22 @@ const getAQIDescription = (aqi) => {
 };
 
 const getCardColor = (aqi) => {
-  if (aqi <= 50) return "bg-green-500 text-white hover:bg-green-600/85";
-  if (aqi <= 100) return "bg-yellow-400 text-black hover:bg-yellow-500/85";
-  if (aqi <= 200) return "bg-orange-400 text-white hover:bg-orange-500/85";
-  if (aqi <= 300) return "bg-red-500 text-white hover:bg-red-600/85";
-  if (aqi <= 400) return "bg-red-800 text-white hover:bg-red-900/85";
-  return "bg-black text-white";
+  if (aqi <= 50)
+    return "bg-green-500 text-white hover:bg-green-600 dark:bg-green-400 dark:hover:bg-green-500";
+  if (aqi <= 100)
+    return "bg-yellow-400 text-black hover:bg-yellow-500 dark:bg-yellow-300 dark:text-black";
+  if (aqi <= 200)
+    return "bg-orange-400 text-white hover:bg-orange-500 dark:bg-orange-300 dark:text-black";
+  if (aqi <= 300)
+    return "bg-red-500 text-white hover:bg-red-600 dark:bg-red-400 dark:text-white";
+  if (aqi <= 400)
+    return "bg-red-800 text-white hover:bg-red-900 dark:bg-red-700";
+  return "bg-black text-white dark:bg-gray-800";
 };
 
 const AQICard = ({ aqi, city, time }) => {
   const cardColor = getCardColor(aqi);
-
-  // Ensure `time` is valid, and fallback if `time.iso` is missing
-  const formattedTime =
-    time ? new Date(time).toLocaleString() : "N/A";
+  const formattedTime = time ? new Date(time).toLocaleString() : "N/A";
 
   return (
     <div
@@ -35,7 +37,7 @@ const AQICard = ({ aqi, city, time }) => {
         <p className="text-xl font-medium mt-2">{getAQIDescription(aqi)}</p>
       </div>
 
-      <p className="text-xs mt-2 opacity-70">
+      <p className="text-xs mt-2 opacity-80">
         <span className="font-medium">Last Updated: </span>
         {formattedTime}
       </p>
