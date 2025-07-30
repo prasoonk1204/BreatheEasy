@@ -68,6 +68,7 @@ const AirQualityChart = () => {
       legend: {
         position: "top",
         labels: {
+          color: "#555", // default
           font: {
             size: 14,
           },
@@ -80,11 +81,17 @@ const AirQualityChart = () => {
     },
     scales: {
       x: {
+        ticks: {
+          color: "#666",
+        },
         grid: {
           display: false,
         },
       },
       y: {
+        ticks: {
+          color: "#666",
+        },
         grid: {
           color: "rgba(200, 200, 200, 0.2)",
         },
@@ -94,8 +101,8 @@ const AirQualityChart = () => {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-lg w-full max-w-6xl mx-auto">
-      <h3 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+    <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl p-8 rounded-3xl shadow-lg w-full max-w-6xl mx-auto">
+      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">
         Air Quality Forecast (Next 7 Days)
       </h3>
       <div className="h-[500px]">
