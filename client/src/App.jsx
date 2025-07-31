@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Precautions from "./pages/Precautions";
 import ImprovementMeasures from "./pages/ImprovementMeasures";
 import AirQualityChart from "./pages/AirQualityChart";
+import ExploreAQI from "./pages/ExploreAQI";
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
         <Route path="precautions" element={<Precautions />} />
         <Route path="improvement" element={<ImprovementMeasures />} />
         <Route path="chart" element={<AirQualityChart />} />
+        <Route path="explore-aqi" element={<ExploreAQI />} />
       </Route>
     </Routes>
   </Router>
