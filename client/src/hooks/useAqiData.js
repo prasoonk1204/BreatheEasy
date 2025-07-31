@@ -1,3 +1,4 @@
+// hooks/useAqiData.js
 import { useEffect, useState } from "react";
 
 const useAqiData = () => {

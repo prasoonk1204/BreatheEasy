@@ -12,11 +12,13 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",
     "chart.js": "^4.4.9",
+    "leaflet": "^1.9.4",
     "lucide-react": "^0.510.0",
     "react": "^19.1.0",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.0",
+    "react-router-dom": "^7.7.1",
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
