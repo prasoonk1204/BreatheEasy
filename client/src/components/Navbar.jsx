@@ -1,6 +1,6 @@
 // components/Navbar.jsx
 import React from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import { Sun, Moon } from "lucide-react";
 

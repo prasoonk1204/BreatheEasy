@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const getPrecautions = (aqi) => {
   if (aqi <= 50) {
@@ -44,9 +45,17 @@ const Precautions = () => {
 
   return (
     <div className="my-20 bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold text-emerald-600 dark:text-purple-400 mb-6">
-        Health Precautions
-      </h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-emerald-600 dark:text-purple-400">
+          Health Precautions
+        </h2>
+        <Link
+          to="/health-advisor"
+          className="btn btn-primary bg-emerald-600 hover:bg-emerald-700 dark:bg-purple-600 dark:hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors"
+        >
+          Get Personalized Health Advice
+        </Link>
+      </div>
 
       {precautions.length === 0 ? (
         <p className="text-gray-500 dark:text-gray-400">Loading AQI-related precautions...</p>

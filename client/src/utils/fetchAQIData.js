@@ -8,7 +8,7 @@ const fetchAQIData = async () => {
   const data = await response.json();
 
   if (data.status !== "ok") {
-    throw new Error("Failed to fetch AQI data");
+    throw new Error(`Failed to fetch AQI data: ${data.data || data.status}`);
   }
 
   return {
