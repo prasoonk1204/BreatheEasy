@@ -4,94 +4,42 @@
 
 ---
 
-**Appreciate the project by giving this repository a Star ⭐**
+## **_Appreciate the project by giving this repository a Star ⭐_**
 
-## 📋 Rules for Pull Requests
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) [![GSSoC](https://img.shields.io/badge/GSSoC-2025-blue)](https://gssoc.girlscript.tech/)
+
+## 📋 Contributing
 
 Before contributing, please follow these guidelines:
 
-### ⭐ Getting Started
-1. **Fork this repository** to your GitHub account
-2. **Clone your forked repository** to your local machine
-3. **Create a new branch** for your feature/fix
+- **Fork this repository** and clone it to your machine.
+- **Create a new branch** for your feature/fix.
+- **Describe the issue properly** in your PR and reference the issue number.
+- **Follow the existing code style** and test your changes.
+- **Update documentation** if you add new features.
+- **One feature per PR** and be respectful to other contributors.
 
-### 📝 Pull Request Guidelines
-1. **Describe the issue properly** - Provide a clear and detailed description of what the PR addresses
-2. **Reference the issue number** - Link your PR to the relevant issue using `Fixes #issue_number`
-3. **Follow the existing code style** - Maintain consistency with the current codebase
-4. **Test your changes** - Ensure your code works as expected before submitting
-5. **Add meaningful commit messages** - Use descriptive commit messages that explain what changes were made
-6. **Update documentation** - If you add new features, update the README accordingly
-7. **One feature per PR** - Keep your pull requests focused on a single feature or bug fix
-8. **Be respectful** - Follow our Code of Conduct and be respectful to other contributors
-
-### 🚫 What NOT to do
-- Don't submit PRs without linking them to an issue
-- Don't make changes unrelated to the issue you're solving
-- Don't submit duplicate PRs
-- Don't spam or create low-quality PRs just for the sake of contributing
-
+---
 
 ## 🚀 Features
 
 - **Live AQI Dashboard:** See the current Air Quality Index for your location.
-- **Pollutant Breakdown:** View detailed levels of PM2.5, PM10, O₃, NO₂, SO₂, and CO.
+- **Explore AQI Page:** Search for any city and view its AQI, primary pollutant, last updated time, and detailed pollutant concentrations (PM2.5, PM10, O₃, NO₂, SO₂, CO).
+- **Interactive Map:** Visualize AQI data on a map centered on the searched location (requires Stadia Maps API key).
+- **Dark/Light Mode Toggle:** Easily switch between dark and light themes from the navbar.
 - **Health Suggestions:** Get tailored health advice and precautions based on AQI.
 - **Improvement Measures:** Learn how you and your community can help improve air quality.
 - **7-Day Forecast:** Visualize upcoming air quality trends with interactive charts.
 - **Responsive UI:** Built with React, Tailwind CSS, and Chart.js for a modern, mobile-friendly experience.
 
-  ## 🚧 Help Wanted: Full Stack Contributors!
-
-We are looking for contributors to help set up the backend and work on both the frontend and backend to implement new features for BreatheEasy.
-
-**Frontend goals:**
-
-- Landing Page for the app
-- Integrate new backend endpoints for enhanced features
-- Improve data visualization and user experience
-- Add new UI components as backend features are developed
-
-**Backend goals:**
-
-- Proxy AQI requests to the WAQI API (to keep API keys secure)
-- Serve mock AQI data for testing/demo
-- Optionally, store user feedback or favorite locations
-
----
-
-## 🧑‍💻 Contributing
-
-We welcome all contributions! Here are some ways you can help:
-
-- **Suggest new features** by [opening an issue](https://github.com/prasoonk1204/BreatheEasy/issues).
-- **Report bugs** with details and steps to reproduce.
-- **Improve documentation** for beginners.
-- **Enhance UI/UX** for better accessibility and experience.
-- **Help build the backend** as described above!
-
----
-
 ---
 
 ## 🗂️ Project Structure
 
-BreatheEasy is now organized into two main parts:
-
-- **Frontend**: React app (in `/client`)
-- **Backend**: Node.js + Express API server (in `/server`)
-
 ```
 .
-├── client/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── ...etc
-├── server/
-│   ├── src/
-│   ├── package.json
-│   └── ...etc
+├── client/   # React frontend
+├── server/   # Node.js + Express backend
 ├── README.md
 └── ...
 ```
@@ -121,19 +69,29 @@ npm install
 yarn install
 ```
 
-- Copy `.example.env` to `.env` and add your [WAQI API key](https://aqicn.org/data-platform/token/#/).
+#### .env Setup
+
+Copy `.example.env` to `.env`:
 
 ```sh
 cp .example.env .env
 ```
 
-- Edit `.env`:
+Edit `.env` and add your API keys:
 
 ```
-VITE_WAQI_API_KEY=your_api_key_here
+VITE_WAQI_API_KEY=your_waqi_api_key_here
+VITE_STADIAMAPS_API_KEY=your_stadiamaps_api_key_here
 ```
 
-- Start the frontend:
+- **WAQI API Key:** [Get your key here](https://aqicn.org/data-platform/token/#/).
+- **Stadia Maps API Key:**
+  - Go to [Stadia Maps](https://stadiamaps.com/).
+  - Sign up for a free account (no credit card required for the free tier).
+  - In your dashboard, go to "Manage Properties" → "Authentication Configuration" to generate/view your API key.
+  - Copy and paste it as `VITE_STADIAMAPS_API_KEY` in your `.env` file.
+
+#### Start the frontend:
 
 ```sh
 npm run dev
@@ -141,7 +99,7 @@ npm run dev
 yarn dev
 ```
 
-- Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### 3. Set Up the Backend
 
@@ -152,7 +110,7 @@ npm install
 yarn install
 ```
 
-- Start the backend server:
+Start the backend server:
 
 ```sh
 npm start
@@ -160,19 +118,18 @@ npm start
 yarn start
 ```
 
-- The backend will run on [http://localhost:3000](http://localhost:3000) by default.
+The backend will run on [http://localhost:3000](http://localhost:3000) by default.
 
 ---
 
-
 ## 💡 Tech Stack
 
-- [React](https://react.dev/) (Frontend)
-- [Vite](https://vitejs.dev/) (Frontend)
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/) (Frontend)
 - [Tailwind CSS](https://tailwindcss.com/) (Frontend)
 - [Chart.js](https://www.chartjs.org/) (Frontend)
 - [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) (Backend)
 - [WAQI API](https://aqicn.org/api/)
+- [Stadia Maps](https://stadiamaps.com/) (Map tiles)
 
 ---
 
@@ -181,11 +138,10 @@ yarn start
 - **Questions?** Open an issue with the `question` label
 - **Bug Reports:** Use the `bug` label when creating issues
 - **Feature Requests:** Use the `enhancement` label
-- **Discussion:** Join our community discussions in the Issues section
 
 ## 📜 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source and available under the [MIT License](License).
 
 ---
 
