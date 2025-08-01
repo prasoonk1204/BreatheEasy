@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-emerald-500 dark:text-purple-400 mt-4">
+      <h2 className="text-2xl font-bold text-emerald-500 dark:text-green-400 mt-4">
         Your Location Air Quality
       </h2>
 

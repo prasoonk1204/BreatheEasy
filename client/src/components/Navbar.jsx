@@ -12,15 +12,15 @@ const Navbar = () => {
   const navLinkClass = (path) =>
     `px-4 py-2 rounded-lg transition-all font-medium whitespace-nowrap
     ${location.pathname === path
-      ? "dark:bg-purple-600 dark:text-white bg-emerald-500 text-white"
-      : "dark:hover:bg-purple-700 dark:text-gray-100 hover:bg-emerald-100 text-gray-800"
+      ? "dark:bg-green-600 dark:text-white bg-emerald-500 text-white"
+      : "dark:hover:bg-green-700 dark:text-gray-100 hover:bg-emerald-100 text-gray-800"
     }`;
 
   const mobileNavLinkClass = (path) =>
     `block w-full text-left px-4 py-3 rounded-lg transition-all font-medium text-lg
     ${location.pathname === path
-      ? "bg-emerald-600 text-white dark:bg-purple-600"
-      : "text-gray-800 hover:bg-emerald-100 dark:text-gray-100 dark:hover:bg-purple-700"
+      ? "bg-emerald-600 text-white dark:bg-green-600"
+      : "text-gray-800 hover:bg-emerald-100 dark:text-gray-100 dark:hover:bg-green-700"
     }`;
 
   return (
@@ -28,7 +28,7 @@ const Navbar = () => {
       className={`sticky top-0 z-[10000] flex items-center justify-between px-6 py-4 shadow-md transition-all dark:bg-gray-900 dark:text-white bg-white text-black`}
     >
       <h1
-        className={`text-2xl font-bold transition-colors dark:text-purple-400 text-emerald-600`}
+        className={`text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600`}
       >
         BreatheEasy
       </h1>
@@ -40,11 +40,11 @@ const Navbar = () => {
         <Link to="/improvement" className={navLinkClass("/improvement")}>Improvement</Link>
         <Link to="/chart" className={navLinkClass("/chart")}>Air Quality Forecast</Link>
         <Link to="/explore-aqi" className={navLinkClass("/explore-aqi")}>Explore AQI</Link>
-        
+
         {/* Theme Toggle for Desktop */}
         <button
           onClick={toggleTheme}
-          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-purple-800 dark:border-purple-600 dark:text-white dark:hover:bg-purple-700"
+          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-green-800 dark:border-green-600 dark:text-white dark:hover:bg-green-700"
         >
           {theme === 'dark' ? (
             <Sun className="w-5 h-5 text-yellow-400" />
@@ -59,7 +59,7 @@ const Navbar = () => {
         {/* Theme Toggle for Mobile */}
         <button
           onClick={toggleTheme}
-          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-purple-800 dark:border-purple-600 dark:text-white dark:hover:bg-purple-700 mr-2"
+          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-green-800 dark:border-green-600 dark:text-white dark:hover:bg-green-700 mr-2"
         >
           {theme === 'dark' ? (
             <Sun className="w-5 h-5 text-yellow-400" />
