@@ -1,6 +1,6 @@
 # BreatheEasy 🌱
 
-**BreatheEasy** is an open-source project to help you monitor air quality in your area, understand pollutant levels, and get actionable health advice and improvement measures. It uses the [World Air Quality Index (WAQI)](https://waqi.info/) API to fetch real-time AQI data and presents it in a clean, user-friendly dashboard.
+BreatheEasy is an open-source project that helps you monitor air quality in your area, understand pollutant levels, and take informed actions for better health. It lets you search and explore real-time air quality data from any city around the world. Featuring a live AQI dashboard, interactive maps, and detailed pollutant breakdowns, it offers tailored health guidance and community-level improvement suggestions. With dark/light mode support and a mobile-friendly UI, BreatheEasy makes understanding air quality simple, informative, and accessible.
 
 ---
 
@@ -31,6 +31,25 @@ Before contributing, please follow these guidelines:
 - **Improvement Measures:** Learn how you and your community can help improve air quality.
 - **7-Day Forecast:** Visualize upcoming air quality trends with interactive charts.
 - **Responsive UI:** Built with React, Tailwind CSS, and Chart.js for a modern, mobile-friendly experience.
+
+---
+
+## ✨ Contributors
+
+| Avatar | Username | Commits | Lines Added | Lines Deleted | GitHub |
+|--------|----------|---------|-------------|----------------|--------|
+| <img src="https://avatars.githubusercontent.com/u/98377377?s=60&v=4" width="50" /> | deepanshu-prajapati01 | 5 | 312 | 151 | [@deepanshu-prajapati01](https://github.com/deepanshu-prajapati01) |
+| <img src="https://avatars.githubusercontent.com/u/118150046?s=60&v=4" width="50" /> | NirvikD | 4 | 446 | 23 | [@NirvikD](https://github.com/NirvikD) |
+| <img src="https://avatars.githubusercontent.com/u/208266043?s=60&v=4" width="50" /> | Tanyasharma71 | 1 | 21 | 0 | [@Tanyasharma71](https://github.com/Tanyasharma71) |
+| <img src="https://avatars.githubusercontent.com/u/122119293?s=60&v=4" width="50" /> | riya751885 | 1 | 3 | 0 | [@riya751885](https://github.com/riya751885) |
+
+
+
+### 🛠️ Maintainer
+
+| Avatar | Username | Commits | Lines Added | Lines Deleted | GitHub |
+|--------|----------|---------|-------------|----------------|--------|
+| <img src="https://avatars.githubusercontent.com/u/171074534?s=60&v=4" width="50" /> | prasoonk1204 | 5 | 2013 | 989 | [@prasoonk1204](https://github.com/prasoonk1204) |
 
 ---
 
@@ -128,7 +147,7 @@ The backend will run on [http://localhost:3000](http://localhost:3000) by defaul
 - [Tailwind CSS](https://tailwindcss.com/) (Frontend)
 - [Chart.js](https://www.chartjs.org/) (Frontend)
 - [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) (Backend)
-- [WAQI API](https://aqicn.org/api/)
+- [WAQI API](https://aqicn.org/api/) (AQI Data)
 - [Stadia Maps](https://stadiamaps.com/) (Map tiles)
 
 ---
@@ -137,16 +156,12 @@ The backend will run on [http://localhost:3000](http://localhost:3000) by defaul
 
 - **Questions?** Open an issue with the `question` label
 - **Bug Reports:** Use the `bug` label when creating issues
-- **Feature Requests:** Use the `enhancement` label
+- **Feature Requests:** Use the `feature` label
 
 ## 📜 License
 
 This project is open-source and available under the [MIT License](License).
 
 ---
-
-### 🌟 Show your support
-
-Give a ⭐ if you found this project helpful!
 
 **Happy Contributing! 🎉**
