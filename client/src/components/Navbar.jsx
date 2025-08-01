@@ -35,11 +35,14 @@ const Navbar = () => {
     <nav
       className={`lg:hidden sticky top-0 z-[10000] flex items-center justify-between px-6 py-4 shadow-md transition-all dark:bg-gray-900 dark:text-white bg-white text-black`}
     >
-      <h1
-        className={`text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600`}
-      >
-        BreatheEasy
-      </h1>
+      <div className="flex items-center gap-2">
+        <img src="favicon.png" alt="Logo" className="w-8 h-8" />
+        <h1
+          className={`text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600`}
+        >
+          BreatheEasy
+        </h1>
+      </div>
 
       <div className="flex items-center">
         <button
