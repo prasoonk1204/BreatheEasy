@@ -10,7 +10,7 @@ const ExploreAQI = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState(null);
 
-  
+
   const [topIndianCitiesAQI, setTopIndianCitiesAQI] = useState([]);
   const [topGlobalCitiesAQI, setTopGlobalCitiesAQI] = useState([]);
 
@@ -22,9 +22,9 @@ const ExploreAQI = () => {
       setRankingsLoading(true);
       setRankingsError(null);
       try {
-        
+
         const data = await fetchTopCitiesAQI();
-        
+
         setTopIndianCitiesAQI(data.top5IndianCities);
         setTopGlobalCitiesAQI(data.top5GlobalCities);
       } catch (err) {
@@ -63,17 +63,17 @@ const ExploreAQI = () => {
 
   const renderAqiDetails = (data) => (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h3 className="text-xl font-semibold mb-3 text-emerald-600 dark:text-purple-400">
+      <h3 className="text-xl font-semibold mb-3 text-emerald-600 dark:text-green-400">
         AQI for {data.city}
       </h3>
       <div className="flex items-center space-x-4 mb-4">
         <div className={`text-4xl font-bold p-3 rounded-full
           ${data.aqi <= 50 ? 'bg-green-500' :
             data.aqi <= 100 ? 'bg-yellow-500' :
-            data.aqi <= 150 ? 'bg-orange-500' :
-            data.aqi <= 200 ? 'bg-red-500' :
-            data.aqi <= 300 ? 'bg-purple-700' :
-            'bg-rose-900'} text-white`}>
+              data.aqi <= 150 ? 'bg-orange-500' :
+                data.aqi <= 200 ? 'bg-red-500' :
+                  data.aqi <= 300 ? 'bg-green-700' :
+                    'bg-rose-900'} text-white`}>
           {data.aqi}
         </div>
         <div>
@@ -98,7 +98,7 @@ const ExploreAQI = () => {
 
   const renderRankingList = (title, cities) => (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h3 className="text-xl font-semibold mb-3 text-emerald-600 dark:text-purple-400">{title}</h3>
+      <h3 className="text-xl font-semibold mb-3 text-emerald-600 dark:text-green-400">{title}</h3>
       {cities.length > 0 ? (
         <ul className="space-y-2">
           {cities.map((city, index) => (
@@ -107,10 +107,10 @@ const ExploreAQI = () => {
               <span className={`px-3 py-1 rounded-full text-sm font-semibold
                 ${city.aqi <= 50 ? 'bg-green-100 text-green-800' :
                   city.aqi <= 100 ? 'bg-yellow-100 text-yellow-800' :
-                  city.aqi <= 150 ? 'bg-orange-100 text-orange-800' :
-                  city.aqi <= 200 ? 'bg-red-100 text-red-800' :
-                  city.aqi <= 300 ? 'bg-purple-100 text-purple-800' :
-                  'bg-rose-100 text-rose-800'}`}>
+                    city.aqi <= 150 ? 'bg-orange-100 text-orange-800' :
+                      city.aqi <= 200 ? 'bg-red-100 text-red-800' :
+                        city.aqi <= 300 ? 'bg-green-100 text-green-800' :
+                          'bg-rose-100 text-rose-800'}`}>
                 AQI: {city.aqi}
               </span>
             </li>
@@ -124,22 +124,22 @@ const ExploreAQI = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-8 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white">
-      <h2 className="text-3xl font-bold text-center text-emerald-700 dark:text-purple-500 mb-6">Explore Air Quality around the World</h2>
+      <h2 className="text-3xl font-bold text-center text-emerald-700 dark:text-green-500 mb-6">Explore Air Quality around the World</h2>
 
       {/* Search Section */}
       <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-        <h3 className="text-2xl font-semibold mb-5 text-emerald-600 dark:text-purple-400">Search AQI by Location</h3>
+        <h3 className="text-2xl font-semibold mb-5 text-emerald-600 dark:text-green-400">Search AQI by Location</h3>
         <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4 mb-6">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Enter city name (e.g., London, Delhi)"
-            className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-purple-500"
+            className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-green-500"
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors disabled:opacity-50 dark:bg-purple-600 dark:hover:bg-purple-700"
+            className="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors disabled:opacity-50 dark:bg-green-600 dark:hover:bg-green-700"
             disabled={searchLoading}
           >
             {searchLoading ? 'Searching...' : 'Search AQI'}
@@ -173,12 +173,12 @@ const ExploreAQI = () => {
       {/* Top Cities AQI Section */}
       <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
         {/* IMPT: Updated section title */}
-        <h3 className="text-2xl font-semibold mb-5 text-emerald-600 dark:text-purple-400">Top Cities Air Quality</h3>
+        <h3 className="text-2xl font-semibold mb-5 text-emerald-600 dark:text-green-400">Top Cities Air Quality</h3>
         {rankingsLoading && <p className="text-center text-gray-500 dark:text-gray-400">Loading top cities AQI...</p>}
         {rankingsError && <p className="text-red-600 dark:text-red-400 text-center">{rankingsError}</p>}
         {!rankingsLoading && !rankingsError && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {renderRankingList("Top 5 Indian Cities", topIndianCitiesAQI)}
             {renderRankingList("Top 5 Global Cities ", topGlobalCitiesAQI)}
           </div>

@@ -48,7 +48,7 @@ const ImprovementMeasures = () => {
 
   return (
     <div className="my-20 bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold text-emerald-600 dark:text-purple-400 mb-6">
+      <h2 className="text-3xl font-bold text-emerald-600 dark:text-green-400 mb-6">
         Improvement Measures
       </h2>
 
