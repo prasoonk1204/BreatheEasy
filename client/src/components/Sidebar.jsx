@@ -1,12 +1,13 @@
 // src/components/Sidebar.jsx
+import React, { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  LayoutDashboard,
-  ShieldCheck,
-  TrendingUp,
-  BarChart3,
-  Globe2,
-  Sun, Moon, PanelLeft,
+  LayoutDashboard,
+  ShieldCheck,
+  TrendingUp,
+  BarChart3,
+  Globe2,
+  Sun, Moon, PanelLeft,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
@@ -19,10 +20,30 @@ const links = [
   { name: "Explore AQI", path: "/dashboard/explore-aqi", icon: <Globe2 size={30} /> },
 ];
 
-export default function Sidebar({ collapsed, setCollapsed }) {
-  const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
+const shakeStyle = `
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px);}
+  20%, 80% { transform: translateX(4px);}
+  30%, 50%, 70% { transform: translateX(-6px);}
+  40%, 60% { transform: translateX(6px);}
+  100% { transform: translateX(0); }
+}
+.sidebar-shake {
+  animation: shake 2.5s ease-in-out both;
+}
+.bg-green-gradient {
+  background: linear-gradient(90deg, #34d399 0%, #10b981 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 20px #10b98140;
+}
+`;
 
+
+export default function Sidebar({ collapsed, setCollapsed }) {
+  const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+
+gssoc-2025
   return (
     <aside
       className={`
@@ -137,3 +158,138 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     </aside>
   );
 }
+
+  // Hold refs to link elements
+  const linkRefs = useRef([]);
+  const handleLinkClick = (idx) => {
+    const ref = linkRefs.current[idx];
+    if (ref) {
+      ref.classList.remove("sidebar-shake", "bg-green-gradient");
+      void ref.offsetWidth;
+      ref.classList.add("sidebar-shake", "bg-green-gradient");
+      setTimeout(() => {
+        ref.classList.remove("sidebar-shake", "bg-green-gradient");
+      }, 400); 
+    }
+  };
+
+
+  return (
+    <>
+      {/* Inject styles only once */}
+      <style>{shakeStyle}</style>
+      <aside
+        className={`
+          hidden lg:flex flex-col justify-between fixed top-0 left-0 h-screen bg-white dark:bg-gray-900 shadow-md z-40
+          transition-all duration-300 ease-in-out
+          ${collapsed ? "w-20" : "w-64"}
+        `}
+      >
+        <div className="flex-1">
+          {/* Top section: Logo, App Name, and Collapse Button */}
+          <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
+            <div className="flex items-center gap-2">
+              {!collapsed && (
+                <>
+                  <img src="favicon.png" alt="Logo" className="w-10 h-10" />
+                  <h1 className="text-xl font-bold transition-opacity duration-300 ease-in-out text-emerald-800 dark:text-green-400">
+                    BreatheEasy
+                  </h1>
+                </>
+              )}
+            </div>
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle sidebar"
+            >
+              <PanelLeft
+                size={24}
+                className={`${collapsed ? "rotate-180" : ""}`}
+              />
+            </button>
+          </div>
+          {/* Navigation Links */}
+          <nav className="p-4 space-y-2">
+            {links.map((link, idx) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                ref={el => linkRefs.current[idx] = el}
+                className={`
+                  relative flex items-center px-4 py-3 rounded-lg text-sm font-medium
+                  group transition-all duration-300 ease-in-out
+                  ${
+                    location.pathname === link.path
+                      ? "bg-emerald-600 text-white"
+                      : "text-gray-700 hover:bg-emerald-100 dark:text-gray-200 dark:hover:bg-green-700"
+                  }
+                  ${collapsed ? "justify-center" : "gap-4"}
+                `}
+                onClick={() => handleLinkClick(idx)}
+              >
+                {link.icon}
+                <span
+                  className={`
+                    transition-all duration-300 ease-in-out whitespace-nowrap overflow-hidden
+                    ${collapsed ? "w-0 opacity-0" : "w-auto opacity-100"}
+                  `}
+                >
+                  {link.name}
+                </span>
+                {/* Modern tooltip for collapsed state */}
+                {collapsed && (
+                  <span
+                    className="absolute left-full ml-4 p-2 bg-gray-800 text-white text-sm rounded-md shadow-lg
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
+                  >
+                    {link.name}
+                  </span>
+                )}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        {/* Footer section: User Info and Theme Toggle */}
+        <div className="border-t p-4 dark:border-gray-700">
+          {/* 
+          <div
+            className={`flex items-center gap-3 transition-all mb-4 ${
+              collapsed ? "flex-col gap-1" : ""
+            }`}
+          >
+            <img
+              src="logo.svg"
+              className="w-10 h-10 rounded-full"
+              alt="User"
+            />
+            {!collapsed && (
+              <div>
+                <p className="text-sm font-semibold">User Name</p>
+                <p className="text-xs text-gray-500">user@example.com</p>
+              </div>
+            )}
+          </div>
+          */}
+          <button
+            onClick={toggleTheme}
+            className={`flex items-center w-full p-3 rounded-lg transition-colors
+              ${
+                theme === "dark"
+                  ? "bg-gray-800 text-yellow-400 hover:bg-gray-700"
+                  : "bg-gray-100 text-blue-600 hover:bg-gray-200"
+              }
+              ${collapsed ? "justify-center" : "gap-3"}
+            `}
+          >
+            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            {!collapsed && (
+              <span className="font-medium text-sm">Toggle Theme</span>
+            )}
+          </button>
+        </div>
+      </aside>
+    </>
+  );
+}
+ main
