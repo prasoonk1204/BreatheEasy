@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <div className="relative min-h-screen">
       {/* Themed Background with Environmental Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20">
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20 rounded-3xl">
         {/* Abstract Nature Patterns */}
         <div className="absolute inset-0 opacity-5 dark:opacity-10">
           {/* Flowing Air Currents Pattern */}
@@ -83,26 +83,26 @@ const Dashboard = () => {
 
             {/* Enhanced Bento Grid Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="transform hover:scale-105 transition-transform duration-300 breathe-animation">
+              <div className="transform transition-transform duration-300 breathe-animation">
                 <AQICard aqi={aqiData.aqi} time={aqiData.time} />
               </div>
-              <div className="lg:col-span-2 transform hover:scale-105 transition-transform duration-300">
+              <div className="lg:col-span-2 transform transition-transform duration-300">
                 <PollutantDetails components={aqiData.components} />
               </div>
             </div>
 
             {/* Enhanced Suggestions and Scale Table */}
             <div className="space-y-6">
-              <div className="transform hover:scale-105 transition-transform duration-300">
+              <div className="transform transition-transform duration-300">
                 <Suggestions aqi={aqiData.aqi} />
               </div>
-              <div className="transform hover:scale-105 transition-transform duration-300">
+              <div className="transform transition-transform duration-300">
                 <AQIScaleTable />
               </div>
             </div>
           </>
         ) : (
-          <div className="flex justify-center items-center min-h-[400px]">
+          <div className="flex gap-6 flex-col min-h-[400px]">
             <DashboardSkeleton />
           </div>
         )}

@@ -86,7 +86,7 @@ const ExploreAQI = () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-gray-700 dark:text-gray-300">
         {Object.entries(data.components || {}).map(([key, value]) => (
           value !== undefined && (
-            <div key={key} className="flex items-center space-x-2">
+            <div key={key} className="flex justify-center items-center space-x-2 bg-gray-100 dark:bg-gray-700 w-30 px-4 py-1 rounded-xl">
               <span className="font-medium uppercase">{key}:</span>
               <span>{value}</span>
             </div>
@@ -104,7 +104,7 @@ const ExploreAQI = () => {
           {cities.map((city, index) => (
             <li key={index} className="flex justify-between items-center text-gray-800 dark:text-gray-200">
               <span className="font-medium">{city.city}</span>
-              <span className={`px-3 py-1 rounded-full text-sm font-semibold
+              <span className={`px-3 py-1 rounded-full text-sm font-semibold w-20 text-center
                 ${city.aqi <= 50 ? 'bg-green-100 text-green-800' :
                   city.aqi <= 100 ? 'bg-yellow-100 text-yellow-800' :
                     city.aqi <= 150 ? 'bg-orange-100 text-orange-800' :
@@ -123,7 +123,7 @@ const ExploreAQI = () => {
   );
 
   return (
-    <div className="container mx-auto p-6 space-y-8 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white">
+    <div className="container mx-auto p-6 space-y-8 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white rounded-3xl">
       <h2 className="text-3xl font-bold text-center text-emerald-700 dark:text-green-500 mb-6">Explore Air Quality around the World</h2>
 
       {/* Search Section */}

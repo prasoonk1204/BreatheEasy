@@ -6,10 +6,10 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 
 const links = [
   { name: "Dashboard", path: "/dashboard" },
+  { name: "Explore AQI", path: "/dashboard/explore-aqi" },
+  { name: "Air Quality Forecast", path: "/dashboard/chart" },
   { name: "Precautions", path: "/dashboard/precautions" },
   { name: "Improvement", path: "/dashboard/improvement" },
-  { name: "Air Quality Forecast", path: "/dashboard/chart" },
-  { name: "Explore AQI", path: "/dashboard/explore-aqi" },
 ];
 
 const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
@@ -19,23 +19,23 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const mobileNavLinkClass = (path) =>
     `block w-full text-left px-4 py-3 rounded-lg transition-all font-medium text-lg
     ${location.pathname === path
-      ? "bg-emerald-600 text-white dark:bg-green-600"
-      : "text-gray-800 hover:bg-emerald-100 dark:text-gray-100 dark:hover:bg-green-700"
+      ? "bg-emerald-600 text-white dark:bg-emerald-600"
+      : "text-gray-800 hover:bg-emerald-100 dark:text-gray-100 dark:hover:bg-emerald-700/60"
     }`;
 
   return (
     <nav className="lg:hidden sticky top-0 z-[10000] flex items-center justify-between px-6 py-4 shadow-md transition-all dark:bg-gray-900 dark:text-white bg-white text-black">
       <div className="flex items-center gap-2">
-        <img src="favicon.png" alt="Logo" className="w-8 h-8" />
-        <h1 className="text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600">
+        <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
+        <Link to="/" className="text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600">
           BreatheEasy
-        </h1>
+        </Link>
       </div>
 
       <div className="flex items-center">
         <button
           onClick={toggleTheme}
-          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-green-800 dark:border-green-600 dark:text-white dark:hover:bg-green-700 mr-2"
+          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-green-800/30 dark:border-green-600 dark:text-white dark:hover:bg-green-700/60 mr-4"
           aria-label="Toggle theme"
         >
           {theme === 'dark' ? (
@@ -83,7 +83,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
           </div>
 
           {/* Footer with user profile */}
-          <div className="border-t p-4 dark:border-gray-700">
+          {/* <div className="border-t p-4 dark:border-gray-700">
             <div className="flex items-center gap-3">
               <img
                 src="logo.svg"
@@ -95,7 +95,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                 <p className="text-xs text-gray-500">user@example.com</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

@@ -29,7 +29,7 @@ const AQICard = ({ aqi, time }) => {
 
   return (
     <div
-      className={`rounded-2xl p-6 shadow-xl border ${cardColor} flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-105 backdrop-blur-sm`}
+      className={`rounded-2xl p-6 shadow-xl border ${cardColor} flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:scale-101 backdrop-blur-sm h-full`}
     >
       <div>
         <h3 className="text-lg font-semibold mb-2">Current AQI</h3>
