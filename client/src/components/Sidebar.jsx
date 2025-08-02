@@ -13,12 +13,13 @@ import { useTheme } from "../hooks/useTheme";
 
 
 const links = [
-  { name: "Dashboard", path: "/dashboard", icon: <LayoutDashboard size={30} /> },
+  { name: "Dashboard", path: "/dashboard", icon: <LayoutDashboard size={30} /> },
   { name: "Precautions", path: "/dashboard/precautions", icon: <ShieldCheck size={30} /> },
   { name: "Improvement", path: "/dashboard/improvement", icon: <TrendingUp size={30} /> },
   { name: "Air Quality Forecast", path: "/dashboard/chart", icon: <BarChart3 size={30} /> },
   { name: "Explore AQI", path: "/dashboard/explore-aqi", icon: <Globe2 size={30} /> },
 ];
+
 const shakeStyle = `
 @keyframes shake {
   10%, 90% { transform: translateX(-2px);}
