@@ -68,7 +68,7 @@ const AQIScaleTable = () => (
           {aqiLevels.map((item, index) => (
             <tr
               key={index}
-              className="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-[1.01] transition-all duration-200 ease-in-out"
+              className="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 table-row-hover"
             >
               <td className="py-4 px-4">
                 <span

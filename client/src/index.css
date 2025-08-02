@@ -2,11 +2,77 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-  /* Navbar link hover effect */
+/* Enhanced hover effects with better scaling */
 .navbar-link:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
-  }
+  transform: scale(1.02);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover effects - more subtle and elegant */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Button hover effects */
+.btn-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Icon hover effects */
+.icon-hover {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-hover:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation link hover effects */
+.nav-link-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-hover:hover {
+  transform: scale(1.02);
+}
+
+/* AQI Card specific hover effect */
+.aqi-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.aqi-card-hover:hover {
+  transform: scale(1.015) translateY(-1px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Feature card hover effect */
+.feature-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card-hover:hover {
+  transform: scale(1.02) translateY(-3px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Table row hover effect */
+.table-row-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.table-row-hover:hover {
+  transform: scale(1.005);
+}
 
 /* Blob animation for landing page */
 @keyframes blob {

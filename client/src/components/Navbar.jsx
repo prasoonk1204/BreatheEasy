@@ -35,7 +35,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
       <div className="flex items-center">
         <button
           onClick={toggleTheme}
-          className="transition-all duration-300 cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-green-800 dark:border-green-600 dark:text-white dark:hover:bg-green-700 mr-2"
+          className="btn-hover cursor-pointer flex items-center justify-center px-3 py-2 rounded-full border bg-white border-green-400 text-green-800 hover:bg-green-100 dark:bg-green-800 dark:border-green-600 dark:text-white dark:hover:bg-green-700 mr-2"
           aria-label="Toggle theme"
         >
           {theme === 'dark' ? (
@@ -73,7 +73,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={mobileNavLinkClass(link.path)}
+                  className={`${mobileNavLinkClass(link.path)} nav-link-hover`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}

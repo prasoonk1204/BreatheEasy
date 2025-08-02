@@ -44,7 +44,7 @@ const PollutantDetails = ({ components }) => (
         return (
           <div
             key={key}
-            className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-700 transition hover:shadow-lg"
+            className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-700 card-hover"
           >
             <div className="flex items-center gap-4 mb-3">
               <div className="p-2 rounded-full bg-muted dark:bg-gray-700">

@@ -45,7 +45,7 @@ const Suggestions = ({ aqi }) => {
   const { icon, title, advice, bg } = getSuggestionDetails(aqi);
 
   return (
-    <div className={`${bg} p-4 rounded-xl shadow-md`}>
+    <div className={`${bg} p-4 rounded-xl shadow-md card-hover`}>
       <div className="flex items-center gap-2 mb-2">
         {icon}
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white">

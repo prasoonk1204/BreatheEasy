@@ -157,7 +157,7 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 to="/dashboard"
-                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg btn-hover flex items-center gap-2 shadow-lg hover:shadow-xl"
               >
                 Start Monitoring
                 <ArrowRight className="w-5 h-5" />
@@ -167,7 +167,7 @@ const LandingPage = () => {
                  href="https://github.com/prasoonk1204/BreatheEasy"
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 dark:hover:border-green-400 hover:bg-emerald-50 dark:hover:bg-green-900/20 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                 className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 dark:hover:border-green-400 hover:bg-emerald-50 dark:hover:bg-green-900/20 px-8 py-4 rounded-lg font-semibold text-lg btn-hover flex items-center gap-2 shadow-lg hover:shadow-xl"
                >
                  <Github className="w-5 h-5" />
                  View on GitHub
@@ -287,7 +287,7 @@ const LandingPage = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700"
+                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl feature-card-hover border border-gray-200 dark:border-gray-700"
               >
                 <div className="w-12 h-12 bg-emerald-100 dark:bg-green-800 rounded-lg flex items-center justify-center mb-4 text-emerald-600 dark:text-green-400">
                   {feature.icon}
@@ -328,7 +328,7 @@ const LandingPage = () => {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <div className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl p-8 text-white transform transition-all duration-300 hover:scale-105">
+                <div className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl p-8 text-white card-hover">
                   <img
                     src={maintainer.avatar}
                     alt={maintainer.name}
@@ -359,7 +359,7 @@ const LandingPage = () => {
                   rel="noopener noreferrer"
                   className="group block"
                 >
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 text-center">
+                  <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl card-hover border border-gray-200 dark:border-gray-700 text-center">
                     <img
                       src={contributor.avatar}
                       alt={contributor.name}

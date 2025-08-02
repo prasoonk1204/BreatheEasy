@@ -48,7 +48,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           </div>
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 btn-hover"
             aria-label="Toggle sidebar"
           >
             <PanelLeft
@@ -66,7 +66,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
               to={link.path}
               className={`
                 relative flex items-center px-4 py-3 rounded-lg text-sm font-medium
-                group transition-all duration-300 ease-in-out
+                group nav-link-hover
                 ${
                   location.pathname === link.path
                     ? "bg-emerald-600 text-white"
@@ -119,7 +119,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
         </div>
         <button
           onClick={toggleTheme}
-          className={`flex items-center w-full p-3 rounded-lg transition-colors
+          className={`flex items-center w-full p-3 rounded-lg btn-hover
             ${
               theme === "dark"
                 ? "bg-gray-800 text-yellow-400 hover:bg-gray-700"

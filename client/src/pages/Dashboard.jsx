@@ -83,20 +83,20 @@ const Dashboard = () => {
 
             {/* Enhanced Bento Grid Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="transform hover:scale-105 transition-transform duration-300 breathe-animation">
+              <div className="breathe-animation">
                 <AQICard aqi={aqiData.aqi} time={aqiData.time} />
               </div>
-              <div className="lg:col-span-2 transform hover:scale-105 transition-transform duration-300">
+              <div className="lg:col-span-2 card-hover">
                 <PollutantDetails components={aqiData.components} />
               </div>
             </div>
 
             {/* Enhanced Suggestions and Scale Table */}
             <div className="space-y-6">
-              <div className="transform hover:scale-105 transition-transform duration-300">
+              <div className="card-hover">
                 <Suggestions aqi={aqiData.aqi} />
               </div>
-              <div className="transform hover:scale-105 transition-transform duration-300">
+              <div className="card-hover">
                 <AQIScaleTable />
               </div>
             </div>
