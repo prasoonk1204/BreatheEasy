@@ -19,6 +19,14 @@ const Layout = () => {
       {/* Sidebar for large screens */}
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
+      {/* Mobile menu overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-[9999] lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       <div
         className={`
           flex-1 transition-all duration-300 ease-in-out

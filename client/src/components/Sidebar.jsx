@@ -35,25 +35,22 @@ export default function Sidebar({ collapsed, setCollapsed }) {
         {/* Top section: Logo, App Name, and Collapse Button */}
         <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
           <div className="flex items-center gap-2">
-            
+            <img src="favicon.png" alt="Logo" className="w-10 h-10" />
             {!collapsed && (
-              <>
-                <img src="favicon.png" alt="Logo" className="w-10 h-10" />
-                <h1 className="text-xl font-bold transition-opacity duration-300 ease-in-out text-emerald-800 dark:text-green-400">
-                  BreatheEasy
-                </h1>
-              </>
-                
+              <h1 className="text-xl font-bold transition-opacity duration-300 ease-in-out text-emerald-800 dark:text-green-400">
+                BreatheEasy
+              </h1>
             )}
           </div>
           <button
             onClick={() => setCollapsed(!collapsed)}
             className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 btn-hover"
             aria-label="Toggle sidebar"
+            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             <PanelLeft
               size={24}
-              className={`${collapsed ? "rotate-180" : ""}`}
+              className={`transition-transform duration-300 ${collapsed ? "rotate-180" : ""}`}
             />
           </button>
         </div>
@@ -74,6 +71,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
                 }
                 ${collapsed ? "justify-center" : "gap-4"}
               `}
+              title={collapsed ? link.name : ""}
             >
               {link.icon}
               <span
@@ -88,7 +86,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
               {collapsed && (
                 <span
                   className="absolute left-full ml-4 p-2 bg-gray-800 text-white text-sm rounded-md shadow-lg
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none
+                  z-50 whitespace-nowrap"
                 >
                   {link.name}
                 </span>
@@ -106,9 +105,9 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           }`}
         >
           <img
-            src="logo.svg"
+            src="favicon.png"
             className="w-10 h-10 rounded-full"
-            alt="User"
+            alt="User avatar"
           />
           {!collapsed && (
             <div>
@@ -127,6 +126,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             }
             ${collapsed ? "justify-center" : "gap-3"}
           `}
+          title={collapsed ? "Toggle theme" : ""}
         >
           {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           {!collapsed && (
