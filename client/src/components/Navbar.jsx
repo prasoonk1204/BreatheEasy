@@ -5,11 +5,11 @@ import { useTheme } from "../hooks/useTheme";
 import { Sun, Moon, Menu, X } from "lucide-react";
 
 const links = [
-  { name: "Dashboard", path: "/" },
-  { name: "Precautions", path: "/precautions" },
-  { name: "Improvement", path: "/improvement" },
-  { name: "Air Quality Forecast", path: "/chart" },
-  { name: "Explore AQI", path: "/explore-aqi" },
+  { name: "Dashboard", path: "/dashboard" },
+  { name: "Precautions", path: "/dashboard/precautions" },
+  { name: "Improvement", path: "/dashboard/improvement" },
+  { name: "Air Quality Forecast", path: "/dashboard/chart" },
+  { name: "Explore AQI", path: "/dashboard/explore-aqi" },
 ];
 
 const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
