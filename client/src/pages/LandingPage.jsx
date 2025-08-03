@@ -135,7 +135,7 @@ const LandingPage = () => {
 
               <Link
                 to="/dashboard"
-                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
+                className="hidden sm:flex bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 items-center gap-2"
               >
                 Launch App
                 <ArrowRight className="w-4 h-4" />
@@ -525,4 +525,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage; 
+export default LandingPage;
