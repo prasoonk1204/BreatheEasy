@@ -2,6 +2,8 @@
 import React from "react";
 import { Outlet } from "react-router";
 import Navbar from "./Navbar";
+import ScrollToTop from "./ScrollToTop"; 
+
 
 const Layout = () => {
   return (
@@ -9,6 +11,7 @@ const Layout = () => {
       <Navbar />
       <main className="p-4 max-w-5xl mx-auto">
         <Outlet />
+        <ScrollToTop />
       </main>
     </div>
   );
