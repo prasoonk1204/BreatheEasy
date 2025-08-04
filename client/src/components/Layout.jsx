@@ -1,18 +1,37 @@
 // src/components/Layout.jsx
-import React from "react";
-import { Outlet } from "react-router";
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import ScrollToTop from "./ScrollToTop"; 
 
-
 const Layout = () => {
+  const [collapsed, setCollapsed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <div className="bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white min-h-screen transition-colors duration-300">
-      <Navbar />
-      <main className="p-4 max-w-5xl mx-auto">
-        <Outlet />
-        <ScrollToTop />
-      </main>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+      {/* Navbar for small screens */}
+      <Navbar
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
+
+      {/* Sidebar for large screens */}
+      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+
+      <div
+        className={`
+          flex-1 transition-all duration-300 ease-in-out
+          ${isMobileMenuOpen ? "filter blur-sm" : ""}
+        `}
+      >
+        {/* Main content area */}
+        <main className={`p-4 pt-16 lg:pt-4 ${collapsed ? "lg:ml-20" : "lg:ml-64"}`}>
+          <Outlet />
+          <ScrollToTop />
+        </main>
+      </div>
     </div>
   );
 };
