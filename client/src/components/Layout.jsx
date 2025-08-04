@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import ScrollToTop from "./ScrollToTop"; 
 
 const Layout = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -28,6 +29,7 @@ const Layout = () => {
         {/* Main content area */}
         <main className={`p-4 pt-16 lg:pt-4 ${collapsed ? "lg:ml-20" : "lg:ml-64"}`}>
           <Outlet />
+          <ScrollToTop />
         </main>
       </div>
     </div>
