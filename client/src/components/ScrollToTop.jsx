@@ -6,7 +6,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrolly > 300) {
+      if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -21,17 +21,15 @@ const ScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (!isVisible) return null;
-
-  return (
+  return isVisible ? (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg"
+      className="fixed bottom-10 md:bottom-20 right-10 md:right-20 z-[9999] p-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg text-2xl transition-all duration-300"
       aria-label="Scroll to top"
     >
       <FaArrowUp />
     </button>
-  );
+  ) : null;
 };
 
 export default ScrollToTop;
