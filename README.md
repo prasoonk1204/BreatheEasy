@@ -38,10 +38,12 @@ Before contributing, please follow these guidelines:
 
 | Avatar | Username | Commits | Additions | Deletions | GitHub |
 |--------|----------|---------|-----------|-----------|--------|
-| <img src="https://avatars.githubusercontent.com/u/118150046?s=60&v=4" width="50" /> | NirvikD | 9 | 770 | 181 | [@NirvikD](https://github.com/NirvikD) |
+| <img src="https://avatars.githubusercontent.com/u/118150046?s=60&v=4" width="50" /> | NirvikD | 10 | 772 | 183 | [@NirvikD](https://github.com/NirvikD) |
+| <img src="https://avatars.githubusercontent.com/u/204588730?s=60&v=4" width="50" /> | gaurav123-4 | 3 | 723 | 43 | [@gaurav123-4](https://github.com/gaurav123-4) |
 | <img src="https://avatars.githubusercontent.com/u/98377377?s=60&v=4" width="50" /> | deepanshu-prajapati01 | 5 | 312 | 151 | [@deepanshu-prajapati01](https://github.com/deepanshu-prajapati01) |
 | <img src="https://avatars.githubusercontent.com/u/139871425?s=60&v=4" width="50" /> | Kashish23092004 | 4 | 295 | 256 | [@Kashish23092004](https://github.com/Kashish23092004) |
-| <img src="https://avatars.githubusercontent.com/u/204588730?s=60&v=4" width="50" /> | gaurav123-4 | 3 | 723 | 43 | [@gaurav123-4](https://github.com/gaurav123-4) |
+| <img src="https://avatars.githubusercontent.com/u/180231504?s=60&v=4" width="50" /> | shubhranshu-sahu | 1 | 130 | 0 | [@Tanyasharma71](https://github.com/shubhranshu-sahu) |
+| <img src="https://avatars.githubusercontent.com/u/143961669?s=60&v=4" width="50" /> | harsimrankaur15 | 3 | 42 | 1 | [@gaurav123-4](https://github.com/harsimrankaur15) |
 | <img src="https://avatars.githubusercontent.com/u/208266043?s=60&v=4" width="50" /> | Tanyasharma71 | 1 | 21 | 0 | [@Tanyasharma71](https://github.com/Tanyasharma71) |
 | <img src="https://avatars.githubusercontent.com/u/122119293?s=60&v=4" width="50" /> | riya751885 | 1 | 3 | 0 | [@riya751885](https://github.com/riya751885) |
 
@@ -52,7 +54,7 @@ Before contributing, please follow these guidelines:
 
 | Avatar | Username | Commits | Lines Added | Lines Deleted | GitHub |
 |--------|----------|---------|-------------|----------------|--------|
-| <img src="https://avatars.githubusercontent.com/u/171074534?s=60&v=4" width="50" /> | prasoonk1204 | 6 | 2035 | 989 | [@prasoonk1204](https://github.com/prasoonk1204) |
+| <img src="https://avatars.githubusercontent.com/u/171074534?s=60&v=4" width="50" /> | prasoonk1204 | 8 | 2,197 | 1,118 | [@prasoonk1204](https://github.com/prasoonk1204) |
 
 ---
 
