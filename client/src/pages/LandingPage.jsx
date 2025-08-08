@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { 
-  Globe, 
-  TrendingUp, 
-  Shield, 
-  Map, 
-  Sun, 
-  Moon, 
-  Users, 
+import {
+  Globe,
+  TrendingUp,
+  Shield,
+  Map,
+  Sun,
+  Moon,
+  Users,
   Github,
   ExternalLink,
   ArrowRight,
@@ -114,8 +114,8 @@ const LandingPage = () => {
       name: "Mohamed-Fiyaz",
       avatar: "https://avatars.githubusercontent.com/u/124451741?v=4",
       github: "https://github.com/Mohamed-Fiyaz",
-      commits: 1,
-      linesAdded: 407,
+      commits: 2,
+      linesAdded: 470,
     },
     {
       name: "Tanyasharma71",
@@ -148,10 +148,10 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3 animate-fade-in-left">
-              <img 
-                src="/favicon.png" 
-                alt="Logo" 
-                className="w-8 h-8 animate-spin-slow hover:animate-pulse transition-all duration-300" 
+              <img
+                src="/favicon.png"
+                alt="Logo"
+                className="w-8 h-8 animate-spin-slow hover:animate-pulse transition-all duration-300"
               />
               <h1 className="text-2xl font-bold text-emerald-600 dark:text-green-400 hover:scale-105 transition-transform duration-300">
                 BreatheEasy
@@ -188,7 +188,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="text-center">
             <div className="mb-8">
-              <div 
+              <div
                 className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-green-800 text-emerald-800 dark:text-green-200 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-up animate-delay-200"
                 style={{ transform: `translateY(${scrollY * 0.1}px)` }}
               >
@@ -234,15 +234,15 @@ const LandingPage = () => {
 
         {/* Background decoration */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-          <div 
+          <div
             className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 dark:bg-green-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"
             style={{ transform: `translate(${scrollY * 0.05}px, ${scrollY * 0.03}px)` }}
           ></div>
-          <div 
+          <div
             className="absolute top-40 right-10 w-72 h-72 bg-green-200 dark:bg-green-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"
             style={{ transform: `translate(${-scrollY * 0.04}px, ${scrollY * 0.06}px)` }}
           ></div>
-          <div 
+          <div
             className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"
             style={{ transform: `translate(${scrollY * 0.03}px, ${-scrollY * 0.04}px)` }}
           ></div>
@@ -252,13 +252,12 @@ const LandingPage = () => {
       {/* About Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             id="animate-about-title"
-            className={`text-center mb-16 transition-all duration-1000 ${
-              isVisible['animate-about-title'] 
-                ? 'opacity-100 translate-y-0' 
+            className={`text-center mb-16 transition-all duration-1000 ${isVisible['animate-about-title']
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'
-            }`}
+              }`}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               About BreatheEasy
@@ -274,13 +273,12 @@ const LandingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div 
+            <div
               id="animate-about-left"
-              className={`space-y-6 transition-all duration-1000 delay-200 ${
-                isVisible['animate-about-left'] 
-                  ? 'opacity-100 translate-x-0' 
+              className={`space-y-6 transition-all duration-1000 delay-200 ${isVisible['animate-about-left']
+                  ? 'opacity-100 translate-x-0'
                   : 'opacity-0 -translate-x-10'
-              }`}
+                }`}
             >
               <div className="flex items-start gap-4 group hover:translate-x-2 transition-transform duration-300">
                 <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-green-800 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
@@ -328,13 +326,12 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <div 
+            <div
               id="animate-about-right"
-              className={`relative transition-all duration-1000 delay-400 ${
-                isVisible['animate-about-right'] 
-                  ? 'opacity-100 translate-x-0' 
+              className={`relative transition-all duration-1000 delay-400 ${isVisible['animate-about-right']
+                  ? 'opacity-100 translate-x-0'
                   : 'opacity-0 translate-x-10'
-              }`}
+                }`}
             >
               <div className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-8 text-white hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
                 <h3 className="text-2xl font-bold mb-4 animate-fade-in">
@@ -362,13 +359,12 @@ const LandingPage = () => {
       {/* Features Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             id="animate-features-title"
-            className={`text-center mb-16 transition-all duration-1000 ${
-              isVisible['animate-features-title'] 
-                ? 'opacity-100 translate-y-0' 
+            className={`text-center mb-16 transition-all duration-1000 ${isVisible['animate-features-title']
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'
-            }`}
+              }`}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Powerful Features
@@ -379,13 +375,12 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div 
+          <div
             id="animate-features-grid"
-            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
-              isVisible['animate-features-grid'] 
-                ? 'opacity-100 translate-y-0' 
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${isVisible['animate-features-grid']
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-20'
-            }`}
+              }`}
           >
             {features.map((feature, index) => (
               <div
@@ -411,13 +406,12 @@ const LandingPage = () => {
       {/* Contributors Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             id="animate-contributors-title"
-            className={`text-center mb-16 transition-all duration-1000 ${
-              isVisible['animate-contributors-title'] 
-                ? 'opacity-100 translate-y-0' 
+            className={`text-center mb-16 transition-all duration-1000 ${isVisible['animate-contributors-title']
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'
-            }`}
+              }`}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Our Contributors
@@ -429,13 +423,12 @@ const LandingPage = () => {
           </div>
 
           {/* Maintainer */}
-          <div 
+          <div
             id="animate-maintainer"
-            className={`text-center mb-12 transition-all duration-1000 delay-200 ${
-              isVisible['animate-maintainer'] 
-                ? 'opacity-100 scale-100' 
+            className={`text-center mb-12 transition-all duration-1000 delay-200 ${isVisible['animate-maintainer']
+                ? 'opacity-100 scale-100'
                 : 'opacity-0 scale-90'
-            }`}
+              }`}
           >
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
               Project Maintainer
@@ -464,13 +457,12 @@ const LandingPage = () => {
           </div>
 
           {/* Contributors */}
-          <div 
+          <div
             id="animate-contributors-grid"
-            className={`transition-all duration-1000 delay-400 ${
-              isVisible['animate-contributors-grid'] 
-                ? 'opacity-100 translate-y-0' 
+            className={`transition-all duration-1000 delay-400 ${isVisible['animate-contributors-grid']
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-20'
-            }`}
+              }`}
           >
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
               Contributors
@@ -507,13 +499,12 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section 
+      <section
         id="animate-cta"
-        className={`py-20 bg-gradient-to-r from-emerald-600 to-green-600 transition-all duration-1000 ${
-          isVisible['animate-cta'] 
-            ? 'opacity-100 translate-y-0' 
+        className={`py-20 bg-gradient-to-r from-emerald-600 to-green-600 transition-all duration-1000 ${isVisible['animate-cta']
+            ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
-        }`}
+          }`}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 animate-fade-in-up">
@@ -545,22 +536,21 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer 
+      <footer
         id="animate-footer"
-        className={`bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-all duration-1000 py-12 ${
-          isVisible['animate-footer'] 
-            ? 'opacity-100 translate-y-0' 
+        className={`bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-all duration-1000 py-12 ${isVisible['animate-footer']
+            ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-10'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2 animate-fade-in-left">
               <div className="flex items-center gap-3 mb-4 group">
-                <img 
-                  src="/favicon.png" 
-                  alt="Logo" 
-                  className="w-8 h-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" 
+                <img
+                  src="/favicon.png"
+                  alt="Logo"
+                  className="w-8 h-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300"
                 />
                 <h3 className="text-2xl font-bold text-green-500 dark:text-green-400 group-hover:scale-105 transition-transform duration-300">
                   BreatheEasy
@@ -588,7 +578,7 @@ const LandingPage = () => {
               <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 {[
                   "Live AQI Dashboard",
-                  "Global City Search", 
+                  "Global City Search",
                   "Interactive Maps",
                   "Health Suggestions",
                   "7-Day Forecast"
@@ -633,10 +623,9 @@ const LandingPage = () => {
               </ul>
             </div>
           </div>
-
           <div className="border-t border-gray-300 dark:border-gray-700 mt-8 pt-8 text-center text-gray-500 dark:text-gray-400 animate-fade-in animate-delay-600">
             <p>
-              © 2024 BreatheEasy. Open source under{" "}
+              © {new Date().getFullYear()} BreatheEasy. Open source under{" "}
               <a
                 href="https://github.com/prasoonk1204/BreatheEasy/blob/main/License.md"
                 className="text-green-500 dark:text-green-400 hover:underline transition-all duration-300 hover:scale-105"
