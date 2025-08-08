@@ -115,7 +115,7 @@ const LandingPage = () => {
       avatar: "https://avatars.githubusercontent.com/u/124451741?v=4",
       github: "https://github.com/Mohamed-Fiyaz",
       commits: 1,
-      linesAdded: 401,
+      linesAdded: 407,
     },
     {
       name: "Tanyasharma71",
