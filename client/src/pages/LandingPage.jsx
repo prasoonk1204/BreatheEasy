@@ -17,6 +17,7 @@ import {
   Calendar
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
+import ScrollToTop from '../components/ScrollToTop';
 
 const LandingPage = () => {
   const { theme, toggleTheme } = useTheme();
@@ -808,6 +809,7 @@ const LandingPage = () => {
           background-size: 300% 300%;
         }
       `}</style>
+      <ScrollToTop />
     </div>
   );
 };
