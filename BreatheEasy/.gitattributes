@@ -1,9 +1,0 @@
-# Set default line endings to LF to prevent CRLF issues on other OS
-* text=auto
-
-# Explicitly set line endings for specific file types
-*.js      text eol=lf
-*.jsx     text eol=lf
-*.json    text eol=lf
-*.css     text eol=lf
-*.md      text eol=lf
