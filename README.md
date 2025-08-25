@@ -133,6 +133,39 @@ npm install
 # or
 yarn install
 ```
+### Create a .env file
+
+```sh
+DB_USER=your_db_username
+DB_HOST=localhost
+DB_DATABASE=your_db_name
+DB_PASSWORD=your_db_password
+DB_PORT=5433
+FRONTEND_ORIGIN=http://localhost:5173
+```
+
+###  Set up database schema
+
+ ```sh
+ Connect to your PostgreSQL database and create the users and reports tables by running these SQL commands.
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    credits INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE reports (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    text TEXT,
+    image_path VARCHAR(255),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+```
 
 Start the backend server:
 
