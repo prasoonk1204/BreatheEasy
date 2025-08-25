@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Leaf, PlusCircle, Trash2, Camera } from "lucide-react";
 import axios from 'axios';
 
-// The API URL is set to the correct port (3001)
-const API_URL = "http://localhost:3001/api";
+// The API URL is set to the correct port (3000)
+const API_URL = "http://localhost:3000/api";
 
 const Profile = () => {
   const [credits, setCredits] = useState(0);
@@ -220,7 +220,7 @@ const Profile = () => {
                     {report.image_path && (
                       <div className="mt-2 w-32 rounded-lg overflow-hidden border border-gray-300">
                         <img 
-                          src={`http://localhost:3001/${report.image_path}`} 
+                          src={`http://localhost:3000/${report.image_path}`} 
                           alt="Report" 
                           className="w-full h-auto object-cover" 
                         />
