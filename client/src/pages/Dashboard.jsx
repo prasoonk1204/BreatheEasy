@@ -4,6 +4,8 @@ import PollutantDetails from "../components/PollutantDetails";
 import Suggestions from "../components/Suggestions";
 import AQIScaleTable from "../components/AQIScaleTable";
 import fetchAQIData from "../utils/fetchAQIData";
+
+
 import DashboardSkeleton from "../components/skeletons/DashboardSkeleton";
 
 const Dashboard = () => {

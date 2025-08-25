@@ -7,18 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency folders
 node_modules
-server/node_modules/
-client/node_modules/
-
-# Build folders
 dist
 dist-ssr
 *.local
-my-vite-app/
-BreatheEasy/
-server/uploads/
 
 # Editor directories and files
 .vscode/*
@@ -30,11 +22,3 @@ server/uploads/
 *.njsproj
 *.sln
 *.sw?
-
-# Environment files
-.env
-client/.example.env
-
-# Lock files (optional)
-package-lock.json
-pnpm-lock.yaml

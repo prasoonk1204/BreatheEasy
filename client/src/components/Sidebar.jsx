@@ -8,11 +8,13 @@ import {
   BarChart3,
   Globe2,
   Sun, Moon, PanelLeft,
+User,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
 
 const links = [
+   { name: "Profile", path: "/dashboard/profile", icon: <User size={30} /> },
   { name: "Dashboard", path: "/dashboard", icon: <LayoutDashboard size={30} /> },
   { name: "Explore AQI", path: "/dashboard/explore-aqi", icon: <Globe2 size={30} /> },
   { name: "Air Quality Forecast", path: "/dashboard/chart", icon: <BarChart3 size={30} /> },
