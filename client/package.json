@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",
     "chart.js": "^4.4.9",
+    "framer-motion": "^12.23.12",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.510.0",
     "react": "^19.1.0",
