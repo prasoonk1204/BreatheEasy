@@ -1,5 +1,36 @@
 import React, { useEffect, useState } from "react";
 
+
+
+const precautionLinks = {
+  "No specific precautions needed. Enjoy your day!":
+    "https://www.airnow.gov/aqi/aqi-basics/",
+  "Sensitive individuals should reduce outdoor exertion.":
+    "https://www.epa.gov/air-quality-index/aqi-basics#health",
+  "Check AQI before outdoor activities.":
+    "https://www.airnow.gov/aqi/aqi-basics/",
+  "Wear a mask outdoors if you're sensitive to pollution.":
+    "https://www.cdc.gov/air/pollutants.htm",
+  "Avoid outdoor exercise in the afternoon.":
+    "https://www.lung.org/clean-air/outdoors/what-makes-air-unhealthy",
+  "Keep windows closed during peak pollution hours.":
+    "https://www.healthline.com/health/indoor-air-quality",
+  "Avoid outdoor activities if possible.":
+    "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+  "Use air purifiers indoors.":
+    "https://www.epa.gov/indoor-air-quality-iaq/air-cleaners-and-air-filters-home",
+  "Wear certified N95 masks when outside.":
+    "https://www.cdc.gov/niosh/npptl/topics/respirators/disp_part/n95list1.html",
+  "Stay indoors as much as possible.":
+    "https://www.lung.org/lung-health-diseases/lung-disease-lookup/air-pollution/staying-indoors",
+  "Use high-efficiency air purifiers.":
+    "https://www.consumerreports.org/air-purifiers/best-air-purifiers-of-the-year-a1200156329/",
+  "Avoid any strenuous outdoor activity.":
+    "https://www.airnow.gov/aqi/aqi-basics/",
+  "Seek medical advice if breathing issues arise.":
+    "https://www.cdc.gov/air/pollutants.htm",
+};
+
 const getPrecautions = (aqi) => {
   if (aqi <= 50) {
     return ["No specific precautions needed. Enjoy your day!"];
@@ -49,7 +80,9 @@ const Precautions = () => {
       </h2>
 
       {precautions.length === 0 ? (
-        <p className="text-gray-500 dark:text-gray-400">Loading AQI-related precautions...</p>
+        <p className="text-gray-500 dark:text-gray-400">
+          Loading AQI-related precautions...
+        </p>
       ) : (
         <div className="space-y-6">
           <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-4 rounded-lg">
@@ -60,6 +93,19 @@ const Precautions = () => {
               {precautions.map((item, i) => (
                 <li key={i} className="leading-relaxed">
                   {item}
+                  {precautionLinks[item] && (
+                    <>
+                      {" "}
+                      <a
+                        href={precautionLinks[item]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 dark:text-blue-400 underline ml-2 text-sm"
+                      >
+                        Read more
+                      </a>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
