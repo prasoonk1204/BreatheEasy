@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Globe,
@@ -148,29 +149,60 @@ const LandingPage = () => {
       <nav className="sticky top-0 z-50 py-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-fade-in-down">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3 animate-fade-in-left">
-              <img
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="flex items-center gap-3"
+            >
+              <motion.img
                 src="/favicon.png"
                 alt="Logo"
-                className="w-8 h-8 animate-spin-slow hover:animate-pulse transition-all duration-300"
+                className="w-8 h-8"
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                whileHover={{ scale: 1.1, rotate: 20 }}
               />
-              <h1 className="text-2xl font-bold text-emerald-600 dark:text-green-400 hover:scale-105 transition-transform duration-300">
+              <motion.h1
+                className="text-2xl font-bold text-emerald-600 dark:text-green-400"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 BreatheEasy
-              </h1>
-            </div>
+              </motion.h1>
+            </motion.div>
 
-            <div className="flex items-center gap-4 animate-fade-in-right">
-              <button
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="flex items-center gap-4"
+            >
+              <motion.button
                 onClick={toggleTheme}
-                className="p-2 rounded-full border border-green-400 dark:border-green-600 bg-white dark:bg-green-800 text-green-800 dark:text-white hover:bg-green-100 dark:hover:bg-green-700 transition-all duration-300 hover:scale-110 hover:rotate-12"
+                className="p-2 rounded-full border border-green-400 dark:border-green-600 bg-white dark:bg-green-800 text-green-800 dark:text-white"
                 aria-label="Toggle theme"
+                whileHover={{ scale: 1.1, rotate: 12 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 {theme === "dark" ? (
-                  <Sun className="w-5 h-5 text-yellow-400 animate-pulse" />
+                  <motion.span
+                    className="w-5 h-5 text-yellow-400"
+                    animate={{ rotate: [0, 20, -20, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  >
+                    <Sun className="w-5 h-5" />
+                  </motion.span>
                 ) : (
-                  <Moon className="w-5 h-5 text-blue-600 animate-bounce" />
+                  <motion.span
+                    className="w-5 h-5 text-blue-600"
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1 }}
+                  >
+                    <Moon className="w-5 h-5" />
+                  </motion.span>
                 )}
-              </button>
+              </motion.button>
 
               <Link
                 to="/dashboard"
@@ -179,7 +211,8 @@ const LandingPage = () => {
                 Launch App
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
-            </div>
+            </motion.div>
+
           </div>
         </div>
       </nav>
@@ -198,20 +231,40 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up animate-delay-300">
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+              className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+            >
               Monitor Air Quality
-              <span className="block text-emerald-600 dark:text-green-400 animate-gradient-x bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text text-transparent bg-300% animate-pulse">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="block text-emerald-600 dark:text-green-400 bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text"
+              >
                 Anywhere, Anytime
-              </span>
-            </h1>
+              </motion.span>
+            </motion.h1>
 
-            <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in-up animate-delay-500">
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
+              className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+            >
               Get real-time air quality data, health suggestions, and detailed
               pollutant analysis for any city around the world. Make informed
               decisions for better health.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-700">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 1.1 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
               <Link
                 to="/dashboard"
                 className="bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 animate-bounce-subtle group"
@@ -229,16 +282,17 @@ const LandingPage = () => {
                 <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                 View on GitHub
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Background decoration */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-          <div
+          <motion.div
             className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 dark:bg-green-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"
-            style={{ transform: `translate(${scrollY * 0.05}px, ${scrollY * 0.03}px)` }}
-          ></div>
+            style={{ y: scrollY * 0.03, x: scrollY * 0.05 }}
+            transition={{ type: "spring", stiffness: 50, damping: 20 }}
+          />
           <div
             className="absolute top-40 right-10 w-72 h-72 bg-green-200 dark:bg-green-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"
             style={{ transform: `translate(${-scrollY * 0.04}px, ${scrollY * 0.06}px)` }}
@@ -253,12 +307,12 @@ const LandingPage = () => {
       {/* About Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            id="animate-about-title"
-            className={`text-center mb-16 transition-all duration-1000 ${isVisible['animate-about-title']
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-              }`}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -40 }} // starting offscreen to the left
+            whileInView={{ opacity: 1, x: 0 }} // animate into view
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               About BreatheEasy
@@ -271,15 +325,15 @@ const LandingPage = () => {
               guidance, we make understanding air quality simple, informative,
               and accessible.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div
-              id="animate-about-left"
-              className={`space-y-6 transition-all duration-1000 delay-200 ${isVisible['animate-about-left']
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 -translate-x-10'
-                }`}
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -40 }} // starting offscreen to the left
+              whileInView={{ opacity: 1, x: 0 }} // animate into view
+              transition={{ duration: 1, delay: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <div className="flex items-start gap-4 group hover:translate-x-2 transition-transform duration-300">
                 <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 dark:bg-green-800 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
@@ -325,14 +379,14 @@ const LandingPage = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div
-              id="animate-about-right"
-              className={`relative transition-all duration-1000 delay-400 ${isVisible['animate-about-right']
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 translate-x-10'
-                }`}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <div className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-8 text-white hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
                 <h3 className="text-2xl font-bold mb-4 animate-fade-in">
@@ -352,7 +406,7 @@ const LandingPage = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -360,12 +414,12 @@ const LandingPage = () => {
       {/* Features Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            id="animate-features-title"
-            className={`text-center mb-16 transition-all duration-1000 ${isVisible['animate-features-title']
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-              }`}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Powerful Features
@@ -374,14 +428,14 @@ const LandingPage = () => {
               Everything you need to monitor and understand air quality in your
               area and around the world.
             </p>
-          </div>
+          </motion.div>
 
-          <div
-            id="animate-features-grid"
-            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${isVisible['animate-features-grid']
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-20'
-              }`}
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             {features.map((feature, index) => (
               <div
@@ -400,19 +454,19 @@ const LandingPage = () => {
                 </p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Contributors Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            id="animate-contributors-title"
-            className={`text-center mb-16 transition-all duration-1000 ${isVisible['animate-contributors-title']
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-              }`}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Our Contributors
@@ -421,15 +475,15 @@ const LandingPage = () => {
               Meet the amazing developers who have contributed to making
               BreatheEasy a reality.
             </p>
-          </div>
+          </motion.div>
 
           {/* Maintainer */}
-          <div
-            id="animate-maintainer"
-            className={`text-center mb-12 transition-all duration-1000 delay-200 ${isVisible['animate-maintainer']
-                ? 'opacity-100 scale-100'
-                : 'opacity-0 scale-90'
-              }`}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
               Project Maintainer
@@ -455,15 +509,15 @@ const LandingPage = () => {
                 </div>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contributors */}
-          <div
-            id="animate-contributors-grid"
-            className={`transition-all duration-1000 delay-400 ${isVisible['animate-contributors-grid']
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-20'
-              }`}
+          <motion.div
+            className="transition-all duration-1000 delay-400"
+            initial={{ opacity: 0, y: 40 }} // start slightly below
+            whileInView={{ opacity: 1, y: 0 }} // animate into view
+            transition={{ duration: 1, delay: 0.4 }} // duration and delay match Tailwind classes
+            viewport={{ once: true, amount: 0.1 }}
           >
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
               Contributors
@@ -495,17 +549,17 @@ const LandingPage = () => {
                 </a>
               ))}
             </div>
+            </motion.div>
           </div>
-        </div>
       </section>
 
       {/* CTA Section */}
-      <section
-        id="animate-cta"
-        className={`py-20 bg-gradient-to-r from-emerald-600 to-green-600 transition-all duration-1000 ${isVisible['animate-cta']
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-20'
-          }`}
+      <motion.section
+        className="py-20 bg-gradient-to-r from-emerald-600 to-green-600"
+        initial={{ opacity: 0, y: 40 }} // start slightly below
+        whileInView={{ opacity: 1, y: 0 }} // animate into view
+        transition={{ duration: 1 }} // same as your previous duration-1000
+        viewport={{ once: true, amount: 0.1 }}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 animate-fade-in-up">
@@ -515,7 +569,12 @@ const LandingPage = () => {
             Join thousands of users who are already making informed decisions
             about their health and environment.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-400">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 1.1 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
             <Link
               to="/dashboard"
               className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 group"
@@ -532,31 +591,44 @@ const LandingPage = () => {
               <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
               Contribute
             </a>
-          </div>
+          </motion.div>
+
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
-      <footer
-        id="animate-footer"
-        className={`bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-all duration-1000 py-12 ${isVisible['animate-footer']
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-10'
-          }`}
+      <motion.footer
+        className="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 py-12"
+        initial={{ opacity: 0, y: 40 }} // start slightly below
+        whileInView={{ opacity: 1, y: 0 }} // animate into view
+        transition={{ duration: 1 }} // same as your previous 1000ms
+        viewport={{ once: true, amount: 0.1 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2 animate-fade-in-left">
-              <div className="flex items-center gap-3 mb-4 group">
-                <img
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+                className="flex items-center gap-3 mb-4"
+              >
+                <motion.img
                   src="/favicon.png"
                   alt="Logo"
-                  className="w-8 h-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300"
+                  className="w-8 h-8"
+                  whileHover={{ rotate: 12, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 />
-                <h3 className="text-2xl font-bold text-green-500 dark:text-green-400 group-hover:scale-105 transition-transform duration-300">
+                <motion.h3
+                  className="text-2xl font-bold text-green-500 dark:text-green-400"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   BreatheEasy
-                </h3>
-              </div>
+                </motion.h3>
+              </motion.div>
+
               <p className="text-gray-600 dark:text-gray-300 mb-4 max-w-md">
                 An open-source air quality monitoring platform that helps you
                 understand and track air quality data for better health
@@ -637,7 +709,7 @@ const LandingPage = () => {
             </p>
           </div>
         </div>
-      </footer>
+      </motion.footer>
 
       {/* Custom CSS for animations */}
       <style jsx>{`
