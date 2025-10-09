@@ -25,8 +25,8 @@ const Dashboard = () => {
 
   return (
     <div className="relative min-h-screen">
-      {/* Themed Background with Environmental Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20 rounded-3xl">
+      {/* Enhanced purple themed background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-violet-50/50 to-blue-50/50 dark:from-indigo-950/50 dark:via-purple-900/50 dark:to-blue-950/50 rounded-3xl transition-colors duration-500">
         {/* Abstract Nature Patterns */}
         <div className="absolute inset-0 opacity-5 dark:opacity-10">
           {/* Flowing Air Currents Pattern */}
@@ -38,7 +38,7 @@ const Dashboard = () => {
                   <path d="M0,15 Q5,10 10,15 T20,15" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.2"/>
                 </pattern>
               </defs>
-              <rect width="100" height="100" fill="url(#airCurrents)" className="text-emerald-600 dark:text-emerald-400"/>
+              <rect width="100" height="100" fill="url(#airCurrents)" className="text-purple-600 dark:text-purple-400"/>
             </svg>
           </div>
           
@@ -46,7 +46,7 @@ const Dashboard = () => {
           <div className="absolute top-20 right-10 w-32 h-32 opacity-20 dark:opacity-30 float-animation">
             <svg viewBox="0 0 100 100" className="w-full h-full">
               <path d="M50,10 Q80,20 70,50 Q60,80 50,90 Q40,80 30,50 Q20,20 50,10" 
-                    fill="currentColor" className="text-green-600 dark:text-green-400"/>
+                    fill="currentColor" className="text-emerald-600 dark:text-emerald-400"/>
             </svg>
           </div>
           
@@ -66,17 +66,17 @@ const Dashboard = () => {
       <div className="relative z-10 space-y-8 p-6">
         {/* Enhanced Header Section */}
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold gradient-text">
+          <h2 className="text-4xl font-display text-gradient-sunset">
             Your Location Air Quality
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full breathe-animation"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-red-500 mx-auto rounded-full breathe-animation"></div>
         </div>
 
         {aqiData ? (
           <>
             {/* Enhanced City Display */}
             <div className="text-center">
-              <p className="text-lg text-gray-700 dark:text-gray-300 font-semibold italic bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-6 rounded-2xl border border-emerald-200/50 dark:border-emerald-700/50 shadow-lg card-hover">
+              <p className="text-lg font-accent text-stone-700 dark:text-stone-300 bg-white/80 dark:bg-stone-800/80 backdrop-blur-sm p-6 rounded-2xl border border-orange-200/50 dark:border-zinc-700/50 shadow-lg card-hover transition-colors duration-300">
                 📍 {aqiData.city}
               </p>
             </div>

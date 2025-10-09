@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 import ScrollToTop from '../components/ScrollToTop';
+import ParticleBackground from '../components/ParticleBackground';
+import WelcomePopup from '../components/WelcomePopup';
 
 const LandingPage = () => {
   const { theme, toggleTheme } = useTheme();
@@ -144,9 +146,22 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+    <div className="min-h-screen bg-purple-50 dark:bg-indigo-950 transition-all duration-500 relative overflow-hidden">
+      {/* Welcome Popup */}
+      <WelcomePopup />
+      
+      {/* Particle Background */}
+      <ParticleBackground />
+      
+      {/* Animated Background Shapes */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gradient-to-r from-blue-300/10 to-slate-300/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-gradient-to-r from-gray-300/10 to-blue-300/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-slate-200/5 to-gray-200/5 dark:from-slate-900/5 dark:to-gray-900/5 rounded-full blur-3xl" />
+      </div>
+
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 py-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-fade-in-down">
+      <nav className="sticky top-0 z-50 py-1 card-glass backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.div
@@ -164,7 +179,7 @@ const LandingPage = () => {
                 whileHover={{ scale: 1.1, rotate: 20 }}
               />
               <motion.h1
-                className="text-2xl font-bold text-emerald-600 dark:text-green-400"
+                className="text-2xl font-bold text-emerald-600 dark:text-emerald-400"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -180,7 +195,7 @@ const LandingPage = () => {
             >
               <motion.button
                 onClick={toggleTheme}
-                className="p-2 rounded-full border border-green-400 dark:border-green-600 bg-white dark:bg-green-800 text-green-800 dark:text-white"
+                className="p-2 rounded-full border border-purple-400 dark:border-purple-500 bg-white dark:bg-purple-800 text-purple-800 dark:text-white"
                 aria-label="Toggle theme"
                 whileHover={{ scale: 1.1, rotate: 12 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -206,7 +221,7 @@ const LandingPage = () => {
 
               <Link
                 to="/dashboard"
-                className="hidden sm:flex bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 items-center gap-2 hover:scale-105 hover:shadow-lg group"
+                className="hidden sm:flex bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 items-center gap-2 hover:scale-105 hover:shadow-lg group"
               >
                 Launch App
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -223,7 +238,7 @@ const LandingPage = () => {
           <div className="text-center">
             <div className="mb-8">
               <div
-                className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-green-800 text-emerald-800 dark:text-green-200 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-up animate-delay-200"
+                className="inline-flex items-center gap-2 bg-violet-100 dark:bg-violet-800 text-violet-800 dark:text-violet-200 px-4 py-2 rounded-full text-sm font-medium tracking-wide uppercase mb-6"
                 style={{ transform: `translateY(${scrollY * 0.1}px)` }}
               >
                 <Globe className="w-4 h-4 animate-spin" />
@@ -235,16 +250,17 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+              className="text-6xl lg:text-9xl font-black text-purple-900 dark:text-purple-100 mb-8 tracking-tighter leading-[0.85] font-display"
             >
-              Monitor Air Quality
+              <span className="text-emerald-600 dark:text-emerald-400 block mb-2 font-light">Monitor</span>
+              <span className="text-purple-900 dark:text-gray-100 font-extrabold">Air Quality</span>
               <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.6 }}
-                className="block text-emerald-600 dark:text-green-400 bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.6, type: "spring", bounce: 0.4 }}
+                className="block text-violet-600 dark:text-violet-300 font-extralight text-4xl lg:text-6xl mt-4 tracking-wider lowercase italic"
               >
-                Anywhere, Anytime
+                anywhere, anytime
               </motion.span>
             </motion.h1>
 
@@ -252,11 +268,11 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
-              className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+              className="text-xl lg:text-2xl font-light text-purple-700 dark:text-purple-200 mb-12 max-w-4xl mx-auto leading-relaxed tracking-wide"
             >
-              Get real-time air quality data, health suggestions, and detailed
-              pollutant analysis for any city around the world. Make informed
-              decisions for better health.
+              Get <span className="text-emerald-600 dark:text-emerald-400 font-semibold tracking-tight">real-time air quality data</span>, 
+              health suggestions, and detailed pollutant analysis for any city around the world. 
+              <span className="text-violet-600 dark:text-violet-400 font-medium tracking-tight">Make informed decisions</span> for better health.
             </motion.p>
 
             <motion.div
@@ -267,7 +283,7 @@ const LandingPage = () => {
             >
               <Link
                 to="/dashboard"
-                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-green-600 dark:hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 animate-bounce-subtle group"
+                className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 dark:from-purple-500 dark:to-violet-500 dark:hover:from-purple-600 dark:hover:to-violet-600 text-white px-10 py-5 rounded-2xl font-semibold text-base tracking-wide uppercase transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 group"
               >
                 Start Monitoring
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -277,7 +293,7 @@ const LandingPage = () => {
                 href="https://github.com/prasoonk1204/BreatheEasy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 dark:hover:border-green-400 hover:bg-emerald-50 dark:hover:bg-green-900/20 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 group"
+                className="border-2 border-emerald-500 dark:border-emerald-400 text-emerald-600 dark:text-emerald-400 hover:border-emerald-600 dark:hover:border-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 px-10 py-5 rounded-2xl font-medium text-base tracking-wide uppercase transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 group"
               >
                 <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                 View on GitHub
@@ -286,26 +302,26 @@ const LandingPage = () => {
           </div>
         </div>
 
-        {/* Background decoration */}
+        {/* Background decoration with purple-green theme */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
           <motion.div
-            className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 dark:bg-green-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"
+            className="absolute top-20 left-10 w-72 h-72 bg-purple-300/50 dark:bg-purple-800/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"
             style={{ y: scrollY * 0.03, x: scrollY * 0.05 }}
             transition={{ type: "spring", stiffness: 50, damping: 20 }}
           />
           <div
-            className="absolute top-40 right-10 w-72 h-72 bg-green-200 dark:bg-green-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"
+            className="absolute top-40 right-10 w-72 h-72 bg-emerald-300/50 dark:bg-emerald-700/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"
             style={{ transform: `translate(${-scrollY * 0.04}px, ${scrollY * 0.06}px)` }}
           ></div>
           <div
-            className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"
+            className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300/50 dark:bg-blue-800/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"
             style={{ transform: `translate(${scrollY * 0.03}px, ${-scrollY * 0.04}px)` }}
           ></div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-gradient-to-b from-purple-100/50 to-violet-100/50 dark:from-indigo-900/50 dark:to-purple-900/50 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="space-y-6"
@@ -314,10 +330,10 @@ const LandingPage = () => {
             transition={{ duration: 1, delay: 0.2 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-purple-900 dark:text-purple-100 mb-6 tracking-tight">
               About BreatheEasy
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
+            <p className="text-xl font-light text-purple-700 dark:text-purple-200 max-w-4xl mx-auto leading-relaxed tracking-wide">
               BreatheEasy is an open-source project that helps you monitor air
               quality in your area, understand pollutant levels, and take
               informed actions for better health. With real-time data from
@@ -389,7 +405,7 @@ const LandingPage = () => {
               viewport={{ once: true, amount: 0.1 }}
             >
               <div className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-8 text-white hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
-                <h3 className="text-2xl font-bold mb-4 animate-fade-in">
+                <h3 className="text-2xl font-display mb-4 animate-fade-in tracking-wide">
                   Why Air Quality Matters
                 </h3>
                 <ul className="space-y-3 text-lg">
@@ -412,7 +428,7 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gradient-to-br from-purple-50/50 via-violet-50/50 to-blue-50/50 dark:from-indigo-950/50 dark:via-purple-900/50 dark:to-blue-950/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -421,11 +437,11 @@ const LandingPage = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Powerful Features
+            <h2 className="text-4xl lg:text-6xl font-black text-purple-900 dark:text-purple-100 mb-8 tracking-tighter">
+              <span className="bg-gradient-to-r from-purple-600 to-emerald-500 bg-clip-text text-transparent">Powerful</span> Features
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Everything you need to monitor and understand air quality in your
+            <p className="text-xl lg:text-2xl font-light text-purple-700 dark:text-purple-200 max-w-4xl mx-auto leading-relaxed tracking-wide">
+              Everything you need to <span className="text-emerald-600 dark:text-emerald-400 font-semibold tracking-tight">monitor and understand</span> air quality in your
               area and around the world.
             </p>
           </motion.div>
@@ -438,21 +454,41 @@ const LandingPage = () => {
             viewport={{ once: true, amount: 0.1 }}
           >
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 group animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100 dark:border-purple-800/30 overflow-hidden"
               >
-                <div className="w-12 h-12 bg-emerald-100 dark:bg-green-800 rounded-lg flex items-center justify-center mb-4 text-emerald-600 dark:text-green-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                {/* Background gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-blue-50/50 dark:from-purple-900/20 dark:to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                
+                {/* Icon container with better styling */}
+                <motion.div 
+                  className="relative z-10 w-16 h-16 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg group-hover:shadow-xl"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   {feature.icon}
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-emerald-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                </motion.div>
+                
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-purple-900 dark:text-purple-100 mb-4 group-hover:text-purple-700 dark:group-hover:text-purple-200 transition-colors duration-300 tracking-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="text-purple-600 dark:text-purple-300 leading-relaxed font-light tracking-wide">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {feature.description}
-                </p>
-              </div>
+
+                {/* Decorative elements */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 w-1 h-1 bg-purple-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -468,11 +504,11 @@ const LandingPage = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Our Contributors
+            <h2 className="text-4xl lg:text-6xl font-black tracking-tight text-gray-900 dark:text-white mb-8">
+              Our <span className="bg-gradient-to-r from-purple-600 to-emerald-500 bg-clip-text text-transparent">Contributors</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Meet the amazing developers who have contributed to making
+            <p className="text-xl lg:text-2xl font-light text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed tracking-wide">
+              Meet the <span className="font-semibold text-purple-600 dark:text-purple-400">amazing developers</span> who have contributed to making
               BreatheEasy a reality.
             </p>
           </motion.div>
@@ -485,7 +521,7 @@ const LandingPage = () => {
             transition={{ duration: 1, delay: 0.2 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+            <h3 className="text-3xl font-bold tracking-wide text-gray-900 dark:text-white mb-10 uppercase">
               Project Maintainer
             </h3>
             <div className="inline-block">
@@ -495,14 +531,14 @@ const LandingPage = () => {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <div className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl p-8 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-pulse-glow">
+                <div className="bg-gradient-to-r from-purple-500 to-emerald-600 rounded-3xl p-10 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">{/* maintainer content continues... */}
                   <img
                     src={maintainer.avatar}
                     alt={maintainer.name}
                     className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                   />
-                  <h4 className="text-xl font-bold mb-2">{maintainer.name}</h4>
-                  <div className="flex justify-center gap-6 text-sm">
+                  <h4 className="text-xl font-bold mb-2 tracking-wide uppercase">{maintainer.name}</h4>
+                  <div className="flex justify-center gap-6 text-sm font-medium tracking-wider">
                     <span className="hover:scale-110 transition-transform duration-300">{maintainer.commits} commits</span>
                     <span className="hover:scale-110 transition-transform duration-300">{maintainer.linesAdded} lines added</span>
                   </div>
@@ -519,7 +555,7 @@ const LandingPage = () => {
             transition={{ duration: 1, delay: 0.4 }} // duration and delay match Tailwind classes
             viewport={{ once: true, amount: 0.1 }}
           >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
+            <h3 className="text-2xl font-display text-gray-900 dark:text-white mb-8 text-center tracking-wide">
               Contributors
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -538,10 +574,10 @@ const LandingPage = () => {
                       alt={contributor.name}
                       className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-emerald-200 dark:border-green-700 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                     />
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-green-400 transition-colors">
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors tracking-wide uppercase">
                       {contributor.name}
                     </h4>
-                    <div className="flex justify-center gap-4 text-sm text-gray-600 dark:text-gray-300">
+                    <div className="flex justify-center gap-4 text-sm text-gray-600 dark:text-gray-300 font-medium tracking-wide">
                       <span className="hover:scale-110 transition-transform duration-300">{contributor.commits} commits</span>
                       <span className="hover:scale-110 transition-transform duration-300">{contributor.linesAdded} lines</span>
                     </div>
@@ -555,19 +591,20 @@ const LandingPage = () => {
 
       {/* CTA Section */}
       <motion.section
-        className="py-20 bg-gradient-to-r from-emerald-600 to-green-600"
+        className="py-20 bg-gradient-to-br from-purple-100 via-blue-50 to-emerald-50 dark:from-purple-900/30 dark:via-blue-900/30 dark:to-emerald-900/30"
         initial={{ opacity: 0, y: 40 }} // start slightly below
         whileInView={{ opacity: 1, y: 0 }} // animate into view
         transition={{ duration: 1 }} // same as your previous duration-1000
         viewport={{ once: true, amount: 0.1 }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 animate-fade-in-up">
-            Ready to Monitor Your Air Quality?
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-5xl lg:text-8xl font-black text-purple-900 dark:text-purple-100 mb-10 tracking-tighter leading-[0.9]">
+            Ready to <span className="bg-gradient-to-r from-purple-600 to-emerald-500 bg-clip-text text-transparent font-black">Monitor</span> 
+            <span className="block mt-2 font-extralight italic">Your Air Quality?</span>
           </h2>
-          <p className="text-xl text-emerald-100 mb-8 animate-fade-in-up animate-delay-200">
-            Join thousands of users who are already making informed decisions
-            about their health and environment.
+          <p className="text-xl lg:text-3xl font-light text-purple-700 dark:text-purple-200 mb-12 leading-relaxed max-w-4xl mx-auto tracking-wide">
+            Join <span className="font-bold text-emerald-600 dark:text-emerald-400 tracking-tight">thousands of users</span> who are already making 
+            <span className="text-purple-800 dark:text-purple-100 font-semibold tracking-tight"> informed decisions</span> about their health and environment.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -577,18 +614,18 @@ const LandingPage = () => {
           >
             <Link
               to="/dashboard"
-              className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 group"
+              className="bg-gradient-to-r from-purple-600 to-emerald-500 hover:from-purple-700 hover:to-emerald-600 text-white px-12 py-6 rounded-2xl font-bold text-lg tracking-wide uppercase transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl transform hover:scale-105 group"
             >
               Launch BreatheEasy
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <a
               href="https://github.com/prasoonk1204/BreatheEasy"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 group"
+              className="border-2 border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 hover:bg-purple-600 dark:hover:bg-purple-500 hover:text-white px-12 py-6 rounded-2xl font-semibold text-lg tracking-wide uppercase transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 group"
             >
-              <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+              <Github className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
               Contribute
             </a>
           </motion.div>
