@@ -78,17 +78,17 @@ const ExploreAQI = () => {
         </div>
         <div>
           <p className="text-lg font-medium">Dominant Pollutant: <span className="font-semibold uppercase">{data.dominentpol || 'N/A'}</span></p>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Last Updated: {new Date(data.time).toLocaleString()}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 ">Last Updated: <span className='notranslate'>{new Date(data.time).toLocaleString()}</span></p>
         </div>
       </div>
 
-      <h4 className="text-md font-semibold mb-2 text-gray-700 dark:text-gray-300">Pollutant Concentrations (μg/m³):</h4>
+      <h4 className="text-md font-semibold mb-2 text-gray-700 dark:text-gray-300">Pollutant Concentrations <span className='notranslate'> (μg/m³)</span>:</h4>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-gray-700 dark:text-gray-300">
         {Object.entries(data.components || {}).map(([key, value]) => (
           value !== undefined && (
             <div key={key} className="flex justify-center items-center space-x-2 bg-gray-100 dark:bg-gray-700 w-30 px-4 py-1 rounded-xl">
-              <span className="font-medium uppercase">{key}:</span>
-              <span>{value}</span>
+              <span className="font-medium uppercase notranslate">{key}:</span>
+              <span className='notranslate'>{value}</span>
             </div>
           )
         ))}
@@ -111,7 +111,7 @@ const ExploreAQI = () => {
                       city.aqi <= 200 ? 'bg-red-100 text-red-800' :
                         city.aqi <= 300 ? 'bg-green-100 text-green-800' :
                           'bg-rose-100 text-rose-800'}`}>
-                AQI: {city.aqi}
+                <span className='notranslate'>AQI</span>: {city.aqi}
               </span>
             </li>
           ))}

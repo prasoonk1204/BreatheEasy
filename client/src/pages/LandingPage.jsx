@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 import ScrollToTop from '../components/ScrollToTop';
+import LanguageToggle from "../components/LanguageToggle";
 
 const LandingPage = () => {
   const { theme, toggleTheme } = useTheme();
@@ -164,7 +165,7 @@ const LandingPage = () => {
                 whileHover={{ scale: 1.1, rotate: 20 }}
               />
               <motion.h1
-                className="text-2xl font-bold text-emerald-600 dark:text-green-400"
+                className="text-2xl font-bold text-emerald-600 dark:text-green-400 notranslate"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -315,10 +316,11 @@ const LandingPage = () => {
             viewport={{ once: true, amount: 0.1 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              About BreatheEasy
+              {/* About <span className="notranslate"> BreatheEasy</span> */}
+              About Us 
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-              BreatheEasy is an open-source project that helps you monitor air
+              <span className="notranslate">BreatheEasy </span> is an open-source project that helps you monitor air
               quality in your area, understand pollutant levels, and take
               informed actions for better health. With real-time data from
               cities worldwide, interactive maps, and personalized health
@@ -473,7 +475,7 @@ const LandingPage = () => {
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Meet the amazing developers who have contributed to making
-              BreatheEasy a reality.
+              <span className="notranslate"> BreatheEasy </span> a reality.
             </p>
           </motion.div>
 
@@ -501,7 +503,7 @@ const LandingPage = () => {
                     alt={maintainer.name}
                     className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                   />
-                  <h4 className="text-xl font-bold mb-2">{maintainer.name}</h4>
+                  <h4 className="text-xl font-bold mb-2 notranslate">{maintainer.name}</h4>
                   <div className="flex justify-center gap-6 text-sm">
                     <span className="hover:scale-110 transition-transform duration-300">{maintainer.commits} commits</span>
                     <span className="hover:scale-110 transition-transform duration-300">{maintainer.linesAdded} lines added</span>
@@ -538,7 +540,7 @@ const LandingPage = () => {
                       alt={contributor.name}
                       className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-emerald-200 dark:border-green-700 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                     />
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-green-400 transition-colors">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-green-400 transition-colors notranslate">
                       {contributor.name}
                     </h4>
                     <div className="flex justify-center gap-4 text-sm text-gray-600 dark:text-gray-300">
@@ -579,7 +581,7 @@ const LandingPage = () => {
               to="/dashboard"
               className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 group"
             >
-              Launch BreatheEasy
+              Launch <span className="notranslate"> BreatheEasy</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <a
@@ -621,7 +623,7 @@ const LandingPage = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 />
                 <motion.h3
-                  className="text-2xl font-bold text-green-500 dark:text-green-400"
+                  className="text-2xl font-bold text-green-500 dark:text-green-400 notranslate"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -703,7 +705,7 @@ const LandingPage = () => {
                 href="https://github.com/prasoonk1204/BreatheEasy/blob/main/License.md"
                 className="text-green-500 dark:text-green-400 hover:underline transition-all duration-300 hover:scale-105"
               >
-                MIT License
+                <span className="notranslate"> MIT License </span>
               </a>
               . Built with ❤️ by the open source community.
             </p>
@@ -881,6 +883,7 @@ const LandingPage = () => {
           background-size: 300% 300%;
         }
       `}</style>
+      <LanguageToggle />
       <ScrollToTop />
     </div>
   );
