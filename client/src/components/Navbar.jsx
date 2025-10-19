@@ -27,7 +27,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
     <nav className="lg:hidden sticky top-0 z-[10000] flex items-center justify-between px-6 py-4 shadow-md transition-all dark:bg-gray-900 dark:text-white bg-white text-black">
       <div className="flex items-center gap-2">
         <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
-        <Link to="/" className="text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600">
+        <Link to="/" className="text-2xl font-bold transition-colors dark:text-green-400 text-emerald-600 notranslate">
           BreatheEasy
         </Link>
       </div>

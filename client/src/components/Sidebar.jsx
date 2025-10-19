@@ -76,7 +76,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
               {!collapsed && (
                 <>
                   <img src="/favicon.png" alt="Logo" className="w-10 h-10" />
-                  <Link to="/" className="text-xl font-bold transition-opacity duration-300 ease-in-out text-emerald-800 dark:text-green-400">
+                  <Link to="/" className="text-xl font-bold transition-opacity duration-300 ease-in-out text-emerald-800 dark:text-green-400 notranslate">
                     BreatheEasy
                   </Link>
                 </>
