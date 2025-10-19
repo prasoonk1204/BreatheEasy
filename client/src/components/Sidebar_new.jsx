@@ -18,9 +18,9 @@ import { useTheme } from "../hooks/useTheme";
 
 const links = [
   { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard, color: "emerald" },
-  { name: "Explore AQI", path: "/dashboard/explore-aqi", icon: Globe2, color: "purple" },
-  { name: "Air Quality Forecast", path: "/dashboard/chart", icon: BarChart3, color: "violet" },
-  { name: "Precautions", path: "/dashboard/precautions", icon: ShieldCheck, color: "blue" },
+  { name: "Explore AQI", path: "/dashboard/explore-aqi", icon: Globe2, color: "blue" },
+  { name: "Air Quality Forecast", path: "/dashboard/chart", icon: BarChart3, color: "purple" },
+  { name: "Precautions", path: "/dashboard/precautions", icon: ShieldCheck, color: "orange" },
   { name: "Improvement", path: "/dashboard/improvement", icon: TrendingUp, color: "green" },
 ];
 
@@ -32,6 +32,13 @@ const colorClasses = {
     shadow: "shadow-emerald",
     gradient: "bg-gradient-to-r from-emerald-500 to-emerald-600"
   },
+  blue: {
+    bg: "bg-blue-500",
+    bgHover: "hover:bg-blue-100 dark:hover:bg-blue-900/20",
+    text: "text-blue-600 dark:text-blue-400",
+    shadow: "shadow-sky",
+    gradient: "bg-gradient-to-r from-blue-500 to-blue-600"
+  },
   purple: {
     bg: "bg-purple-500",
     bgHover: "hover:bg-purple-100 dark:hover:bg-purple-900/20",
@@ -39,19 +46,12 @@ const colorClasses = {
     shadow: "shadow-purple",
     gradient: "bg-gradient-to-r from-purple-500 to-purple-600"
   },
-  violet: {
-    bg: "bg-violet-500",
-    bgHover: "hover:bg-violet-100 dark:hover:bg-violet-900/20",
-    text: "text-violet-600 dark:text-violet-400",
-    shadow: "shadow-violet",
-    gradient: "bg-gradient-to-r from-violet-500 to-violet-600"
-  },
-  blue: {
-    bg: "bg-blue-500",
-    bgHover: "hover:bg-blue-100 dark:hover:bg-blue-900/20",
-    text: "text-blue-600 dark:text-blue-400",
-    shadow: "shadow-blue",
-    gradient: "bg-gradient-to-r from-blue-500 to-blue-600"
+  orange: {
+    bg: "bg-orange-500",
+    bgHover: "hover:bg-orange-100 dark:hover:bg-orange-900/20",
+    text: "text-orange-600 dark:text-orange-400",
+    shadow: "shadow-orange",
+    gradient: "bg-gradient-to-r from-orange-500 to-orange-600"
   },
   green: {
     bg: "bg-green-500",
@@ -122,7 +122,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
                 </div>
                 <Link 
                   to="/" 
-                  className="text-xl font-bold bg-gradient-to-r from-purple-600 to-emerald-500 dark:from-purple-400 dark:to-emerald-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-200"
+                  className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-200"
                 >
                   BreatheEasy
                 </Link>
@@ -279,7 +279,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           onClick={toggleTheme}
           className={`
             w-full group flex items-center gap-3 p-3 rounded-xl font-medium relative
-            bg-gradient-to-r from-purple-500/10 to-emerald-500/10 hover:from-purple-500/20 hover:to-emerald-500/20
+            bg-gradient-to-r from-emerald-500/10 to-sky-500/10 hover:from-emerald-500/20 hover:to-sky-500/20
             border border-emerald-200/20 dark:border-emerald-400/20
             transition-all duration-200 focus-ring
             ${collapsed ? "justify-center" : ""}

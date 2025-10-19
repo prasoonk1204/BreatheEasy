@@ -4,20 +4,19 @@ export const useTheme = () => {
     const [theme, setTheme] = useState('light');
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
-
-        document.documentElement.classList.add(initialTheme);
-        document.documentElement.classList.remove(initialTheme === 'dark' ? 'light' : 'dark');
-        setTheme(initialTheme);
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        setTheme(savedTheme);
     }, []);
 
     const toggleTheme = () => {
-        const isDark = theme === 'dark';
-        const newTheme = isDark ? 'light' : 'dark';
-
-        document.documentElement.classList.remove(theme);
-        document.documentElement.classList.add(newTheme);
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        document.documentElement.classList.toggle('dark', newTheme === 'dark');
         localStorage.setItem('theme', newTheme);
         setTheme(newTheme);
     };
