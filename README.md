@@ -61,18 +61,30 @@ Before contributing, please follow these guidelines:
 | Avatar | Username | Commits | Lines Added | Lines Deleted | GitHub |
 |--------|-----------|----------|---------------|----------------|--------|
 | <img src="https://avatars.githubusercontent.com/u/171074534?s=60&v=4" width="50" /> | prasoonk1204 | 9 | 2,202 | 1,121 | [@prasoonk1204](https://github.com/prasoonk1204) |
-
+| <img src="https://avatars.githubusercontent.com/u/182481744?s=60&v=4" width="50" /> | RAGHU1242 | 0 | 14 | 7 | [@RAGHU1242](https://github.com/RAGHU1242) |
 
 ---
 
 ## 🗂️ Project Structure
 
 ```
-.
-├── client/   # React frontend
-├── server/   # Node.js + Express backend
+├── client/               # React frontend (Vite)
+│   ├── public/           # Static assets
+│   ├── src/              # React components, pages, etc.
+│   ├── .example.env      # Environment variable template
+│   ├── index.html        # HTML entry point
+│   ├── package.json      # Frontend dependencies
+│   └── vite.config.js    # Vite configuration
+│
+├── server/               # Node.js + Express backend
+│   ├── app.js            # Main server file (Express app)
+│   └── package.json      # Backend dependencies
+│
+├── CODE_OF_CONDUCT.md
+├── LANDING_PAGE.md
+├── License.md
 ├── README.md
-└── ...
+└── .gitignore
 ```
 
 ---
