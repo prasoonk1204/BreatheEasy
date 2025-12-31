@@ -136,13 +136,21 @@ const LandingPage = () => {
     },
   ];
 
-  const maintainer = {
+ const maintainers = [
+  {
     name: "prasoonk1204",
     avatar: "https://avatars.githubusercontent.com/u/171074534?s=60&v=4",
     github: "https://github.com/prasoonk1204",
     commits: 6,
     linesAdded: 2035
-  };
+  },
+  {
+    name: "Prantor-Das",
+    avatar: "https://avatars.githubusercontent.com/u/183269515?s=96&v=4",
+    github: "https://github.com/Prantor-Das"
+  }
+];
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
@@ -490,27 +498,41 @@ const LandingPage = () => {
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
               Project Maintainer
             </h3>
-            <div className="inline-block">
-              <a
-                href={maintainer.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
-              >
-                <div className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl p-8 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-pulse-glow">
-                  <img
-                    src={maintainer.avatar}
-                    alt={maintainer.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
-                  />
-                  <h4 className="text-xl font-bold mb-2 notranslate">{maintainer.name}</h4>
-                  <div className="flex justify-center gap-6 text-sm">
-                    <span className="hover:scale-110 transition-transform duration-300">{maintainer.commits} commits</span>
-                    <span className="hover:scale-110 transition-transform duration-300">{maintainer.linesAdded} lines added</span>
-                  </div>
-                </div>
-              </a>
-            </div>
+            <div className="flex flex-wrap justify-center gap-8">
+  {maintainers.map((maintainer, index) => (
+    <a
+      key={index}
+      href={maintainer.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block"
+    >
+      <div className="bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl p-8 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-pulse-glow">
+        <img
+          src={maintainer.avatar}
+          alt={maintainer.name}
+          className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+        />
+
+        <h4 className="text-xl font-bold mb-2 notranslate">
+          {maintainer.name}
+        </h4>
+        
+        {(maintainer.commits || maintainer.linesAdded) && (
+          <div className="flex justify-center gap-6 text-sm">
+            {maintainer.commits && (
+              <span>{maintainer.commits} commits</span>
+            )}
+            {maintainer.linesAdded && (
+              <span>{maintainer.linesAdded} lines added</span>
+            )}
+          </div>
+        )}
+      </div>
+    </a>
+  ))}
+</div>
+
           </motion.div>
 
           {/* Contributors */}
