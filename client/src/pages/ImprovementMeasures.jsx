@@ -244,22 +244,22 @@ const ImprovementMeasures = () => {
   const aqiLevel = getAQILevel(aqiData.aqi);
 
   return (
-    <div className="my-10 px-4 max-w-7xl mx-auto">
+    <div className="my-4 px-4 max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20 rounded-3xl shadow-xl p-8 mb-6">
-        <div className="flex items-center justify-between flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-bold text-emerald-600 dark:text-green-400 mb-2 flex items-center gap-3">
-              <Sparkles className="w-8 h-8" />
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-600 dark:text-green-400 mb-2 flex items-center gap-3 sm:gap-3 break-words">
+              <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
               Improvement Measures
             </h1>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
               Take action to improve air quality in your area
             </p>
           </div>
-          <div className="text-right">
+          <div className="text-left sm:text-right">
             <p className="text-sm text-gray-500 dark:text-gray-400">Current AQI</p>
-            <p className={`text-3xl font-bold ${aqiLevel.color}`}>
+            <p className={`text-2xl sm:text-3xl font-bold${aqiLevel.color}`}>
               {aqiData.aqi}
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-300">{aqiLevel.text}</p>
