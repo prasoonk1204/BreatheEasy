@@ -15,10 +15,10 @@ import {
   Activity,
   Wind,
   Eye,
-  Calendar
+  Calendar,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
-import ScrollToTop from '../components/ScrollToTop';
+import ScrollToTop from "../components/ScrollToTop";
 import LanguageToggle from "../components/LanguageToggle";
 
 const LandingPage = () => {
@@ -28,8 +28,8 @@ const LandingPage = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const LandingPage = () => {
           }));
         });
       },
-      { threshold: 0.1, rootMargin: '50px' }
+      { threshold: 0.1, rootMargin: "50px" }
     );
 
     const elements = document.querySelectorAll('[id^="animate-"]');
@@ -55,33 +55,39 @@ const LandingPage = () => {
     {
       icon: <Activity className="w-8 h-8" />,
       title: "Live AQI Dashboard",
-      description: "Real-time Air Quality Index monitoring with instant updates and current pollutant levels."
+      description:
+        "Real-time Air Quality Index monitoring with instant updates and current pollutant levels.",
     },
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Global City Search",
-      description: "Search and explore air quality data from any city around the world with detailed insights."
+      description:
+        "Search and explore air quality data from any city around the world with detailed insights.",
     },
     {
       icon: <Map className="w-8 h-8" />,
       title: "Interactive Maps",
-      description: "Visualize AQI data on interactive maps with location-based air quality visualization."
+      description:
+        "Visualize AQI data on interactive maps with location-based air quality visualization.",
     },
     {
       icon: <Shield className="w-8 h-8" />,
       title: "Health Suggestions",
-      description: "Get personalized health advice and precautions based on current air quality levels."
+      description:
+        "Get personalized health advice and precautions based on current air quality levels.",
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "7-Day Forecast",
-      description: "Predict future air quality trends with interactive charts and forecasting data."
+      description:
+        "Predict future air quality trends with interactive charts and forecasting data.",
     },
     {
       icon: <Wind className="w-8 h-8" />,
       title: "Pollutant Breakdown",
-      description: "Detailed analysis of PM2.5, PM10, O₃, NO₂, SO₂, and CO concentrations."
-    }
+      description:
+        "Detailed analysis of PM2.5, PM10, O₃, NO₂, SO₂, and CO concentrations.",
+    },
   ];
 
   const contributors = [
@@ -141,7 +147,7 @@ const LandingPage = () => {
     avatar: "https://avatars.githubusercontent.com/u/171074534?s=60&v=4",
     github: "https://github.com/prasoonk1204",
     commits: 6,
-    linesAdded: 2035
+    linesAdded: 2035,
   };
 
   return (
@@ -213,7 +219,6 @@ const LandingPage = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </motion.div>
-
           </div>
         </div>
       </nav>
@@ -296,11 +301,15 @@ const LandingPage = () => {
           />
           <div
             className="absolute top-40 right-10 w-72 h-72 bg-green-200 dark:bg-green-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"
-            style={{ transform: `translate(${-scrollY * 0.04}px, ${scrollY * 0.06}px)` }}
+            style={{
+              transform: `translate(${-scrollY * 0.04}px, ${scrollY * 0.06}px)`,
+            }}
           ></div>
           <div
             className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"
-            style={{ transform: `translate(${scrollY * 0.03}px, ${-scrollY * 0.04}px)` }}
+            style={{
+              transform: `translate(${scrollY * 0.03}px, ${-scrollY * 0.04}px)`,
+            }}
           ></div>
         </div>
       </section>
@@ -317,16 +326,18 @@ const LandingPage = () => {
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {/* About <span className="notranslate"> BreatheEasy</span> */}
-              About Us 
+              About Us
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-              <span className="notranslate">BreatheEasy </span> is an open-source project that helps you monitor air
-              quality in your area, understand pollutant levels, and take
-              informed actions for better health. With real-time data from
-              cities worldwide, interactive maps, and personalized health
-              guidance, we make understanding air quality simple, informative,
-              and accessible.
+            {/* make the text read to the left */}
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl">
+              <span className="notranslate">BreatheEasy </span> is an
+              open-source project that helps you monitor air quality in your
+              area, understand pollutant levels, and take informed actions for
+              better health. With real-time data from cities worldwide,
+              interactive maps, and personalized health guidance, we make
+              understanding air quality simple, informative, and accessible.
             </p>
+            <br></br>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -399,9 +410,13 @@ const LandingPage = () => {
                     "Respiratory health protection",
                     "Informed outdoor activity planning",
                     "Community awareness and action",
-                    "Long-term health benefits"
+                    "Long-term health benefits",
                   ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3 animate-slide-in-right" style={{ animationDelay: `${index * 200}ms` }}>
+                    <li
+                      key={index}
+                      className="flex items-center gap-3 animate-slide-in-right"
+                      style={{ animationDelay: `${index * 200}ms` }}
+                    >
                       <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                       {item}
                     </li>
@@ -503,10 +518,16 @@ const LandingPage = () => {
                     alt={maintainer.name}
                     className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                   />
-                  <h4 className="text-xl font-bold mb-2 notranslate">{maintainer.name}</h4>
+                  <h4 className="text-xl font-bold mb-2 notranslate">
+                    {maintainer.name}
+                  </h4>
                   <div className="flex justify-center gap-6 text-sm">
-                    <span className="hover:scale-110 transition-transform duration-300">{maintainer.commits} commits</span>
-                    <span className="hover:scale-110 transition-transform duration-300">{maintainer.linesAdded} lines added</span>
+                    <span className="hover:scale-110 transition-transform duration-300">
+                      {maintainer.commits} commits
+                    </span>
+                    <span className="hover:scale-110 transition-transform duration-300">
+                      {maintainer.linesAdded} lines added
+                    </span>
                   </div>
                 </div>
               </a>
@@ -544,15 +565,19 @@ const LandingPage = () => {
                       {contributor.name}
                     </h4>
                     <div className="flex justify-center gap-4 text-sm text-gray-600 dark:text-gray-300">
-                      <span className="hover:scale-110 transition-transform duration-300">{contributor.commits} commits</span>
-                      <span className="hover:scale-110 transition-transform duration-300">{contributor.linesAdded} lines</span>
+                      <span className="hover:scale-110 transition-transform duration-300">
+                        {contributor.commits} commits
+                      </span>
+                      <span className="hover:scale-110 transition-transform duration-300">
+                        {contributor.linesAdded} lines
+                      </span>
                     </div>
                   </div>
                 </a>
               ))}
             </div>
-            </motion.div>
-          </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* CTA Section */}
@@ -594,7 +619,6 @@ const LandingPage = () => {
               Contribute
             </a>
           </motion.div>
-
         </div>
       </motion.section>
 
@@ -656,9 +680,12 @@ const LandingPage = () => {
                   "Global City Search",
                   "Interactive Maps",
                   "Health Suggestions",
-                  "7-Day Forecast"
+                  "7-Day Forecast",
                 ].map((item, index) => (
-                  <li key={index} className="hover:text-green-500 dark:hover:text-green-400 transition-colors duration-300 hover:translate-x-1 cursor-pointer">
+                  <li
+                    key={index}
+                    className="hover:text-green-500 dark:hover:text-green-400 transition-colors duration-300 hover:translate-x-1 cursor-pointer"
+                  >
                     {item}
                   </li>
                 ))}
@@ -780,7 +807,8 @@ const LandingPage = () => {
         }
 
         @keyframes bounce-subtle {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0);
           }
           50% {
@@ -789,7 +817,8 @@ const LandingPage = () => {
         }
 
         @keyframes pulse-glow {
-          0%, 100% {
+          0%,
+          100% {
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
           }
           50% {
@@ -807,7 +836,8 @@ const LandingPage = () => {
         }
 
         @keyframes gradient-x {
-          0%, 100% {
+          0%,
+          100% {
             background-position: 0% 50%;
           }
           50% {
