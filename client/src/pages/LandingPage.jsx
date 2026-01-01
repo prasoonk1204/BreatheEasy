@@ -674,14 +674,19 @@ const LandingPage = () => {
               <h4 className="text-lg font-semibold mb-4">Features</h4>
               <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 {[
-                  "Live AQI Dashboard",
-                  "Global City Search",
-                  "Interactive Maps",
-                  "Health Suggestions",
-                  "7-Day Forecast"
+                  { name: "Live AQI Dashboard", path: "/dashboard" },
+                  { name: "Global City Search", path: "/dashboard/explore-aqi" },
+                  { name: "Interactive Maps", path: "/dashboard/explore-aqi" },
+                  { name: "Health Suggestions", path: "/dashboard/precautions" },
+                  { name: "7-Day Forecast", path: "/dashboard/chart" },
                 ].map((item, index) => (
-                  <li key={index} className="hover:text-green-500 dark:hover:text-green-400 transition-colors duration-300 hover:translate-x-1 cursor-pointer">
-                    {item}
+                  <li key={index}>
+                    <Link
+                       to={item.path}
+                       className="block hover:text-green-500 dark:hover:text-green-400 transition-all duration-300 hover:translate-x-1"
+                    >
+                       {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
