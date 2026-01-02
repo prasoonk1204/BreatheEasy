@@ -31,6 +31,9 @@ Before contributing, please follow these guidelines:
 - **Improvement Measures:** Learn how you and your community can help improve air quality.
 - **7-Day Forecast:** Visualize upcoming air quality trends with interactive charts.
 - **Responsive UI:** Built with React, Tailwind CSS, and Chart.js for a modern, mobile-friendly experience.
+- - **🔥 Secure Backend Proxy:** All AQI data fetched securely through backend API endpoints
+- **🔥 Rate Limiting & Security:** Production-ready API protection (100 req/15min)
+- **🔥 Top Cities Comparison:** India + Global AQI rankings 
 
 ---
 
@@ -67,11 +70,25 @@ Before contributing, please follow these guidelines:
 ## 🗂️ Project Structure
 
 ```
-.
-├── client/   # React frontend
-├── server/   # Node.js + Express backend
+./
+├── client/ # React Frontend (Vite + Tailwind)
+│ ├── src/
+│ │ ├── components/
+│ │ ├── services/
+│ │ └── utils/
+│ ├── .env.example
+│ └── package.json
+├── server/ # 🔥 NEW: Node.js + Express Backend (MVC)
+│ ├── controllers/ # HTTP handlers (aqiController.js)
+│ ├── routes/ # API routes (aqiRoutes.js)
+│ ├── services/ # Data layer (aqiService.js → WAQI)
+│ ├── middleware/ # Error handling, rate limiting
+│ ├── helpers/ # env.js, logger.js (Winston)
+│ ├── lib/ # errors.js, utils
+│ ├── .env.example # Backend API keys
+│ └── server.js # Express app + security middleware
 ├── README.md
-└── ...
+└── LICENSE
 ```
 
 ---
@@ -98,6 +115,17 @@ npm install
 # or
 yarn install
 ```
+Backend 🔥 (Node.js + Express)
+```sh
+cd ../server
+npm install
+cp .env.example .env
+npm run dev
+URL: http://localhost:3000
+Validates env on startup - crashes if API keys missing!
+```
+
+
 
 #### .env Setup
 
@@ -160,7 +188,15 @@ The backend will run on [http://localhost:3000](http://localhost:3000) by defaul
 - [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) (Backend)
 - [WAQI API](https://aqicn.org/api/) (AQI Data)
 - [Stadia Maps](https://stadiamaps.com/) (Map tiles)
+Backend 🔥 NEW:
 
+Node.js + Express (MVC Pattern)
+
+Winston (Structured Logging)
+
+Axios (API Client)
+
+helmet.js + express-rate-limit + CORS
 ---
 
 ## 💬 Community & Support
