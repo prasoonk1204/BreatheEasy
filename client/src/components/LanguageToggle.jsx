@@ -79,7 +79,7 @@ const LanguageToggle = () => {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "en,es,hi,bn,ta,te,mr,gu,ml,kn,pa,ur,zh-CN,fr,de,pt,ja,ar,ru,ko",
+          includedLanguages: "en,es,hi,bn,ta,te,mr,gu,ml,kn,pa,ur,zh-CN,fr,de,pt,ja,ar,ru,ko,id",
           autoDisplay: false,
         },
         "google_translate_element"
@@ -142,6 +142,7 @@ const LanguageToggle = () => {
     ar: { name: "Arabic (العربية)", flag: "🇸🇦" },
     ru: { name: "Russian (Русский)", flag: "🇷🇺" },
     ko: { name: "Korean (한국어)", flag: "🇰🇷" },
+    id: { name: "Indonesian (Bahasa Indonesia)", flag: "🇮🇩" },
   };
 
 
