@@ -559,7 +559,9 @@ const LandingPage = () => {
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
               Contributors
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {/* Static Card */}
+            {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {contributors.map((contributor, index) => (
                 <a
                   key={index}
@@ -589,7 +591,53 @@ const LandingPage = () => {
                   </div>
                 </a>
               ))}
-            </div>
+            </div> */}
+
+            {/* Slider */}
+            <motion.div
+              className="overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                className="flex gap-6"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 20,
+                  ease: "linear",
+                }}
+              >
+                {[...contributors, ...contributors].map(
+                  (contributor, index) => (
+                    <a
+                      key={index}
+                      href={contributor.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="min-w-[250px]"
+                    >
+                      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg text-center border border-gray-200 dark:border-gray-700">
+                        <img
+                          src={contributor.avatar}
+                          alt={contributor.name}
+                          className="w-16 h-16 rounded-full mx-auto mb-4"
+                        />
+                        <h4 className="font-semibold text-gray-900 dark:text-white">
+                          {contributor.name}
+                        </h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">
+                          {contributor.commits} commits •{" "}
+                          {contributor.linesAdded} lines
+                        </p>
+                      </div>
+                    </a>
+                  )
+                )}
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -691,17 +739,23 @@ const LandingPage = () => {
               <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 {[
                   { name: "Live AQI Dashboard", path: "/dashboard" },
-                  { name: "Global City Search", path: "/dashboard/explore-aqi" },
+                  {
+                    name: "Global City Search",
+                    path: "/dashboard/explore-aqi",
+                  },
                   { name: "Interactive Maps", path: "/dashboard/explore-aqi" },
-                  { name: "Health Suggestions", path: "/dashboard/precautions" },
+                  {
+                    name: "Health Suggestions",
+                    path: "/dashboard/precautions",
+                  },
                   { name: "7-Day Forecast", path: "/dashboard/chart" },
                 ].map((item, index) => (
                   <li key={index}>
                     <Link
-                       to={item.path}
-                       className="block hover:text-green-500 dark:hover:text-green-400 transition-all duration-300 hover:translate-x-1"
+                      to={item.path}
+                      className="block hover:text-green-500 dark:hover:text-green-400 transition-all duration-300 hover:translate-x-1"
                     >
-                       {item.name}
+                      {item.name}
                     </Link>
                   </li>
                 ))}
