@@ -8,6 +8,7 @@ import {
   BarChart3,
   Globe2,
   Sun, Moon, PanelLeft,
+  ArrowLeft,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
@@ -18,6 +19,7 @@ const links = [
   { name: "Air Quality Forecast", path: "/dashboard/chart", icon: <BarChart3 size={30} /> },
   { name: "Precautions", path: "/dashboard/precautions", icon: <ShieldCheck size={30} /> },
   { name: "Improvement", path: "/dashboard/improvement", icon: <TrendingUp size={30} /> },
+  { name: "Back to Website", path: "/", icon: <ArrowLeft size={30} /> }
 ];
 
 const shakeStyle = `
