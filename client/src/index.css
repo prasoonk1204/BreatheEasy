@@ -35,4 +35,48 @@
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* Precautions page: hover + glitter (shimmer) effect */
+.precaution-card {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.precaution-card:hover {
+  transform: translateY(-2px);
+}
+
+.precaution-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -150%;
+  width: 120%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgb(255 255 255 / 0.28),
+    transparent
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.precaution-card:hover::before {
+  opacity: 1;
+  animation: precaution-shine 900ms linear;
+}
+
+@keyframes precaution-shine {
+  from {
+    left: -150%;
+  }
+  to {
+    left: 150%;
+  }
+}
   

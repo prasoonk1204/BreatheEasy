@@ -85,7 +85,7 @@ const Precautions = () => {
         </p>
       ) : (
         <div className="space-y-6">
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-4 rounded-lg">
+          <div className="precaution-card bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-400 p-4 rounded-lg">
             <p className="text-lg font-medium text-yellow-800 dark:text-yellow-300 mb-2">
               Based on Current Air Quality:
             </p>
@@ -111,7 +111,7 @@ const Precautions = () => {
             </ul>
           </div>
 
-          <div className="bg-gray-50 dark:bg-gray-800/40 border-l-4 border-gray-400 dark:border-gray-500 p-4 rounded-lg">
+          <div className="precaution-card bg-gray-50 dark:bg-gray-800/40 border-l-4 border-gray-400 dark:border-gray-500 p-4 rounded-lg">
             <h3 className="font-semibold text-gray-700 dark:text-gray-100 mb-2">
               🛡️ General Protective Measures:
             </h3>
