@@ -8,6 +8,7 @@ import {
   BarChart3,
   Globe2,
   Sun, Moon, PanelLeft,
+  ArrowLeft,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
@@ -17,7 +18,7 @@ const links = [
   { name: "Explore AQI", path: "/dashboard/explore-aqi", icon: <Globe2 size={30} /> },
   { name: "Air Quality Forecast", path: "/dashboard/chart", icon: <BarChart3 size={30} /> },
   { name: "Precautions", path: "/dashboard/precautions", icon: <ShieldCheck size={30} /> },
-  { name: "Improvement", path: "/dashboard/improvement", icon: <TrendingUp size={30} /> },
+  { name: "Improvement", path: "/dashboard/improvement", icon: <TrendingUp size={30} /> }
 ];
 
 const shakeStyle = `
@@ -135,6 +136,38 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           </nav>
         </div>
         {/* Footer section: User Info and Theme Toggle */}
+        <div className="p-4 space-y-2">
+          {/* Back to Website Button */}
+          <Link
+            to="/"
+            className={`
+              relative flex items-center px-4 py-3 rounded-lg text-sm font-medium
+              group transition-all duration-300 ease-in-out
+              text-gray-700 hover:bg-emerald-100 dark:text-gray-200 dark:hover:bg-green-500/20
+              ${collapsed ? "justify-center" : "gap-4"}
+            `}
+          >
+            <ArrowLeft size={30} />
+            <span
+              className={`
+                transition-all duration-300 ease-in-out whitespace-nowrap overflow-hidden
+                ${collapsed ? "w-0 opacity-0" : "w-auto opacity-100"}
+              `}
+            >
+              Back to Website
+            </span>
+
+            {collapsed && (
+              <span
+                className="absolute left-full ml-4 p-2 bg-gray-800 text-white text-sm rounded-md shadow-lg
+                opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
+              >
+                Back to Website
+              </span>
+            )}
+          </Link>
+        </div>
+
         <div className="border-t p-4 dark:border-gray-700">
           {/* 
           <div

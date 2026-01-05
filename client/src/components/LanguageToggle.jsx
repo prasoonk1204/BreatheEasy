@@ -161,15 +161,15 @@ const LanguageToggle = () => {
 
       {/* Floating Language Menu */}
       {isOpen && (
-        <div className="fixed bottom-16 md:bottom-26 right-20 md:right-34 bg-white rounded-xl shadow-2xl z-[998] w-1/6 min-w-56 max-h-[400px] overflow-y-auto animate-in slide-in-from-bottom-2">
+        <div className="fixed bottom-16 md:bottom-26 right-20 md:right-34 bg-white dark:bg-gray-800 rounded-xl shadow-2xl dark:shadow-black/50 z-[998] w-1/6 min-w-56 max-h-[400px] overflow-y-auto animate-in slide-in-from-bottom-2">
           {/* Header */}
-          <div className="flex justify-between items-center p-3 border-b border-gray-200 sticky top-0 bg-white rounded-t-xl">
-            <h3 className="text-sm font-semibold text-gray-900">
+          <div className="flex justify-between items-center p-3 border-b border-gray-200 sticky top-0 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
               Select Language
             </h3>
             <button
               onClick={() => setIsOpen(false)}
-              className="bg-none border-none cursor-pointer p-0 text-gray-500 hover:text-gray-700 transition-colors"
+              className="bg-none border-none cursor-pointer p-0 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
             >
               <X size={18} />
             </button>
@@ -185,11 +185,15 @@ const LanguageToggle = () => {
                   changeLanguage(code);
                 }}
                 disabled={loading}
-                className={`notranslate w-full text-left px-4 py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200 text-sm text-gray-700 ${
-                  code === language ? "bg-emerald-50" : ""
-                } ${
-                  loading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
-                }`}
+                className={`notranslate w-full text-left px-4 py-3 
+                  border-b border-gray-100 dark:border-gray-700
+                  hover:bg-gray-50 dark:hover:bg-gray-700
+                  transition-colors duration-200 text-sm
+                  text-gray-700 dark:text-gray-200
+                  ${code === language ? "bg-emerald-50 dark:bg-emerald-900/30" : ""}
+                  ${loading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}
+                `}
+
               >
                 <span className="text-lg mr-2">{flag}</span>
                 {name}
