@@ -2,7 +2,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X, ArrowLeft } from "lucide-react";
 
 const links = [
   { name: "Dashboard", path: "/dashboard" },
@@ -96,6 +96,19 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
               </div>
             </div>
           </div> */}
+          {/* Bottom actions */}
+          <div className="border-t pt-4">
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all font-medium text-lg
+                text-gray-800 hover:bg-emerald-100
+                dark:text-gray-100 dark:hover:bg-emerald-700/60"
+            >
+              <ArrowLeft size={22} />
+              Back to Website
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
