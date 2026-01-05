@@ -68,7 +68,7 @@ Before contributing, please follow these guidelines:
 
 ```
 .
-├── client/   # React frontend
+├── client/   # React + Vite frontend
 ├── server/   # Node.js + Express backend
 ├── README.md
 └── ...
@@ -111,7 +111,7 @@ Edit `.env` and add your API keys:
 
 ```
 VITE_STADIAMAPS_API_KEY=your_stadiamaps_api_key_here
-VITE_API_BASE_URL=http://localhost:3000/api/aqi
+VITE_API_BASE_URL=http://localhost:3000
 ```
 
 - **Stadia Maps API Key:**

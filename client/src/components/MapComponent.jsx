@@ -19,7 +19,7 @@ const MapComponent = ({ centerLatitude = 22.5726, centerLongitude = 88.3639, zoo
   // Get your API Keys from environment variables
   // const WAQI_API_KEY = import.meta.env.VITE_WAQI_API_KEY; // Moved to backend
   const STADIAMAPS_API_KEY = import.meta.env.VITE_STADIAMAPS_API_KEY; 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/aqi";
+  const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/aqi` || "http://localhost:3000/api/aqi";
 
   useEffect(() => {
     if (!mapRef.current) return;
