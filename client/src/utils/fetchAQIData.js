@@ -1,8 +1,8 @@
 const fetchAQIData = async () => {
-  const WAQI_API_KEY = import.meta.env.VITE_WAQI_API_KEY
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/aqi";
 
   const response = await fetch(
-    `https://api.waqi.info/feed/here/?token=${WAQI_API_KEY}`
+    `${API_BASE_URL}/current-location`
   );
 
   const data = await response.json();

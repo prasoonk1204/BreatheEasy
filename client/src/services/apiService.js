@@ -1,11 +1,6 @@
 // src/services/apiService.js
 
-const WAQI_API_BASE_URL = "https://api.waqi.info/feed/";
-const WAQI_API_KEY = import.meta.env.VITE_WAQI_API_KEY;
-
-if (!WAQI_API_KEY) {
-  console.error("VITE_WAQI_API_KEY is not defined. Please check your .env file.");
-}
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/aqi";
 
 const parseWaqiData = (data) => {
   if (data.status !== "ok" || !data.data) {
@@ -32,10 +27,31 @@ const parseWaqiData = (data) => {
   };
 };
 
-// Fetches AQI for the current location (using "here")
+// Fetches AQI for the current location
 export const fetchAqiForCurrentLocation = async () => {
   try {
-    const response = await fetch(`${WAQI_API_BASE_URL}here/?token=${WAQI_API_KEY}`);
+     // Try to get geolocation from browser to pass to backend
+     // If not available or denied, fallback to simple request which uses server IP
+     const getPosition = () => {
+        return new Promise((resolve, reject) => {
+            if (!navigator.geolocation) {
+                reject(new Error("Geolocation not supported"));
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+     };
+
+     let url = `${API_BASE_URL}/current-location`;
+     
+     try {
+        const position = await getPosition();
+        url += `?lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+     } catch (e) {
+        console.warn("Geolocation permission denied or not available, falling back to IP-based location.", e);
+     }
+
+    const response = await fetch(url);
     const data = await response.json();
     return parseWaqiData(data);
   } catch (error) {
@@ -49,7 +65,7 @@ export const fetchAqiByCity = async (cityName) => {
   if (!cityName) throw new Error("City name cannot be empty.");
   try {
     const encodedCityName = encodeURIComponent(cityName.toLowerCase());
-    const response = await fetch(`${WAQI_API_BASE_URL}${encodedCityName}/?token=${WAQI_API_KEY}`);
+    const response = await fetch(`${API_BASE_URL}/city/${encodedCityName}`);
     const data = await response.json();
     return parseWaqiData(data);
   } catch (error) {
@@ -60,34 +76,13 @@ export const fetchAqiByCity = async (cityName) => {
 
 
 export const fetchTopCitiesAQI = async () => {
-  
-  const indianCities = ["New Delhi", "Mumbai", "Kolkata", "Bengaluru", "Chennai"]; 
-  
-  const globalCities = ["Beijing", "New York", "London", "Singapore", "Paris"];
-
-  const fetchAQIsForList = async (cities) => {
-    const results = [];
-    for (const city of cities) {
-      try {
-        const data = await fetchAqiByCity(city);
-        results.push({ city: data.city, aqi: data.aqi });
-      } catch (error) {
-        
-        console.warn(`Could not fetch AQI for ${city}:`, error.message);
-      }
-    }
-    
-    return results.sort((a, b) => a.aqi - b.aqi);
-  };
-
-  const [indianCityAQIs, globalCityAQIs] = await Promise.all([
-    fetchAQIsForList(indianCities),
-    fetchAQIsForList(globalCities),
-  ]);
-
-  return {
-    top5IndianCities: indianCityAQIs,
-    top5GlobalCities: globalCityAQIs,
-  };
+  try {
+      const response = await fetch(`${API_BASE_URL}/top-cities`);
+      const data = await response.json();
+      return data; // The backend already returns { top5IndianCities: [], top5GlobalCities: [] }
+  } catch (error) {
+      console.error("Error fetching top cities AQI:", error);
+      throw error;
+  }
 };
 

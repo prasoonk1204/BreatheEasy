@@ -110,11 +110,10 @@ cp .example.env .env
 Edit `.env` and add your API keys:
 
 ```
-VITE_WAQI_API_KEY=your_waqi_api_key_here
 VITE_STADIAMAPS_API_KEY=your_stadiamaps_api_key_here
+VITE_API_BASE_URL=http://localhost:3000/api/aqi
 ```
 
-- **WAQI API Key:** [Get your key here](https://aqicn.org/data-platform/token/#/).
 - **Stadia Maps API Key:**
   - Go to [Stadia Maps](https://stadiamaps.com/).
   - Sign up for a free account (no credit card required for the free tier).
@@ -139,6 +138,17 @@ npm install
 # or
 yarn install
 ```
+
+#### .env Setup
+
+Create a `.env` file in the `server` directory and add your WAQI API key:
+
+```
+WAQI_API_KEY=your_waqi_api_key_here
+PORT=3000
+```
+
+- **WAQI API Key:** [Get your key here](https://aqicn.org/data-platform/token/#/).
 
 Start the backend server:
 
