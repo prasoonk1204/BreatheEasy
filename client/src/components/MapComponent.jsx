@@ -17,16 +17,13 @@ const MapComponent = ({ centerLatitude = 22.5726, centerLongitude = 88.3639, zoo
   const mapInstance = useRef(null);
 
   // Get your API Keys from environment variables
-  const WAQI_API_KEY = import.meta.env.VITE_WAQI_API_KEY;
+  // const WAQI_API_KEY = import.meta.env.VITE_WAQI_API_KEY; // Moved to backend
   const STADIAMAPS_API_KEY = import.meta.env.VITE_STADIAMAPS_API_KEY; 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/aqi";
 
   useEffect(() => {
     if (!mapRef.current) return;
 
-    if (!WAQI_API_KEY) {
-      console.error("VITE_WAQI_API_KEY is not defined. WAQI map overlay might not load.");
-      return;
-    }
     if (!STADIAMAPS_API_KEY) { // <--- New: Check Stadia Maps token
       console.error("VITE_STADIAMAPS_API_KEY is not defined. Base map will not load.");
       return;
@@ -50,7 +47,7 @@ const MapComponent = ({ centerLatitude = 22.5726, centerLongitude = 88.3639, zoo
       stadiaLayer.addTo(mapInstance.current);
 
       // WAQI AQI Overlay Layer 
-      const WAQI_URL = `https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=${WAQI_API_KEY}`;
+      const WAQI_URL = `${API_BASE_URL}/tiles/{z}/{x}/{y}`;
       const WAQI_ATTR = 'Air Quality Tiles &copy; <a href="http://waqi.info">waqi.info</a>';
       const waqiLayer = L.tileLayer(WAQI_URL, { attribution: WAQI_ATTR, opacity: 0.7 });
       waqiLayer.addTo(mapInstance.current);
@@ -65,7 +62,7 @@ const MapComponent = ({ centerLatitude = 22.5726, centerLongitude = 88.3639, zoo
         mapInstance.current = null;
       }
     };
-  }, [centerLatitude, centerLongitude, zoom, WAQI_API_KEY, STADIAMAPS_API_KEY]); // Add STADIAMAPS_API_KEY to dependencies
+  }, [centerLatitude, centerLongitude, zoom, STADIAMAPS_API_KEY]); // Add STADIAMAPS_API_KEY to dependencies
 
   return (
     <div
