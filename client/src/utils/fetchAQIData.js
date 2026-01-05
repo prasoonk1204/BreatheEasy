@@ -1,3 +1,5 @@
+// depricated - use apiService.js instead
+
 const fetchAQIData = async () => {
   const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/aqi` || "http://localhost:3000/api/aqi";
 

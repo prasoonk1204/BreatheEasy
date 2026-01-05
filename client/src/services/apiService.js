@@ -32,7 +32,7 @@ export const fetchAqiForCurrentLocation = async () => {
   try {
      // Try to get geolocation from browser to pass to backend
      // If not available or denied, fallback to simple request which uses server IP
-     const getPosition = () => {
+    const getPosition = () => {
         return new Promise((resolve, reject) => {
             if (!navigator.geolocation) {
                 reject(new Error("Geolocation not supported"));
@@ -40,16 +40,16 @@ export const fetchAqiForCurrentLocation = async () => {
             }
             navigator.geolocation.getCurrentPosition(resolve, reject);
         });
-     };
+    };
 
-     let url = `${API_BASE_URL}/current-location`;
-     
-     try {
+    let url = `${API_BASE_URL}/current-location`;
+    
+    try {
         const position = await getPosition();
         url += `?lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-     } catch (e) {
+    } catch (e) {
         console.warn("Geolocation permission denied or not available, falling back to IP-based location.", e);
-     }
+    }
 
     const response = await fetch(url);
     const data = await response.json();
