@@ -20,11 +20,20 @@ import {
 import { useTheme } from "../hooks/useTheme";
 import ScrollToTop from "../components/ScrollToTop";
 import LanguageToggle from "../components/LanguageToggle";
+import { useRef } from "react";
 
 const LandingPage = () => {
   const { theme, toggleTheme } = useTheme();
   const [isVisible, setIsVisible] = useState({});
   const [scrollY, setScrollY] = useState(0);
+  const sliderRef = useRef(null);
+  const [sliderWidth, setSliderWidth] = useState(0);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      setSliderWidth(sliderRef.current.scrollWidth / 2);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -594,20 +603,15 @@ const LandingPage = () => {
             </div> */}
 
             {/* Slider */}
-            <motion.div
-              className="overflow-hidden"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
+            <motion.div className="overflow-hidden">
               <motion.div
+                ref={sliderRef}
                 className="flex gap-6"
-                animate={{ x: ["0%", "-50%"] }}
+                animate={{ x: [0, -sliderWidth] }}
                 transition={{
-                  repeat: Infinity,
-                  duration: 20,
+                  duration: 25,
                   ease: "linear",
+                  repeat: Infinity,
                 }}
               >
                 {[...contributors, ...contributors].map(
