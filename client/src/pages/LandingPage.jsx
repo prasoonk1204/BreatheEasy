@@ -167,7 +167,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+    <div className="min-h-screen bg-linear-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 py-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-fade-in-down">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -242,7 +242,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="text-center">
+          <div className="text-center z-20 relative">
             <div className="mb-8">
               <div
                 className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-green-800 text-emerald-800 dark:text-green-200 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-up animate-delay-200"
@@ -264,7 +264,7 @@ const LandingPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className="block text-emerald-600 dark:text-green-400 bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text"
+                className="block text-emerald-600 dark:text-green-400 bg-linear-to-r from-emerald-600 via-green-500 to-emerald-600 bg-clip-text"
               >
                 Anywhere, Anytime
               </motion.span>
@@ -309,7 +309,7 @@ const LandingPage = () => {
         </div>
 
         {/* Background decoration */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-10">
           <motion.div
             className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 dark:bg-green-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"
             style={{ y: scrollY * 0.03, x: scrollY * 0.05 }}
