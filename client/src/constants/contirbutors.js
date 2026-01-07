@@ -1,0 +1,51 @@
+export const contributors = [
+  {
+    name: "NirvikD",
+    avatar: "https://avatars.githubusercontent.com/u/118150046?s=60&v=4",
+    github: "https://github.com/NirvikD",
+    commits: 9,
+    linesAdded: 770,
+  },
+  {
+    name: "deepanshu-prajapati01",
+    avatar: "https://avatars.githubusercontent.com/u/98377377?s=60&v=4",
+    github: "https://github.com/deepanshu-prajapati01",
+    commits: 5,
+    linesAdded: 312,
+  },
+  {
+    name: "Kashish23092004",
+    avatar: "https://avatars.githubusercontent.com/u/139871425?v=4",
+    github: "https://github.com/Kashish23092004",
+    commits: 4,
+    linesAdded: 295,
+  },
+  {
+    name: "gaurav123-4",
+    avatar: "https://avatars.githubusercontent.com/u/204588730?s=60&v=4",
+    github: "https://github.com/gaurav123-4",
+    commits: 3,
+    linesAdded: 723,
+  },
+  {
+    name: "Mohamed-Fiyaz",
+    avatar: "https://avatars.githubusercontent.com/u/124451741?v=4",
+    github: "https://github.com/Mohamed-Fiyaz",
+    commits: 2,
+    linesAdded: 470,
+  },
+  {
+    name: "Tanyasharma71",
+    avatar: "https://avatars.githubusercontent.com/u/208266043?s=60&v=4",
+    github: "https://github.com/Tanyasharma71",
+    commits: 1,
+    linesAdded: 21,
+  },
+  {
+    name: "riya751885",
+    avatar: "https://avatars.githubusercontent.com/u/122119293?s=60&v=4",
+    github: "https://github.com/riya751885",
+    commits: 1,
+    linesAdded: 3,
+  },
+];
