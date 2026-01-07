@@ -80,27 +80,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-10">
-        <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 dark:bg-green-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"
-          style={{ y: scrollY * 0.03, x: scrollY * 0.05 }}
-          transition={{ type: "spring", stiffness: 50, damping: 20 }}
-        />
-        <div
-          className="absolute top-40 right-10 w-72 h-72 bg-green-200 dark:bg-green-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"
-          style={{
-            transform: `translate(${-scrollY * 0.04}px, ${scrollY * 0.06}px)`,
-          }}
-        ></div>
-        <div
-          className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"
-          style={{
-            transform: `translate(${scrollY * 0.03}px, ${-scrollY * 0.04}px)`,
-          }}
-        ></div>
-      </div>
     </section>
   );
 };
