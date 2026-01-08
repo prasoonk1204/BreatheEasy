@@ -41,14 +41,14 @@ const Navigation = () => {
           >
             <motion.button
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-green-400 dark:border-green-600 bg-white dark:bg-green-800 text-green-800 dark:text-white"
+              className="p-2 rounded-full border border-green-400 dark:border-green-600 bg-white dark:bg-[#0F3D2E] text-green-800 dark:text-white"
               aria-label="Toggle theme"
               whileHover={{ scale: 1.1, rotate: 12 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               {theme === "dark" ? (
                 <motion.span
-                  className="w-5 h-5 text-yellow-400"
+                  className="w-5 h-5 text-[#f8de76]"
                   animate={{ rotate: [0, 20, -20, 0] }}
                   transition={{ repeat: Infinity, duration: 2 }}
                 >
@@ -56,7 +56,7 @@ const Navigation = () => {
                 </motion.span>
               ) : (
                 <motion.span
-                  className="w-5 h-5 text-blue-600"
+                  className="w-5 h-5 text-[#64748B]"
                   animate={{ y: [0, -5, 0] }}
                   transition={{ repeat: Infinity, duration: 1 }}
                 >
