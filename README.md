@@ -10,6 +10,8 @@ BreatheEasy is an open-source project that helps you monitor air quality in your
 
 ## 📋 Contributing
 
+📌 Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing.
+
 Before contributing, please follow these guidelines:
 
 - **Fork this repository** and clone it to your machine.
