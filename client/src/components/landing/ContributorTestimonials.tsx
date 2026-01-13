@@ -8,7 +8,7 @@ const contributorData = contributors.map((contributor) => ({
   text: "",
   image: contributor.avatar,
   name: contributor.name,
-  role: `${contributor.commits} commits • ${contributor.linesAdded} lines`,
+  role: "",
   github: contributor.github,
 }));
 
@@ -69,11 +69,6 @@ const ContributorTestimonials = () => {
                         <div className="font-semibold text-lg text-gray-900 dark:text-white">
                           {maintainer.name}
                         </div>
-                        {maintainer.commits && (
-                          <div className="text-sm text-gray-600 dark:text-gray-400">
-                            {maintainer.commits} commits • {maintainer.linesAdded} lines
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>

@@ -22,7 +22,7 @@ const Features = () => {
         </motion.div>
 
         {/* Feature Rows */}
-        <div className="space-y-20 lg:space-y-32">
+        <div className="space-y-12 lg:space-y-12">
           {features.map((feature, index) => {
             const isEven = index % 2 === 0;
             // Convert feature title to image filename
