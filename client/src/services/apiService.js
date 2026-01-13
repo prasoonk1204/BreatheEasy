@@ -24,6 +24,9 @@ const parseWaqiData = (data) => {
     longitude: cityData.city.geo ? cityData.city.geo[1] : null,
     time: cityData.time.iso,
     dominentpol: cityData.dominentpol,
+    // Include the complete WAQI data for charts and forecasts
+    data: cityData, // This includes forecast, iaqi, and all other data
+    forecast: cityData.forecast, // Explicitly include forecast for easy access
   };
 };
 
@@ -79,10 +82,9 @@ export const fetchTopCitiesAQI = async () => {
   try {
       const response = await fetch(`${API_BASE_URL}/top-cities`);
       const data = await response.json();
-      return data; // The backend already returns { top5IndianCities: [], top5GlobalCities: [] }
+      return data; 
   } catch (error) {
       console.error("Error fetching top cities AQI:", error);
       throw error;
   }
 };
-

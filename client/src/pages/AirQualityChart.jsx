@@ -1,108 +1,227 @@
-import React, { useState } from "react";
-import { ResponsiveContainer } from "recharts";
-import { TrendingUp, TrendingDown, Wind, Sun, Activity, Info, BarChart3 } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ResponsiveContainer, LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { TrendingUp, TrendingDown, Wind, Sun, Activity, Info, BarChart3, AlertCircle } from "lucide-react";
 
-// Import components
-import ErrorPage from "../components/ErrorAirChart";
-import LineChartComponent from "../components/LineChartComponent";
-import BarChartComponent from "../components/BarChartComponent";
-import AreaChartComponent from "../components/AreaChartComponent";
+import ErrorPage from "../components/ErrorAirChart"
+
+const LineChartComponent = ({ data, dataKeys }) => (
+  <LineChart data={data}>
+    <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+    <XAxis dataKey="day" stroke="#666" />
+    <YAxis stroke="#666" />
+    <Tooltip 
+      contentStyle={{ 
+        backgroundColor: '#fff', 
+        border: '2px solid #e0e0e0', 
+        borderRadius: '12px',
+        padding: '12px'
+      }} 
+    />
+    <Legend />
+    {dataKeys.map(({ key, name, color }) => (
+      <Line 
+        key={key}
+        type="monotone" 
+        dataKey={key} 
+        stroke={color} 
+        strokeWidth={3}
+        name={name}
+        dot={{ fill: color, r: 4 }}
+        activeDot={{ r: 6 }}
+      />
+    ))}
+  </LineChart>
+);
+
+const BarChartComponent = ({ data, dataKeys }) => (
+  <BarChart data={data}>
+    <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+    <XAxis dataKey="day" stroke="#666" />
+    <YAxis stroke="#666" />
+    <Tooltip 
+      contentStyle={{ 
+        backgroundColor: '#fff', 
+        border: '2px solid #e0e0e0', 
+        borderRadius: '12px',
+        padding: '12px'
+      }} 
+    />
+    <Legend />
+    {dataKeys.map(({ key, name, color }) => (
+      <Bar 
+        key={key}
+        dataKey={key} 
+        fill={color} 
+        name={name}
+        radius={[8, 8, 0, 0]}
+      />
+    ))}
+  </BarChart>
+);
+
+const AreaChartComponent = ({ data, dataKeys }) => (
+  <AreaChart data={data}>
+    <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+    <XAxis dataKey="day" stroke="#666" />
+    <YAxis stroke="#666" />
+    <Tooltip 
+      contentStyle={{ 
+        backgroundColor: '#fff', 
+        border: '2px solid #e0e0e0', 
+        borderRadius: '12px',
+        padding: '12px'
+      }} 
+    />
+    <Legend />
+    {dataKeys.map(({ key, name, color }) => (
+      <Area
+        key={key}
+        type="monotone"
+        dataKey={key}
+        stroke={color}
+        fill={color}
+        fillOpacity={0.6}
+        name={name}
+      />
+    ))}
+  </AreaChart>
+);
 
 const AirQualityChart = () => {
   const [chartType, setChartType] = useState("line");
   const [selectedMetric, setSelectedMetric] = useState("all");
+  const [aqiData, setAqiData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Get AQI data from localStorage
-  const getAqiData = () => {
-    try {
-      const stored = localStorage.getItem("aqiData");
-      if (stored) {
-        return JSON.parse(stored);
+  useEffect(() => {
+    const loadData = () => {
+      try {
+        const stored = localStorage.getItem("aqiData");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          setAqiData(parsed);
+        }
+      } catch (e) {
+        console.error("Failed to parse aqiData", e);
+      } finally {
+        setLoading(false);
       }
-    } catch (e) {
-      console.error("Failed to parse aqiData", e);
-    }
-    return null;
-  };
-
-  const aqiData = getAqiData();
-
-  // Generate comprehensive forecast
-  const getForecastData = () => {
-    if (!aqiData) return null;
-
-    if (aqiData.forecast?.daily) {
-      return aqiData.forecast.daily;
-    }
-
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const today = new Date().getDay();
-    const orderedDays = [...days.slice(today), ...days.slice(0, today)];
-    
-    const baseAqi = aqiData.aqi || 50;
-
-    return {
-      pm25: orderedDays.map((day) => ({
-        day,
-        avg: Math.max(0, Math.floor(baseAqi + (Math.random() - 0.5) * 30)),
-        min: Math.max(0, Math.floor(baseAqi - 15 + (Math.random() * 10))),
-        max: Math.floor(baseAqi + 15 + (Math.random() * 10))
-      })),
-      pm10: orderedDays.map((day) => ({
-        day,
-        avg: Math.max(0, Math.floor((baseAqi * 1.8) + (Math.random() - 0.5) * 40)),
-        min: Math.max(0, Math.floor((baseAqi * 1.8) - 20 + (Math.random() * 15))),
-        max: Math.floor((baseAqi * 1.8) + 20 + (Math.random() * 15))
-      })),
-      o3: orderedDays.map((day) => ({
-        day,
-        avg: Math.floor(20 + Math.random() * 40),
-        min: Math.floor(10 + Math.random() * 20),
-        max: Math.floor(40 + Math.random() * 30)
-      })),
-      no2: orderedDays.map((day) => ({
-        day,
-        avg: Math.floor(15 + Math.random() * 35),
-        min: Math.floor(5 + Math.random() * 15),
-        max: Math.floor(35 + Math.random() * 25)
-      })),
-      uvi: orderedDays.map((day) => ({
-        day,
-        avg: Math.floor(4 + Math.random() * 5),
-        min: Math.floor(2 + Math.random() * 3),
-        max: Math.floor(6 + Math.random() * 4)
-      }))
     };
+
+    loadData();
+
+    const handleStorageChange = (e) => {
+      if (e.key === 'aqiData') {
+        loadData();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  // Parsing thea forecast data 
+  const getForecastData = () => {
+    if (!aqiData?.data?.forecast) return null;
+
+    const forecast = aqiData.data.forecast;
+    
+    //PM2.5, PM10, O3
+    const processWaqiForecast = (forecastArray) => {
+      if (!forecastArray || forecastArray.length === 0) return [];
+      
+      return forecastArray.map((item) => {
+        const date = new Date(item.day);
+        const dayName = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        
+        return {
+          day: dayName,
+          avg: Math.round(item.avg || 0),
+          min: Math.round(item.min || 0),
+          max: Math.round(item.max || 0)
+        };
+      });
+    };
+
+    const result = {
+      pm25: processWaqiForecast(forecast.daily?.pm25),
+      pm10: processWaqiForecast(forecast.daily?.pm10),
+      o3: processWaqiForecast(forecast.daily?.o3)
+    };
+
+    // Check if we have ANY forecast data from WAQI
+    if (result.pm25.length === 0 && result.pm10.length === 0 && result.o3.length === 0) {
+      return null;
+    }
+
+    // Return ONLY the data WAQI provides - no padding, no generation
+    return result;
   };
 
   const forecast = getForecastData();
 
-  // Error handling
-  if (!aqiData) {
-    return <ErrorPage type="no-data" />;
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4 md:p-8 flex items-center justify-center">
+        <div className="text-center">
+          <Activity className="w-16 h-16 text-blue-500 mx-auto mb-4 animate-pulse" />
+          <p className="text-gray-600 dark:text-gray-400 text-lg">Loading air quality data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!aqiData || !aqiData.data) {
+    return <ErrorPage type="no-data" message="Unable to read the Data Currently,Try Again Later." />;
   }
 
   if (!forecast) {
-    return <ErrorPage type="no-forecast" />;
+    return <ErrorPage 
+      type="no-forecast" 
+      message="WAQI API provides limited forecast data. The chart shows current readings and available historical trends." 
+    />;
   }
 
-  // Transform data for charts
-  const chartData = forecast.pm25?.map((_, index) => ({
-    day: forecast.pm25[index]?.day || `Day ${index + 1}`,
-    pm25: forecast.pm25[index]?.avg || 0,
-    pm25Min: forecast.pm25[index]?.min || 0,
-    pm25Max: forecast.pm25[index]?.max || 0,
-    pm10: forecast.pm10[index]?.avg || 0,
-    pm10Min: forecast.pm10[index]?.min || 0,
-    pm10Max: forecast.pm10[index]?.max || 0,
-    o3: forecast.o3[index]?.avg || 0,
-    no2: forecast.no2[index]?.avg || 0,
-    uvi: forecast.uvi[index]?.avg || 0,
-  })) || [];
+  // Transform data for charts - USE ONLY ACTUAL FORECAST DATA
+  const chartData = [];
+  
+  // Find the maximum length from available forecast arrays
+  const maxLength = Math.max(
+    forecast.pm25?.length || 0,
+    forecast.pm10?.length || 0,
+    forecast.o3?.length || 0
+  );
 
-  // Calculate statistics
+  // Build chart data using only what WAQI provides
+  for (let i = 0; i < maxLength; i++) {
+    const dataPoint = {
+      day: forecast.pm25?.[i]?.day || forecast.pm10?.[i]?.day || forecast.o3?.[i]?.day || `Day ${i + 1}`,
+    };
+
+    // Only add data if WAQI provides it
+    if (forecast.pm25?.[i]) {
+      dataPoint.pm25 = forecast.pm25[i].avg;
+      dataPoint.pm25Min = forecast.pm25[i].min;
+      dataPoint.pm25Max = forecast.pm25[i].max;
+    }
+
+    if (forecast.pm10?.[i]) {
+      dataPoint.pm10 = forecast.pm10[i].avg;
+      dataPoint.pm10Min = forecast.pm10[i].min;
+      dataPoint.pm10Max = forecast.pm10[i].max;
+    }
+
+    if (forecast.o3?.[i]) {
+      dataPoint.o3 = forecast.o3[i].avg;
+    }
+
+    chartData.push(dataPoint);
+  }
+
   const calculateStats = (data, key) => {
-    const values = data.map(d => d[key]);
+    const values = data.map(d => d[key]).filter(v => v > 0);
+    if (values.length === 0) return { avg: '0', max: 0, min: 0, trend: 0 };
+    
     const avg = values.reduce((a, b) => a + b, 0) / values.length;
     const max = Math.max(...values);
     const min = Math.min(...values);
@@ -112,9 +231,8 @@ const AirQualityChart = () => {
 
   const pm25Stats = calculateStats(chartData, 'pm25');
   const pm10Stats = calculateStats(chartData, 'pm10');
-  const uviStats = calculateStats(chartData, 'uvi');
+  const o3Stats = calculateStats(chartData, 'o3');
 
-  // Get AQI category
   const getAqiCategory = (aqi) => {
     if (aqi <= 50) return { label: 'Good', color: 'text-green-600 bg-green-50 dark:bg-green-900/20', emoji: '😊' };
     if (aqi <= 100) return { label: 'Moderate', color: 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20', emoji: '😐' };
@@ -124,20 +242,16 @@ const AirQualityChart = () => {
     return { label: 'Hazardous', color: 'text-rose-900 bg-rose-50 dark:bg-rose-900/20', emoji: '☠️' };
   };
 
-  const currentCategory = getAqiCategory(aqiData.aqi);
+  const currentCategory = getAqiCategory(aqiData.data.aqi);
 
-  // Data keys for charts
   const dataKeys = selectedMetric === 'all' 
     ? [
         { key: 'pm25', name: 'PM2.5', color: '#F56C6C' },
         { key: 'pm10', name: 'PM10', color: '#FFAA33' },
-        { key: 'o3', name: 'O₃', color: '#67C23A' },
-        { key: 'no2', name: 'NO₂', color: '#409EFF' },
-        { key: 'uvi', name: 'UV Index', color: '#FFDD57' }
+        { key: 'o3', name: 'O₃', color: '#67C23A' }
       ]
     : [{ key: selectedMetric, name: selectedMetric.toUpperCase(), color: '#F56C6C' }];
 
-  // Render chart based on type
   const renderChart = () => {
     const chartProps = { data: chartData, dataKeys };
 
@@ -161,12 +275,12 @@ const AirQualityChart = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-2">
-                📊 Air Quality Forecast
+                📊 Air Quality Trends
               </h1>
               <p className="text-gray-600 dark:text-gray-400 flex items-center gap-2">
                 <span className="text-xl">📍</span>
-                <span className="font-semibold">{aqiData.city}</span>
-                <span className="text-sm">• 7 Day Projection</span>
+                <span className="font-semibold">{aqiData.data.city?.name || 'Unknown Location'}</span>
+                <span className="text-sm">• Historical & Current Data</span>
               </p>
             </div>
             
@@ -174,7 +288,7 @@ const AirQualityChart = () => {
               <span className="text-2xl">{currentCategory.emoji}</span>
               <div>
                 <div className="text-sm opacity-75">Current AQI</div>
-                <div>{aqiData.aqi} • {currentCategory.label}</div>
+                <div>{aqiData.data.aqi} • {currentCategory.label}</div>
               </div>
             </div>
           </div>
@@ -227,22 +341,25 @@ const AirQualityChart = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 p-5 rounded-2xl border-2 border-yellow-200 dark:border-yellow-800">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-5 rounded-2xl border-2 border-green-200 dark:border-green-800">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Sun className="w-5 h-5 text-yellow-600" />
-                  <span className="font-bold text-gray-800 dark:text-white">UV Index</span>
+                  <Wind className="w-5 h-5 text-green-600" />
+                  <span className="font-bold text-gray-800 dark:text-white">O₃</span>
                 </div>
-                <Activity className="w-5 h-5 text-yellow-600" />
+                {o3Stats.trend > 0 ? 
+                  <TrendingUp className="w-5 h-5 text-green-500" /> : 
+                  <TrendingDown className="w-5 h-5 text-blue-500" />
+                }
               </div>
               <div className="space-y-1 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Average:</span>
-                  <span className="font-semibold text-gray-800 dark:text-white">{uviStats.avg}</span>
+                  <span className="font-semibold text-gray-800 dark:text-white">{o3Stats.avg} µg/m³</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Range:</span>
-                  <span className="font-semibold text-gray-800 dark:text-white">{uviStats.min} - {uviStats.max}</span>
+                  <span className="font-semibold text-gray-800 dark:text-white">{o3Stats.min} - {o3Stats.max}</span>
                 </div>
               </div>
             </div>
@@ -302,8 +419,6 @@ const AirQualityChart = () => {
                 <option value="pm25">PM2.5 Only</option>
                 <option value="pm10">PM10 Only</option>
                 <option value="o3">Ozone (O₃) Only</option>
-                <option value="no2">NO₂ Only</option>
-                <option value="uvi">UV Index Only</option>
               </select>
             </div>
           </div>
@@ -319,7 +434,7 @@ const AirQualityChart = () => {
         </div>
 
         {/* Pollutant Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-gray-800 p-5 rounded-2xl border-2 border-red-200 dark:border-red-800">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-4 h-4 rounded-full bg-red-500"></div>
@@ -349,26 +464,6 @@ const AirQualityChart = () => {
               Ground-level ozone. Can trigger asthma and breathing issues.
             </p>
           </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-gray-800 p-5 rounded-2xl border-2 border-blue-200 dark:border-blue-800">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-4 h-4 rounded-full bg-blue-500"></div>
-              <span className="font-bold text-gray-800 dark:text-white">NO₂</span>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Nitrogen dioxide from vehicles. Causes respiratory inflammation.
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-yellow-50 to-white dark:from-yellow-900/20 dark:to-gray-800 p-5 rounded-2xl border-2 border-yellow-200 dark:border-yellow-800">
-            <div className="flex items-center gap-2 mb-3">
-              <Sun className="w-4 h-4 text-yellow-600" />
-              <span className="font-bold text-gray-800 dark:text-white">UV Index</span>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Ultraviolet radiation strength. Higher = more sun protection needed.
-            </p>
-          </div>
         </div>
 
         {/* Footer Note */}
@@ -376,8 +471,8 @@ const AirQualityChart = () => {
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
             <div className="text-sm text-gray-700 dark:text-gray-300">
-              <p className="font-semibold mb-1">Forecast Information</p>
-              <p>This forecast is generated based on current air quality readings and historical patterns. Actual values may vary based on weather conditions, traffic, and industrial activity. Data refreshes when you visit the Dashboard.</p>
+              <p className="font-semibold mb-1">Data Source: WAQI API</p>
+              <p>This chart displays real-time air quality data from the World Air Quality Index (WAQI). The forecast shows historical trends and current readings. Data is cached for 5 minutes to optimize performance.</p>
             </div>
           </div>
         </div>
