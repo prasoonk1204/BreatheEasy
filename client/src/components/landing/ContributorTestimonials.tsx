@@ -12,7 +12,10 @@ const contributorData = contributors.map((contributor) => ({
   github: contributor.github,
 }));
 
-// Split into columns (distribute evenly)
+// For mobile: all contributors in one column
+const mobileColumn = contributorData;
+
+// For desktop: split into columns (distribute evenly)
 const firstColumn = contributorData.filter((_, i) => i % 3 === 0);
 const secondColumn = contributorData.filter((_, i) => i % 3 === 1);
 const thirdColumn = contributorData.filter((_, i) => i % 3 === 2);
@@ -92,7 +95,19 @@ const ContributorTestimonials = () => {
               Community Contributors
             </h3>
             <div className="flex justify-center gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
-              <TestimonialsColumn testimonials={firstColumn} duration={20} />
+              {/* Mobile: Single column with all contributors */}
+              <TestimonialsColumn 
+                testimonials={mobileColumn} 
+                duration={30} 
+                className="md:hidden" 
+              />
+              
+              {/* Desktop: Three columns split */}
+              <TestimonialsColumn 
+                testimonials={firstColumn} 
+                duration={20} 
+                className="hidden md:block" 
+              />
               <TestimonialsColumn
                 testimonials={secondColumn}
                 className="hidden md:block"

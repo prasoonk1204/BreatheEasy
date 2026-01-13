@@ -17,7 +17,7 @@ export function AuroraBackgroundDemo() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4"
+        className="relative flex flex-col gap-4 items-center justify-center px-4 pt-20 sm:pt-0"
       >
         <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white text-center mb-6">
           Monitor Air Quality
