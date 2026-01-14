@@ -1,6 +1,7 @@
 // src/services/apiService.js
 
-const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/aqi` || "http://localhost:3000/api/aqi";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const API_BASE_URL = `${BASE_URL}/api/aqi`;
 
 const parseWaqiData = (data) => {
   if (data.status !== "ok" || !data.data) {
@@ -30,25 +31,28 @@ const parseWaqiData = (data) => {
 // Fetches AQI for the current location
 export const fetchAqiForCurrentLocation = async () => {
   try {
-     // Try to get geolocation from browser to pass to backend
-     // If not available or denied, fallback to simple request which uses server IP
+    // Try to get geolocation from browser to pass to backend
+    // If not available or denied, fallback to simple request which uses server IP
     const getPosition = () => {
-        return new Promise((resolve, reject) => {
-            if (!navigator.geolocation) {
-                reject(new Error("Geolocation not supported"));
-                return;
-            }
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
+      return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          reject(new Error("Geolocation not supported"));
+          return;
+        }
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
     };
 
     let url = `${API_BASE_URL}/current-location`;
-    
+
     try {
-        const position = await getPosition();
-        url += `?lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+      const position = await getPosition();
+      url += `?lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
     } catch (e) {
-        console.warn("Geolocation permission denied or not available, falling back to IP-based location.", e);
+      console.warn(
+        "Geolocation permission denied or not available, falling back to IP-based location.",
+        e
+      );
     }
 
     const response = await fetch(url);
@@ -74,15 +78,13 @@ export const fetchAqiByCity = async (cityName) => {
   }
 };
 
-
 export const fetchTopCitiesAQI = async () => {
   try {
-      const response = await fetch(`${API_BASE_URL}/top-cities`);
-      const data = await response.json();
-      return data; // The backend already returns { top5IndianCities: [], top5GlobalCities: [] }
+    const response = await fetch(`${API_BASE_URL}/top-cities`);
+    const data = await response.json();
+    return data; // The backend already returns { top5IndianCities: [], top5GlobalCities: [] }
   } catch (error) {
-      console.error("Error fetching top cities AQI:", error);
-      throw error;
+    console.error("Error fetching top cities AQI:", error);
+    throw error;
   }
 };
-
