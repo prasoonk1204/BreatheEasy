@@ -40,14 +40,14 @@ const ContributorTestimonials = () => {
         </motion.div>
 
         {/* Desktop: Side by side | Mobile: Stacked */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start justify-center lg:justify-start lg:ml-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start justify-start max-w-7xl mx-auto lg:pl-24">
           {/* Project Maintainers Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full lg:w-auto lg:flex-shrink-0 lg:max-w-sm lg:ml-38 flex flex-col items-center"
+            className="w-full lg:w-auto lg:flex-shrink-0 flex flex-col items-center"
           >
             <h3 className="text-2xl font-semibold text-emerald-600 dark:text-emerald-400 mb-6 text-center">
               Project Maintainers
@@ -89,7 +89,7 @@ const ContributorTestimonials = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full lg:flex-1 lg:ml-8 flex flex-col items-center"
+            className="w-full lg:flex-1 flex flex-col items-center"
           >
             <h3 className="text-2xl font-semibold text-emerald-600 dark:text-emerald-400 mb-6 text-center">
               Community Contributors
