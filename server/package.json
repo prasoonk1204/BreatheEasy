@@ -1,20 +1,22 @@
 {
-  "name": "server",
+  "name": "breatheeasy-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "Air Quality API using WAQI",
+  "main": "server.js",
   "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.6.7",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
+
