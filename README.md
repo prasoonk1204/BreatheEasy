@@ -1,4 +1,5 @@
 # BreatheEasy 🌱
+
 [Explore the Website](https://breathe-easy-1.vercel.app)
 
 BreatheEasy is an open-source project that helps you monitor air quality in your area, understand pollutant levels, and take informed actions for better health. It lets you search and explore real-time air quality data from any city around the world. Featuring a live AQI dashboard, interactive maps, and detailed pollutant breakdowns, it offers tailored health guidance and community-level improvement suggestions. With dark/light mode support and a mobile-friendly UI, BreatheEasy makes understanding air quality simple, informative, and accessible.
@@ -27,11 +28,79 @@ BreatheEasy is an open-source project that helps you monitor air quality in your
 ## Project Structure
 
 ```
-.
-├── client/   # React + Vite frontend
-├── server/   # Node.js + Express backend
-├── README.md
-└── ...
+
+BreatheEasy/
+│
+├── client/                              # Frontend (React + Vite)
+│
+│   ├── public/
+│   │   └── favicon.png                  # Website favicon icon
+│
+│   ├── src/
+│   │
+│   │   ├── components/                  # Reusable UI components
+│   │   │   ├── landing/                 # Components for landing page sections
+│   │   │   ├── skeletons/               # Loading skeleton components
+│   │   │   ├── AQICard.jsx              # Displays AQI value card
+│   │   │   ├── AQIScaleTable.jsx        # AQI scale reference table
+│   │   │   ├── LanguageToggle.jsx       # Language selection dropdown
+│   │   │   ├── Layout.jsx               # Common page layout wrapper
+│   │   │   ├── MapComponent.jsx         # Displays AQI location map
+│   │   │   ├── Navbar.jsx               # Top navigation bar
+│   │   │   ├── PollutantDetails.jsx     # Shows pollutant breakdown details
+│   │   │   ├── ScrollToTop.jsx          # Scrolls page to top on navigation
+│   │   │   ├── Sidebar.jsx              # Sidebar navigation menu
+│   │   │   └── Suggestions.jsx           # Health suggestions based on AQI
+│   │
+│   │   ├── constants/                   # Static data used in UI
+│   │   │   ├── contributors.js          # Contributors list data
+│   │   │   ├── features.js              # Feature list for landing page
+│   │   │   └── maintainers.js           # Maintainers list data
+│   │
+│   │   ├── hooks/                       # Custom React hooks
+│   │   │   ├── useAqiData.js            # Hook to fetch and manage AQI data
+│   │   │   └── useTheme.js              # Hook to manage dark/light theme
+│   │
+│   │   ├── pages/                       # Page-level route components
+│   │   │   ├── AirQualityChart.jsx      # Displays AQI chart visualization
+│   │   │   ├── Dashboard.jsx            # Main AQI dashboard page
+│   │   │   ├── ExploreAQI.jsx           # Explore AQI by location page
+│   │   │   ├── ImprovementMeasures.jsx  # Page showing AQI improvement tips
+│   │   │   ├── LandingPage.jsx          # Website landing page
+│   │   │   └── Precautions.jsx          # Safety precautions page
+│   │
+│   │   ├── services/                    # API service handlers
+│   │   │   └── apiService.js            # Functions to call backend AQI APIs
+│   │
+│   │   ├── utils/                       # Utility helper functions
+│   │   │   └── fetchAQIData.js          # Fetches AQI data from external API
+│   │
+│   │   ├── App.jsx                      # Root React component
+│   │   ├── index.css                    # Global stylesheet
+│   │   └── main.jsx                     # React application entry point
+│
+│   ├── .example.env                     # Example environment variables
+│   ├── .gitignore                       # Git ignore file for frontend
+│   ├── eslint.config.js                 # ESLint configuration
+│   ├── index.html                       # Main HTML template
+│   ├── package.json                     # Frontend dependencies & scripts
+│   ├── vercel.json                      # Vercel deployment configuration
+│   └── vite.config.js                   # Vite build configuration
+│
+├── server/                              # Backend (Node.js + Express)
+│
+│   ├── routes/
+│   │   └── aqi.js                       # Express routes for AQI API endpoints
+│
+│   ├── app.js                           # Main Express server entry file
+│   ├── package.json                     # Backend dependencies & scripts
+│   ├── package-lock.json                # Dependency lock file
+│   └── .gitignore                       # Git ignore file for backend
+│
+├── CONTRIBUTING.md                      # Contribution guidelines
+├── License.md                           # Project license
+└── README.md                            # Main project documentation
+
 ```
 
 ---
@@ -134,6 +203,7 @@ The backend will run on [http://localhost:3000](http://localhost:3000) by defaul
 ---
 
 ### Maintainer
+
 - Prasoon Kumar - [@prasoonk1204](https://github.com/prasoonk1204)
 
 ---
