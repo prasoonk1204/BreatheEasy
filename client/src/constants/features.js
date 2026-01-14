@@ -3,38 +3,38 @@ import { Activity, Globe, Map, Shield, TrendingUp, Wind } from "lucide-react";
 export const features = [
   {
     icon: Activity,
-    title: "Live AQI Dashboard",
+    title: "Real-Time Monitoring",
     description:
-      "Real-time Air Quality Index monitoring with instant updates and current pollutant levels.",
+      "Stay informed with instant air quality updates. Monitor pollutant levels as they change and make informed decisions about your daily activities.",
   },
   {
     icon: Globe,
-    title: "Global City Search",
+    title: "Global Coverage",
     description:
-      "Search and explore air quality data from any city around the world with detailed insights.",
+      "Access air quality data from cities worldwide. Compare conditions across locations and stay aware wherever you travel.",
   },
   {
     icon: Map,
-    title: "Interactive Maps",
+    title: "Interactive Visualization",
     description:
-      "Visualize AQI data on interactive maps with location-based air quality visualization.",
+      "Explore air quality patterns on intuitive maps. Discover trends in your neighborhood and identify cleaner areas nearby.",
   },
   {
     icon: Shield,
-    title: "Health Suggestions",
+    title: "Personalized Health Advice",
     description:
-      "Get personalized health advice and precautions based on current air quality levels.",
+      "Receive tailored recommendations based on current conditions. Protect your health with actionable insights for outdoor activities.",
   },
   {
     icon: TrendingUp,
-    title: "7-Day Forecast",
+    title: "Predictive Forecasting",
     description:
-      "Predict future air quality trends with interactive charts and forecasting data.",
+      "Plan ahead with 7-day air quality predictions. Visualize trends through interactive charts and optimize your schedule accordingly.",
   },
   {
     icon: Wind,
-    title: "Pollutant Breakdown",
+    title: "Detailed Analytics",
     description:
-      "Detailed analysis of PM2.5, PM10, O₃, NO₂, SO₂, and CO concentrations.",
+      "Understand what's in the air you breathe. Get comprehensive breakdowns of PM2.5, PM10, ozone, and other key pollutants.",
   },
 ];

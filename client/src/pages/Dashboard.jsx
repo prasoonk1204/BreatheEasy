@@ -107,7 +107,7 @@ const Dashboard = () => {
           <h2 className="text-3xl font-bold gradient-text">
             Your Location Air Quality
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full breathe-animation"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-emerald-500 to-teal-500 mx-auto rounded-full breathe-animation"></div>
         </div>
 
         {aqiData ? (
