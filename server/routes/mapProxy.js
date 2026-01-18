@@ -48,7 +48,7 @@ router.get('/tiles/:style/:z/:x/:y', tileLimiter, async (req, res) => {
   // Check if API key is configured
   if (!STADIAMAPS_API_KEY) {
     console.error('STADIAMAPS_API_KEY is not configured');
-    return res.status(500).send('Map service not configured');
+    return res.status(500).send('Service temporarily unavailable');
   }
 
   try {
