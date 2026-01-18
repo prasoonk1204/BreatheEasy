@@ -170,18 +170,13 @@ Copy `.example.env` to `.env`:
 cp .example.env .env
 ```
 
-Edit `.env` and add your API keys:
+Edit `.env` and add your API base URL:
 
 ```
-VITE_STADIAMAPS_API_KEY=your_stadiamaps_api_key_here
 VITE_API_BASE_URL=http://localhost:3000
 ```
 
-- **Stadia Maps API Key:**
-  - Go to [Stadia Maps](https://stadiamaps.com/).
-  - Sign up for a free account (no credit card required for the free tier).
-  - In your dashboard, go to "Manage Properties" → "Authentication Configuration" to generate/view your API key.
-  - Copy and paste it as `VITE_STADIAMAPS_API_KEY` in your `.env` file.
+> **Note:** API keys for WAQI and Stadia Maps are now securely managed on the backend server. You no longer need to configure them in the client environment.
 
 #### Start the frontend:
 
@@ -204,14 +199,26 @@ yarn install
 
 #### .env Setup
 
-Create a `.env` file in the `server` directory and add your WAQI API key:
+Copy `.example.env` to `.env`:
+
+```sh
+cp .example.env .env
+```
+
+Create a `.env` file in the `server` directory and add your API keys:
 
 ```
 WAQI_API_KEY=your_waqi_api_key_here
+STADIAMAPS_API_KEY=your_stadiamaps_api_key_here
 PORT=3000
 ```
 
 - **WAQI API Key:** [Get your key here](https://aqicn.org/data-platform/token/#/).
+- **Stadia Maps API Key:**
+  - Go to [Stadia Maps](https://stadiamaps.com/).
+  - Sign up for a free account (no credit card required for the free tier).
+  - In your dashboard, go to "Manage Properties" → "Authentication Configuration" to generate/view your API key.
+  - Copy and paste it as `STADIAMAPS_API_KEY` in your server `.env` file.
 
 Start the backend server:
 
