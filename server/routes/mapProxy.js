@@ -57,7 +57,7 @@ router.get('/tiles/:style/:z/:x/:y', tileLimiter, async (req, res) => {
     
     const response = await axios.get(tileUrl, {
       responseType: 'arraybuffer',
-      timeout: 5000,
+      timeout: 3000,
       headers: {
         'User-Agent': 'BreatheEasy/1.0'
       }
