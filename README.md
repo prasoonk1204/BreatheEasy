@@ -205,7 +205,7 @@ Copy `.example.env` to `.env`:
 cp .example.env .env
 ```
 
-Create a `.env` file in the `server` directory and add your API keys:
+Edit the `.env` file in the `server` directory and add your API keys:
 
 ```
 WAQI_API_KEY=your_waqi_api_key_here
