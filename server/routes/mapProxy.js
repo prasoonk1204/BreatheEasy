@@ -93,12 +93,31 @@ router.get('/tiles/:style/:z/:x/:y', tileLimiter, async (req, res) => {
 // WAQI AQI overlay tile proxy endpoint
 router.get('/aqi-overlay/:z/:x/:y', tileLimiter, async (req, res) => {
   const { z, x, y } = req.params;
-  
-  // Validate parameters
-  if (!z || !x || !y) {
+
+  // Validate parameters: ensure integers and within valid tile ranges
+  const zInt = parseInt(z, 10);
+  const xInt = parseInt(x, 10);
+  const yInt = parseInt(y, 10);
+
+  if (
+    Number.isNaN(zInt) ||
+    Number.isNaN(xInt) ||
+    Number.isNaN(yInt) ||
+    zInt < 0 ||
+    zInt > 20
+  ) {
     return res.status(400).send('Invalid tile parameters');
   }
 
+  const maxIndex = Math.pow(2, zInt) - 1;
+  if (
+    xInt < 0 ||
+    yInt < 0 ||
+    xInt > maxIndex ||
+    yInt > maxIndex
+  ) {
+    return res.status(400).send('Invalid tile parameters');
+  }
   // Create cache key
   const cacheKey = `waqi_overlay_${z}_${x}_${y}`;
   
