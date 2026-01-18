@@ -5,8 +5,8 @@ const NodeCache = require('node-cache');
 
 const router = express.Router();
 
-// Cache for 24 hours (86400 seconds)
-const tileCache = new NodeCache({ stdTTL: 86400 });
+// Cache for 24 hours (86400 seconds), with a maximum number of keys to prevent unbounded growth
+const tileCache = new NodeCache({ stdTTL: 86400, maxKeys: 1000 });
 
 // Rate limiting: 1000 requests per 15 minutes per IP
 const tileLimiter = rateLimit({
