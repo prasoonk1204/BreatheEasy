@@ -136,7 +136,7 @@ router.get('/aqi-overlay/:z/:x/:y', tileLimiter, async (req, res) => {
   // Check if API key is configured
   if (!WAQI_API_KEY) {
     console.error('WAQI_API_KEY is not configured');
-    return res.status(500).send('AQI overlay service not configured');
+    return res.status(500).send('Service temporarily unavailable');
   }
 
   try {
