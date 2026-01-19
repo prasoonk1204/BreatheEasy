@@ -28,7 +28,10 @@ const MapComponent = ({ centerLatitude = 22.5726, centerLongitude = 88.3639, zoo
       
       const STADIA_STYLE_ID = 'alidade_smooth'; 
       
-      // Use backend proxy for Stadia Maps tiles (API key now secure on backend)
+      // Use backend proxy for Stadia Maps tiles (API key now secure on backend).
+      // NOTE: Stadia Maps serves PNG raster tiles. The backend /api/map/tiles/:style/:z/:x/:y
+      // route is responsible for appending the ".png" file extension when calling Stadia Maps.
+      // This URL template intentionally omits ".png" and must stay in sync with that backend route.
       const STADIA_URL = `${API_BASE_URL}/api/map/tiles/${STADIA_STYLE_ID}/{z}/{x}/{y}`;
       const STADIA_ATTRIB = '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://www.stamen.com/">Stamen Design</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
       
