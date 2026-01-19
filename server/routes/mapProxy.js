@@ -25,11 +25,37 @@ const WAQI_API_KEY = process.env.WAQI_API_KEY;
 router.get('/tiles/:style/:z/:x/:y', tileLimiter, async (req, res) => {
   const { style, z, x, y } = req.params;
   
-  // Validate parameters
+  // Validate parameters are present
   if (!style || !z || !x || !y) {
     return res.status(400).send('Invalid tile parameters');
   }
 
+  // Validate z, x, y as integers within valid tile ranges
+  const zInt = parseInt(z, 10);
+  const xInt = parseInt(x, 10);
+  const yInt = parseInt(y, 10);
+
+  if (
+    Number.isNaN(zInt) ||
+    Number.isNaN(xInt) ||
+    Number.isNaN(yInt)
+  ) {
+    return res.status(400).send('Invalid tile parameters');
+  }
+
+  // Enforce reasonable zoom level (0–20)
+  if (zInt < 0 || zInt > 20) {
+    return res.status(400).send('Invalid tile parameters');
+  }
+
+  // x and y must be within [0, 2^z - 1]
+  const maxIndex = Math.pow(2, zInt) - 1;
+  if (
+    xInt < 0 || xInt > maxIndex ||
+    yInt < 0 || yInt > maxIndex
+  ) {
+    return res.status(400).send('Invalid tile parameters');
+  }
   // Create cache key
   const cacheKey = `stadia_${style}_${z}_${x}_${y}`;
   
