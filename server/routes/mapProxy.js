@@ -144,8 +144,8 @@ router.get('/aqi-overlay/:z/:x/:y', tileLimiter, async (req, res) => {
   ) {
     return res.status(400).send('Invalid tile parameters');
   }
-  // Create cache key
-  const cacheKey = `waqi_overlay_${z}_${x}_${y}`;
+  // Create cache key using validated integer values
+  const cacheKey = `waqi_overlay_${zInt}_${xInt}_${yInt}`;
   
   // Check cache first
   const cachedTile = tileCache.get(cacheKey);
