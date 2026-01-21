@@ -167,7 +167,7 @@ router.get('/aqi-overlay/:z/:x/:y', tileLimiter, async (req, res) => {
 
   try {
     // Fetch tile from WAQI
-    const tileUrl = `https://tiles.aqicn.org/tiles/usepa-aqi/${z}/${x}/${y}.png?token=${WAQI_API_KEY}`;
+    const tileUrl = `https://tiles.aqicn.org/tiles/usepa-aqi/${zInt}/${xInt}/${yInt}.png?token=${WAQI_API_KEY}`;
     
     const response = await axios.get(tileUrl, {
       responseType: 'arraybuffer',
