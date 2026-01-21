@@ -197,7 +197,13 @@ router.get('/aqi-overlay/:z/:x/:y', tileLimiter, async (req, res) => {
       return res.status(404).send('Tile not found');
     }
     
-    if (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT') {
+    if (
+      axios.isAxiosError(error) &&
+      (
+        error.code === 'ECONNABORTED' ||
+        (typeof error.message === 'string' && error.message.toLowerCase().includes('timeout'))
+      )
+    ) {
       return res.status(504).send('Tile request timeout');
     }
     
