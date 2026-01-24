@@ -20,9 +20,18 @@ export function SimpleHeader() {
 			label: 'Contributors',
 			href: '#contributors',
 		},
+		{
+			label: 'Help',
+			href: '#help',
+		},
 	];
 
-	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isRoute?: boolean) => {
+		if (isRoute) {
+			// For route navigation, don't prevent default - let the browser handle it
+			setOpen(false);
+			return;
+		}
 		e.preventDefault();
 		const element = document.querySelector(href);
 		if (element) {
@@ -57,7 +66,7 @@ export function SimpleHeader() {
 							key={link.label}
 							className={buttonVariants({ variant: 'ghost' })}
 							href={link.href}
-							onClick={(e) => handleClick(e, link.href)}
+							onClick={(e) => handleClick(e, link.href, link.isRoute)}
 						>
 							{link.label}
 						</a>
@@ -86,7 +95,7 @@ export function SimpleHeader() {
 										className: 'justify-start',
 									})}
 									href={link.href}
-									onClick={(e) => handleClick(e, link.href)}
+									onClick={(e) => handleClick(e, link.href, link.isRoute)}
 								>
 									{link.label}
 								</a>
