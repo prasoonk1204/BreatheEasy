@@ -23,14 +23,13 @@ const MapComponent = ({ centerLatitude = 22.5726, centerLongitude = 88.3639, zoo
   // Detect API root. The existing .env might have /api/aqi appended.
   // We need to strip that to get the base for /map accesses.
   const ENV_API_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/aqi";
-  const API_ROOT = ENV_API_URL.includes('/aqi') 
-      ? ENV_API_URL.replace(/\/aqi\/?$/, '') 
-      : ENV_API_URL.replace(/\/$/, '') + '/api'; // fallback if someone put just host
+  const baseUrl = ENV_API_URL.replace(/\/$/, '');
+  const API_ROOT = baseUrl.includes('/aqi')
+    ? baseUrl.replace(/\/aqi$/, '')
+    : (baseUrl.endsWith('/api') ? baseUrl : `${baseUrl}/api`); // fallback if someone put just host
 
-  const API_BASE_URL = ENV_API_URL; // Keep this for AQI usage if needed, but we use API_ROOT for map
-
-  useEffect(() => {
-    if (!mapRef.current) return;
+useEffect(() => {
+   if (!mapRef.current) return;
 
     // Direct API key check removed as it is handled by backend proxy now
 

@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 // Rate limiter for map tiles to prevent abuse
 const mapLimiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 1000, // Limit each IP to 1000 requests per window (approx 1 tile/sec avg, bursts allowed)
+windowMs: 60 * 1000, // 1 minute
+	max: 120, // Limit each IP to 120 tile requests per minute (~1–2 full map loads), bursts constrained
     message: "Too many tile requests, please try again later."
 });
 

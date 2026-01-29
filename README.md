@@ -173,7 +173,7 @@ cp .example.env .env
 Edit `.env` and add your API keys:
 
 ```
-VITE_API_BASE_URL=http://localhost:3000
+VITE_API_BASE_URL=http://localhost:3000/api/aqi
 ```
 
 #### Start the frontend:

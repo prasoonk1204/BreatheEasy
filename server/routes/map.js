@@ -18,8 +18,7 @@ router.get('/tiles/:style/:z/:x/:y', async (req, res) => {
     if (!allowedStyles.includes(style)) {
         return res.status(400).send("Invalid map style");
     }
-
-    // Check internal cache
+       // Check internal cache
     const cacheKey = `stadia_${style}_${z}_${x}_${y}`;
     const cachedTile = tileCache.get(cacheKey);
     if (cachedTile) {
@@ -46,7 +45,7 @@ router.get('/tiles/:style/:z/:x/:y', async (req, res) => {
     } catch (error) {
         console.error(`Stadia tile fetch error (${style}):`, error.message);
         if (error.response && error.response.status === 403) {
-             return res.status(403).send("Map fetch forbidden - check API key");
+             return res.status(403).send("Unable to fetch map tile");
         }
         res.status(500).send("Error fetching map tile");
     }
