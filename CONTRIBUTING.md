@@ -9,27 +9,40 @@ This guide explains how to contribute, how issues are handled, and what is expec
 
 ## 📌 Reporting Bugs 🐛
 
-If you find a bug, please open an issue on GitHub before submitting a fix.
+If you find a bug, please open an issue on GitHub. **You must use the provided "Bug Report" template** when creating the issue. This ensures we have all the technical details needed to fix the problem.
 
-When reporting a bug, include:
-- A clear and concise description of the issue
-- Steps to reproduce the problem
-- Expected vs actual behavior
-- Screenshots or error messages (if applicable)
-- Your environment (browser, OS, Node.js version)
+A valid bug report must include:
+- A clear and concise description of the issue.
+- Precise steps to reproduce the behavior.
+- Expected vs actual behavior.
+- **Environment Details:** Browser, OS, and Node.js version.
+- Screenshots or console error logs.
 
 ---
 
 ## ✨ Feature Requests
 
-Feature ideas and enhancements are welcome.
+Feature ideas and enhancements are welcome. **Please use the "Feature Request" template** to propose new modules or UI improvements.
 
 When suggesting a feature:
-- Clearly explain the idea
-- Describe why it would be useful
-- Mention possible alternatives if any
+- Clearly explain the problem it solves.
+- Describe the proposed solution in detail.
+- Mention possible alternatives or mockups if available.
 
-Please open an issue using the **feature** label.
+Please ensure the issue is labeled correctly as `feature` or `enhancement`.
+
+---
+
+## 🚀 Pull Request Guidelines
+
+Before opening a Pull Request, ensure you follow these standards:
+
+1. **Use the PR Template:** Every PR must fill out the `.github/pull_request_template.md`. PRs without a completed checklist will not be reviewed.
+2. **Sync your branch:** Make sure your branch is up to date with `main`.
+3. **Reference Issues:** Use keywords to link your PR to an issue (e.g., `Fixes #75`).
+4. **Validation:** - For **Frontend**: Verify changes in both Light and Dark modes.
+   - For **Backend**: Ensure API proxy logic is tested and `.env.example` is updated.
+5. **Visuals:** Attach screenshots or GIFs for any UI/UX modifications.
 
 ---
 
