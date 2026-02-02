@@ -61,26 +61,116 @@ graph TD
 
 ## Project Structure
 
+<details>
+<summary>📂 <b>Click to view Project Structure</b></summary>
+
 ```text
 BreatheEasy/
-├── client/                # Frontend application (React + Vite)
-│   ├── src/
-│   │   ├── components/    # Reusable UI (landing, skeletons, shadcn/ui)
-│   │   ├── constants/     # Static data (contributors, features)
-│   │   ├── hooks/         # Custom hooks (useAqiData, useTheme)
-│   │   ├── lib/           # Shared logic (utils.ts)
-│   │   ├── pages/         # Route-level components (Dashboard, Explore)
-│   │   ├── services/      # API communication layer
-│   │   └── utils/         # Helper functions
-│   ├── public/            # Static assets (images, icons)
-│   └── .example.env       # Frontend environment template
-├── server/                # Backend application (Node + Express)
-│   ├── routes/            # API endpoints (aqi.js)
-│   └── app.js             # Express server entry point
-├── CONTRIBUTING.md        # Contribution guidelines
-├── LICENSE.md             # MIT license
-└── README.md              # Project documentation
+│
+├── client/                              # Frontend application (React + Vite)
+│
+│   ├── public/                          # Public static assets used directly by the      browser
+│   │   ├── favicon.png                  # Website favicon icon
+│   │   ├── detailed_analytics.png       # Landing page illustration
+│   │   ├── global_coverage.png          # Landing page illustration
+│   │   ├── interactive_visualization.png# Landing page illustration
+│   │   ├── personalised_health_advice.png # Landing page illustration
+│   │   ├── predictive_forecasting.png   # Landing page illustration
+│   │   └── real_time_monitoring.png     # Landing page illustration
+│
+│   ├── src/                             # Main frontend source code
+│   │
+│   │   ├── components/                  # All reusable React components
+│   │   │
+│   │   │   ├── landing/                 # Components for landing page sections
+│   │   │   │   ├── About.jsx            # About section UI
+│   │   │   │   ├── ContributorTestimonials.tsx # Contributors showcase section
+│   │   │   │   ├── Features.jsx         # Features section UI
+│   │   │   │   └── landing.css          # Styles for landing page sections
+│   │   │
+│   │   │   ├── skeletons/               # Loading placeholder components
+│   │   │   │   └── DashboardSkeleton.jsx # Skeleton loader for dashboard page
+│   │   │
+│   │   │   ├── ui/                      # Generic UI building blocks (design system)
+│   │   │   │   ├── aurora-background-demo.tsx  # Demo for animated background
+│   │   │   │   ├── aurora-background.tsx       # Animated background component
+│   │   │   │   ├── button.tsx                  # Reusable button component
+│   │   │   │   ├── cta-4.tsx                   # Call-to-action UI section
+│   │   │   │   ├── input.tsx                   # Input field component
+│   │   │   │   ├── label.tsx                   # Label UI component
+│   │   │   │   ├── menu-toggle.tsx             # Mobile menu toggle button
+│   │   │   │   ├── sheet.tsx                   # Sliding drawer / modal component
+│   │   │   │   ├── simple-header.tsx           # Header layout component
+│   │   │   │   ├── modern-animated-footer.tsx  # Animated footer component
+│   │   │   │   └── testimonials-columns-1.tsx  # Testimonials layout UI
+│   │   │
+│   │   │   ├── AQICard.jsx              # Displays main AQI value
+│   │   │   ├── AQIScaleTable.jsx        # AQI scale reference table
+│   │   │   ├── ErrorAirChart.jsx        # Error UI for chart failures
+│   │   │   ├── LanguageToggle.jsx       # Language switch dropdown
+│   │   │   ├── Layout.jsx               # Common layout wrapper for pages
+│   │   │   ├── MapComponent.jsx         # Map visualization for AQI
+│   │   │   ├── Navbar.jsx               # Top navigation bar
+│   │   │   ├── PollutantDetails.jsx     # Pollutant breakdown display
+│   │   │   ├── ScrollToTop.jsx          # Auto scroll on route change
+│   │   │   ├── Sidebar.jsx              # Sidebar navigation menu
+│   │   │   ├── Suggestions.jsx          # Health advice based on AQI
+│   │   │   └── Testimonials.tsx         # User testimonials section
+│   │
+│   │   ├── constants/                   # Static configuration & data files
+│   │   │   ├── contributors.js          # Contributors list
+│   │   │   ├── features.js              # Features data for landing page
+│   │   │   └── maintainers.js           # Maintainers list
+│   │
+│   │   ├── hooks/                       # Custom React hooks
+│   │   │   ├── useAqiData.js            # Fetch & manage AQI data
+│   │   │   └── useTheme.js              # Handle dark/light theme
+│   │
+│   │   ├── lib/                         # Shared utility logic & helper functions
+│   │   │   └── utils.ts                 # Common utility functions used across app
+│   │
+│   │   ├── pages/                       # Route-level page components
+│   │   │   ├── AirQualityChart.jsx      # AQI graph visualization page
+│   │   │   ├── Dashboard.jsx            # Main dashboard page
+│   │   │   ├── ExploreAQI.jsx           # City AQI search page
+│   │   │   ├── ImprovementMeasures.jsx  # Air quality improvement tips page
+│   │   │   ├── LandingPage.jsx          # Website landing page
+│   │   │   └── Precautions.jsx          # Health precautions page
+│   │
+│   │   ├── services/                    # API communication layer
+│   │   │   └── apiService.js            # Backend API request handler
+│   │
+│   │   ├── utils/                       # Standalone helper utilities
+│   │   │   └── fetchAQIData.js         ️           # External AQI data fetcher
+│   │
+│   │   ├── App.jsx                      # Root React component
+│   │   ├── main.jsx                     # Application entry point
+│   │   └── index.css                    # Global CSS styles
+│
+│   ├── .example.env                     # Sample environment variables
+│   ├── .gitignore                       # Git ignore rules
+│   ├── components.json                 # UI components configuration
+│   ├── eslint.config.js                 # ESLint configuration
+│   ├── index.html                       # Main HTML template
+│   ├── package.json                    # Frontend dependencies & scripts
+│   ├── tsconfig.json                   # TypeScript configuration
+│   ├── tsconfig.node.json              # Node-specific TS config
+│   ├── vercel.json                     # Vercel deployment settings
+│   └── vite.config.js                  # Vite build configuration
+│
+├── server/                              # Backend application (Node + Express)
+│   ├── routes/
+│   │   └── aqi.js                       # AQI API routes
+│   ├── app.js                           # Express server entry file
+│   ├── package.json                    # Backend dependencies
+│   ├── package-lock.json               # Locked dependency versions
+│   └── .gitignore                      # Backend git ignore rules
+│
+├── CONTRIBUTING.md                      # Contribution guidelines
+├── LICENSE.md                           # MIT license
+└── README.md                            # Main project documentation
 ```
+</details>
 
 ---
 
