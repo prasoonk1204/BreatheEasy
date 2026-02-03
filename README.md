@@ -15,17 +15,15 @@ BreatheEasy is an open-source project that helps you monitor air quality in your
 
 ---
 
-## ✨ Features
+## Features
 
-| Feature | Description |
-| :--- | :--- |
-| **🌍 Live Dashboard** | Real-time AQI for your current location at a glance. |
-| **🔍 City Search** | Explore specific pollutants (PM2.5, O₃, NO₂, SO₂, etc.) globally. |
-| **🗺️ Interactive Maps** | Visualize air quality trends across regions via Stadia Maps. |
-| **🏥 Health Advice** | Receive tailored health precautions based on current air quality levels. |
-| **📊 7-Day Forecast** | View interactive charts and trends for upcoming air quality changes. |
-| **🌓 Dark Mode** | Fully responsive UI with seamless dark and light theme support. |
-| **💡 Improvement Tips** | Learn actionable community-level steps to help improve local air quality. |
+- **Live AQI Dashboard:** See the current Air Quality Index for your location.
+- **Explore AQI Page:** Search for any city and view its AQI, primary pollutant, last updated time, and detailed pollutant concentrations (PM2.5, PM10, O₃, NO₂, SO₂, CO).
+- **Interactive Map:** Visualize AQI data on a map centered on the searched location (requires Stadia Maps API key).
+- **Health Suggestions:** Get tailored health advice and precautions based on AQI.
+- **Improvement Measures:** Learn how you and your community can help improve air quality.
+- **7-Day Forecast:** Visualize upcoming air quality trends with interactive charts.
+
 
 ---
 
@@ -228,19 +226,7 @@ npm install
 yarn install
 ```
 
-### 🔑 Environment Configuration
-
-Before running the application, you must configure the environment variables for both the frontend and backend.
-
-| Variable | Required In | Source | Purpose |
-| :--- | :--- | :--- | :--- |
-| `VITE_STADIAMAPS_API_KEY` | `client/.env` | [Stadia Maps](https://stadiamaps.com/) | Renders the interactive map tiles |
-| `VITE_API_BASE_URL` | `client/.env` | Local / Deployed URL | Connects frontend to your proxy server |
-| `WAQI_API_KEY` | `server/.env` | [WAQI API](https://aqicn.org/api/) | Authenticates requests to fetch AQI data |
-| `PORT` | `server/.env` | Local Preference | Defines the backend server port (default: 3000) |
-
-> [!IMPORTANT]
-> Ensure your `.env` files are added to `.gitignore` to prevent leaking your API keys to GitHub.
+#### Environment Configuration
 
 Create a `.env` file in the `server` directory and add your WAQI API key:
 ```
