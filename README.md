@@ -8,6 +8,7 @@ BreatheEasy is an open-source project that helps you monitor air quality in your
 
 ## **_Appreciate the project by giving this repository a Star ⭐_**
 
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/prasoonk1204/BreatheEasy) [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/prasoonk1204/BreatheEasy/pulls)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) [![GSSoC](https://img.shields.io/badge/GSSoC-2025-orange)](https://gssoc.girlscript.tech/) [![SWoC](https://img.shields.io/badge/SWoC-2026-blue)](https://beta.swoc.in/)
 
 ### Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing.
@@ -23,12 +24,45 @@ BreatheEasy is an open-source project that helps you monitor air quality in your
 - **Improvement Measures:** Learn how you and your community can help improve air quality.
 - **7-Day Forecast:** Visualize upcoming air quality trends with interactive charts.
 
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    subgraph Client [Frontend: React + Vite]
+        A[User Dashboard] --> B[useAqiData Hook]
+        B --> C[apiService.js]
+    end
+
+    subgraph Proxy [Backend: Node + Express]
+        C -- API Request --> D[aqi.js Route]
+        D --> E{Proxy Logic}
+    end
+
+    subgraph Data [External APIs]
+        E -- Fetch --> F[WAQI API]
+        A -- Tiles --> G[Stadia Maps API]
+    end
+
+    F -- JSON Data --> D
+    D -- Response --> C
+    C -- State Update --> A
+
+    style Client fill:#e1f5fe,stroke:#01579b
+    style Proxy fill:#e8f5e9,stroke:#2e7d32
+    style Data fill:#fff3e0,stroke:#ef6c00
+```
+
 ---
 
 ## Project Structure
 
-```
+<details>
+<summary>📂 <b>Click to view Project Structure</b></summary>
 
+```text
 BreatheEasy/
 │
 ├── client/                              # Frontend application (React + Vite)
@@ -133,28 +167,26 @@ BreatheEasy/
 ├── CONTRIBUTING.md                      # Contribution guidelines
 ├── LICENSE.md                           # MIT license
 └── README.md                            # Main project documentation
-
-
 ```
+</details>
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-### Prerequisites
+### 📋 Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+* **Node.js**: `v18.0.0` or higher
+* **npm**: `v9.0.0` or higher (or Yarn/pnpm)
+* **Browser**: A modern evergreen browser (Chrome, Edge, Firefox)
 
 ### 1. Clone the Repository
-
 ```sh
 git clone https://github.com/prasoonk1204/BreatheEasy.git
 cd BreatheEasy
 ```
 
 ### 2. Set Up the Frontend
-
 ```sh
 cd client
 npm install
@@ -163,20 +195,15 @@ yarn install
 ```
 
 #### .env Setup
-
 Copy `.example.env` to `.env`:
-
 ```sh
 cp .example.env .env
 ```
-
 Edit `.env` and add your API keys:
-
 ```
 VITE_STADIAMAPS_API_KEY=your_stadiamaps_api_key_here
 VITE_API_BASE_URL=http://localhost:3000
 ```
-
 - **Stadia Maps API Key:**
   - Go to [Stadia Maps](https://stadiamaps.com/).
   - Sign up for a free account (no credit card required for the free tier).
@@ -184,17 +211,14 @@ VITE_API_BASE_URL=http://localhost:3000
   - Copy and paste it as `VITE_STADIAMAPS_API_KEY` in your `.env` file.
 
 #### Start the frontend:
-
 ```sh
 npm run dev
 # or
 yarn dev
 ```
-
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### 3. Set Up the Backend
-
 ```sh
 cd ../server
 npm install
@@ -202,19 +226,16 @@ npm install
 yarn install
 ```
 
-#### .env Setup
+#### Environment Configuration
 
 Create a `.env` file in the `server` directory and add your WAQI API key:
-
 ```
 WAQI_API_KEY=your_waqi_api_key_here
 PORT=3000
 ```
-
 - **WAQI API Key:** [Get your key here](https://aqicn.org/data-platform/token/#/).
 
 Start the backend server:
-
 ```sh
 npm start
 # or
