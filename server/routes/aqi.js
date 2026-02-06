@@ -93,21 +93,6 @@ router.get('/top-cities', async (req, res) => {
    }
 });
 
-// GET /tiles/:z/:x/:y
-router.get('/tiles/:z/:x/:y', async (req, res) => {
-    const { z, x, y } = req.params;
-    const tileUrl = `https://tiles.waqi.info/tiles/usepa-aqi/${z}/${x}/${y}.png?token=${WAQI_API_KEY}`;
-
-    try {
-        const response = await axios.get(tileUrl, {
-            responseType: 'arraybuffer'
-        });
-        res.set('Content-Type', 'image/png');
-        res.send(response.data);
-    } catch (error) {
-        console.error("Tile fetch error:", error.message);
-        res.status(500).send("Error fetching tile");
-    }
-});
+// Tile route moved to routes/map.js
 
 module.exports = router;
