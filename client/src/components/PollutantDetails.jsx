@@ -1,5 +1,6 @@
-import React from "react";
-import { Cloud, CloudDrizzle, Wind, Sun, AlertTriangle } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Cloud, CloudDrizzle, Wind, Sun, AlertTriangle, Download, ChevronDown } from "lucide-react";
+import { exportLiveData } from "../utils/exportLiveData"; 
 
 // Map pollutant keys to full names and icons
 const pollutantLabels = {
@@ -29,41 +30,111 @@ const pollutantLabels = {
   },
 };
 
-const PollutantDetails = ({ components }) => (
-  <div className="bg-white/70 dark:bg-gray-700/70 backdrop-blur-xl p-6 rounded-2xl shadow-md">
-    <h3 className="text-xl font-semibold mb-5 text-gray-800 dark:text-white">
-      Pollutant Details
-    </h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-      {Object.entries(components).map(([key, value]) => {
-        const { label, icon } = pollutantLabels[key] || {
-          label: key.toUpperCase(),
-          icon: null,
-        };
+const PollutantDetails = ({ components = {}, data }) => {
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-        return (
-          <div
-            key={key}
-            className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-700 transition hover:shadow-lg"
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="bg-white/70 dark:bg-gray-700/70 backdrop-blur-xl p-6 rounded-2xl shadow-md">
+      
+      {/* Header + Export Button */}
+      <div className="flex justify-between items-center mb-5">
+        <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+          Pollutant Details
+        </h3>
+
+        <div className="relative" ref={dropdownRef}>
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg 
+            bg-emerald-600 hover:bg-emerald-700 
+            text-white text-sm shadow-md transition cursor-pointer"
           >
-            <div className="flex items-center gap-4 mb-3">
-              <div className="p-2 rounded-full bg-muted dark:bg-gray-700">
-                {icon}
-              </div>
-              <h4 className="text-base font-semibold text-gray-800 dark:text-gray-100">
-                {label}
-              </h4>
+            <Download size={16} />
+            Export
+            <ChevronDown size={16} />
+          </button>
+
+          {open && (
+            <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 
+              rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50">
+
+              <button
+                onClick={() => {
+                  exportLiveData("csv", data); 
+                  setOpen(false);
+                }}
+                className="block w-full text-left px-4 py-2 text-sm
+                hover:bg-emerald-50 dark:hover:bg-emerald-900/30
+                text-gray-700 dark:text-gray-200 transition-colors cursor-pointer"
+              >
+                Export as CSV
+              </button>
+
+              <button
+                onClick={() => {
+                  exportLiveData("pdf", data); 
+                  setOpen(false);
+                }}
+                className="block w-full text-left px-4 py-2 text-sm
+                hover:bg-emerald-50 dark:hover:bg-emerald-900/30
+                text-gray-700 dark:text-gray-200 transition-colors cursor-pointer"
+              >
+                Export as PDF
+              </button>
+
             </div>
-            <div className="mt-1 text-center">
-              <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-green-700/50 text-sm font-semibold text-emerald-800 dark:text-white">
-                {value} <span className="notranslate">μg/m³</span>
+          )}
+        </div>
+      </div>
+
+      {/* Pollutant Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {Object.entries(components).map(([key, value]) => {
+          const { label, icon } = pollutantLabels[key] || {
+            label: key.toUpperCase(),
+            icon: null,
+          };
+
+          return (
+            <div
+              key={key}
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-700 transition hover:shadow-lg"
+            >
+              <div className="flex items-center gap-4 mb-3">
+                <div className="p-2 rounded-full bg-muted dark:bg-gray-700">
+                  {icon}
+                </div>
+                <h4 className="text-base font-semibold text-gray-800 dark:text-gray-100">
+                  {label}
+                </h4>
+              </div>
+
+              <div className="mt-1 text-center">
+                <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-green-700/50 text-sm font-semibold text-emerald-800 dark:text-white">
+                  {value ?? "N/A"}{" "}
+                  <span className="notranslate">μg/m³</span>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+
     </div>
-  </div>
-);
+  );
+};
 
 export default PollutantDetails;
