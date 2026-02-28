@@ -40,12 +40,12 @@ const About = () => {
             </h2>
 
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              <span className="notranslate">BreatheEasy </span> is an open-source
-              project that helps you monitor air quality in your area, understand
-              pollutant levels, and take informed actions for better health. With
-              real-time data from cities worldwide, interactive maps, and
-              personalized health guidance, we make understanding air quality
-              simple, informative, and accessible.
+              <span className="notranslate">BreatheEasy </span>
+              is an open-source project that helps you monitor air quality in
+              your area, understand pollutant levels, and take informed actions
+              for better health. With real-time data from cities worldwide,
+              interactive maps, and personalized health guidance, we make
+              understanding air quality simple, informative, and accessible.
             </p>
 
             {/* Resource Links */}
@@ -68,7 +68,8 @@ const About = () => {
                     <div className="shrink-0 w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center group-hover:bg-emerald-500 dark:group-hover:bg-emerald-600 transition-colors duration-300">
                       <Icon className="w-6 h-6 text-emerald-600 dark:text-emerald-400 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <div className="flex-1">
+
+                    <div className="flex-1 min-w-0">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
                         {resource.name}
                       </h3>
@@ -76,8 +77,9 @@ const About = () => {
                         {resource.description}
                       </p>
                     </div>
+
                     <svg
-                      className="w-5 h-5 text-gray-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-all duration-300 group-hover:translate-x-1"
+                      className="w-5 h-5 text-gray-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-all duration-300 group-hover:translate-x-1 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -104,10 +106,8 @@ const About = () => {
             viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div
-              className="relative w-full max-w-md aspect-square flex items-center justify-center"
-              animate={{
-                scale: [1, 1.05, 1],
-              }}
+              className="relative w-full max-w-md max-w-full aspect-square flex items-center justify-center overflow-hidden"
+              animate={{ scale: [1, 1.05, 1] }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
@@ -124,20 +124,17 @@ const About = () => {
                     animation: breathe 4s ease-in-out infinite;
                   }
                 }
-                
+
                 @keyframes breathe {
-                  0%, 100% {
-                    transform: scale(1);
-                  }
-                  50% {
-                    transform: scale(1.05);
-                  }
+                  0%, 100% { transform: scale(1); }
+                  50% { transform: scale(1.05); }
                 }
               `}</style>
+
               <img
                 src="/favicon.png"
                 alt="BreatheEasy Logo"
-                className="breathing-logo w-full h-full object-contain drop-shadow-2xl"
+                className="breathing-logo w-full h-full max-w-full object-contain drop-shadow-2xl"
               />
             </motion.div>
           </motion.div>

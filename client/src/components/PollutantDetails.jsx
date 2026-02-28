@@ -55,8 +55,9 @@ const PollutantDetails = ({ components }) => (
               </h4>
             </div>
             <div className="mt-1 text-center">
-              <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-green-700/50 text-sm font-semibold text-emerald-800 dark:text-white">
-                {value} <span className="notranslate">μg/m³</span>
+              <div className="inline-block px-4 py-1 rounded-full bg-emerald-100 dark:bg-green-700/50 text-sm font-semibold text-emerald-800 dark:text-white notranslate"
+  translate="no">
+                {value} μg/m³
               </div>
             </div>
           </div>
